@@ -1,0 +1,44 @@
+# Basic metadata about the consultation
+Title: Initial consultation
+Description: "An initial consultation on the CHARTER systematic map"
+
+# Requirements for who is filling in the consulation (GDPR etc.)
+AllowAnonymousResponses: false
+
+# Actual question tree structure (with dependencies..)
+Questions:
+
+  # Questions are structured into sections. There may only be one section, in which
+  # case sections are ignored.
+
+  # Use case: tailor questions asked based on the group that the user identifies with.
+  # For example, if they are a scientist versus a lay person?
+
+  - Section:
+    Name: Scope of the research
+    Description: The scope of the research defines the boundaries within which information will be collected.
+    Questions:
+
+      - Question: 
+        - en: "Is the scoped age of 11,500 years before present to 1950 appropriate?"
+        - ru: "Подходит ли оценочный возраст 11 500 лет до настоящего времени к 1950 году?"
+        BinaryChoice: 
+        - en: [ "Yes", "No" ]
+      
+      # Question types. Binary (with positive / negative labels?)
+
+      - Question:
+        - en: "Please tell us how expanding or reducing the time period would (a) benefit you, and (b) be more appropriate."
+        VisibilityRule: previous question is true
+
+      # Questions: 
+      - Question:
+        - en: "Which of the components of biodiversity is most important?"
+        Choice:
+        - en: [ "Plants", "Animals", "Fungi", "Reindeer" ]
+
+      - Question:
+        - en: "Are you sure that Plants aren't the best?"
+        VisibilityRule: previous question is not Plants
+        BinaryChoice:
+        - en: [ "Yes, I'm sure", "No" ]

@@ -1,0 +1,13 @@
+bin/
+obj/
+.vs/
+*.user
+.idea/
+.ionide/
+paket-files/
+packages/
+.fake/
+build/
+TestResults/
+.paket/
+.DS_Store
