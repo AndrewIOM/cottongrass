@@ -38,3 +38,13 @@ body {
   margin-right: auto;
   margin-bottom: 5px;
 }
+
+.home-hero {
+  background-image: url('/images/home-banner.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.home-hero .hero-body {
+  max-width: 60%;
+}

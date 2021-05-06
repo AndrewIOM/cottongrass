@@ -4,6 +4,8 @@ Description: "An initial consultation on the CHARTER systematic map"
 
 # Requirements for who is filling in the consulation (GDPR etc.)
 AllowAnonymousResponses: false
+# Specify an endpoint to send data to (i.e., form processing as-a-service)
+Endpoint: https://someformprocessorservice.io/form123
 
 # Actual question tree structure (with dependencies..)
 Questions:
