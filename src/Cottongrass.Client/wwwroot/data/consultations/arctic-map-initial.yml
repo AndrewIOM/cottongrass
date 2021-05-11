@@ -40,13 +40,14 @@ Questions:
         - Language: en
           Translation: "Please tell us how expanding or reducing the time period would (a) benefit you, and (b) be more appropriate."
         Type: freetext
-        Visible: previous question is choice 1
+        Visible: previous question is false
 
       # Questions: 
       - Question:
         - Language: en
           Translation: "Which of the components of biodiversity is most important?"
         Type: choice
+        Visible: always
         Choices:
         - Language: en
           Translation: [ "Plants", "Reindeer", "Fungi" ]        

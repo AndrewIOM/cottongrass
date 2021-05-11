@@ -54,7 +54,7 @@ let optionField id labelText optionNames value dispatch =
                 label [ attr.``class`` "radio" ] [
                     input [ attr.``type`` "radio"
                             attr.name id
-                            bind.change.string value dispatch ]
+                            bind.change.string opt dispatch ]
                     text opt
                 ]
         ]
@@ -78,6 +78,38 @@ module Parser =
         PreviousQuestionModel: Map<int,Question>
     }
 
+    module Visibility =
+
+        open System
+        open System.Text.RegularExpressions
+
+        let isVisible (q:Question) s =
+            printfn "Previous is %A" q.Answer
+            match s with
+            | s when s = "always" -> true
+            | s when Regex.IsMatch(s, "previous question (is not|is) (true|false|.*)") ->
+                let m = Regex.Match(s, "previous question (is not|is) (true|false|.*)")
+                printfn "R1 is %s" m.Groups.[1].Value
+                printfn "R2 is %s" m.Groups.[2].Value
+                if m.Groups.[1].Value = "true" || m.Groups.[1].Value = "false"
+                then
+                    match q.Answer with
+                    | BinaryChoice b ->
+                        printfn "Binary choice. Current is %A" b
+                        if m.Groups.[1].Value = "is" && b = Boolean.Parse m.Groups.[2].Value then true
+                        else if b <> Boolean.Parse m.Groups.[2].Value then true
+                        else false
+                    | _ -> false
+                else
+                    match q.Answer with
+                    | Choice c
+                    | Text c ->
+                        if m.Groups.[1].Value = "is" then c = m.Groups.[2].Value
+                        else c <> m.Groups.[2].Value
+                    | _ -> false
+            | _ -> false
+
+
     let lift question = { CurrentQ = question, true; PreviousQs = empty; PreviousQuestionModel = Map.empty }
 
     let binaryChoice name question labelOne labelTwo value dispatchAnswer =
@@ -92,21 +124,16 @@ module Parser =
         { View = textField label placeholder None value (Text >> dispatchAnswer)
           Answer = Text value }
 
-    let andDependentQuestion (nextQuestion:Question) condition (builder:QuestionSectionBuilder) =
-        let display = condition (fst builder.CurrentQ)
-        { CurrentQ = nextQuestion, display
-          PreviousQs = (fst builder.CurrentQ).View
-          PreviousQuestionModel = Map.add 1 nextQuestion builder.PreviousQuestionModel }
-
     let compile builder =
         concat [
             builder.PreviousQs
             if snd builder.CurrentQ then (fst builder.CurrentQ).View
         ]
 
-    let andQuestion nextQuestion builder =
+    let andQuestion nextQuestion condition builder =
         let n = builder.PreviousQuestionModel.Count + 1
-        { CurrentQ = nextQuestion, true
+        let display = Visibility.isVisible (fst builder.CurrentQ) condition
+        { CurrentQ = nextQuestion, display
           PreviousQs = compile builder
           PreviousQuestionModel = builder.PreviousQuestionModel |> Map.add n nextQuestion }
 
@@ -164,7 +191,7 @@ module Parser =
             let question = parseQuestion (remainingQs.Length) langCode currentAnswer (remainingQs |> Seq.head)
             if Option.isNone builder
             then question handler |> lift |> Some |> parseYaml' langCode sectionId remainingQs.Tail answerMap dispatch
-            else builder |> Option.map (andQuestion (question handler)) |> parseYaml' langCode sectionId remainingQs.Tail answerMap dispatch
+            else builder |> Option.map (andQuestion (question handler) (remainingQs |> Seq.head).Visible) |> parseYaml' langCode sectionId remainingQs.Tail answerMap dispatch
             // TODO - dependent questions.
 
     let parseYaml language sectionId section answers dispatch =
