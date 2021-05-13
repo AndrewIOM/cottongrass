@@ -1,6 +1,11 @@
 # Basic metadata about the consultation
-Title: Initial consultation
-Description: "An initial consultation on the CHARTER systematic map"
+Information:
+  - Language: en
+    Title: Initial consultation
+    Description: "An initial consultation on the CHARTER systematic map"
+  - Language: ru
+    Title: Первичная консультация
+    Description: Первичная консультация по систематической карте CHARTER
 
 # Requirements for who is filling in the consulation (GDPR etc.)
 AllowAnonymousResponses: false
@@ -20,9 +25,13 @@ Questions:
     Name:
     - Language: en
       Translation: Scope of the research
+    - Language: ru
+      Translation: Объем исследования
     Description:
     - Language: en
       Translation: The scope of the research defines the boundaries within which information will be collected.
+    - Language: ru
+      Translation: Объем исследования определяет границы, в которых будет собираться информация.
     Questions:
 
       - Question:
@@ -34,11 +43,15 @@ Questions:
         Choices:
         - Language: en
           Translation: [ "Yes", "No" ]        
+        - Language: ru
+          Translation: [ "да", "Нет" ]        
         Visible: always
 
       - Question:
         - Language: en
           Translation: "Please tell us how expanding or reducing the time period would (a) benefit you, and (b) be more appropriate."
+        - Language: ru
+          Translation: Расскажите, пожалуйста, как увеличение или уменьшение периода времени (а) принесет вам пользу и (б) будет более подходящим вариантом.
         Type: freetext
         Visible: previous question is false
 
@@ -46,17 +59,25 @@ Questions:
       - Question:
         - Language: en
           Translation: "Which of the components of biodiversity is most important?"
+        - Language: ru
+          Translation: Какой из компонентов биоразнообразия наиболее важен?
         Type: choice
         Visible: always
         Choices:
         - Language: en
           Translation: [ "Plants", "Reindeer", "Fungi" ]        
+        - Language: ru
+          Translation: [ "Растения", "Олени", "Грибы" ]
 
       - Question:
         - Language: en
           Translation: "Are you sure that plants aren't the best?"
+        - Language: ru
+          Translation: Вы уверены, что растения не самые лучшие?
         Type: binary choice
         Visible: previous question is not Plants
         Choices:
         - Language: en
-          Translation: [ "Yes, I'm sure!", "No" ]        
+          Translation: [ "Yes, I'm sure!", "No" ]
+        - Language: ru
+          Translation: [ "Да, я уверен!", "Нет" ]

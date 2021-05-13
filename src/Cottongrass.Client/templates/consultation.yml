@@ -1,6 +1,8 @@
 # Basic metadata about the consultation
-Title: Initial consultation
-Description: "An initial consultation on the CHARTER systematic map"
+Information:
+  - Language: en
+    Title: Initial consultation
+    Description: "An initial consultation on the CHARTER systematic map"
 
 # Requirements for who is filling in the consulation (GDPR etc.)
 AllowAnonymousResponses: false
@@ -37,18 +39,26 @@ Questions:
         Visible: always
 
       - Question:
-        - en: "Please tell us how expanding or reducing the time period would (a) benefit you, and (b) be more appropriate."
+        - Language: en
+          Translation: "Please tell us how expanding or reducing the time period would (a) benefit you, and (b) be more appropriate."
         Type: freetext
-        Visible: previous question is choice 1
+        Visible: previous question is false
 
       # Questions: 
       - Question:
-        - en: "Which of the components of biodiversity is most important?"
-        Choice:
-        - en: [ "Plants", "Animals", "Fungi", "Reindeer" ]
+        - Language: en
+          Translation: "Which of the components of biodiversity is most important?"
+        Type: choice
+        Visible: always
+        Choices:
+        - Language: en
+          Translation: [ "Plants", "Reindeer", "Fungi" ]        
 
       - Question:
-        - en: "Are you sure that Plants aren't the best?"
+        - Language: en
+          Translation: "Are you sure that plants aren't the best?"
+        Type: binary choice
         Visible: previous question is not Plants
-        Options:
-        - en: [ "Yes, I'm sure", "No" ]
+        Choices:
+        - Language: en
+          Translation: [ "Yes, I'm sure!", "No" ]        

@@ -1,7 +1,13 @@
 Site:
-  ShortTitle: Arctic Biodiversity Map
-  LongTitle: Long-term changes in Arctic biodiversity - a systematic map
-  Subtitle: A short descripton of the website
-  IntroText: Consultations are a way to gain public feedback an input into a process.
+  - Language: "en"
+    ShortTitle: Arctic Biodiversity Map
+    LongTitle: Long-term changes in Arctic biodiversity - a systematic map
+    Subtitle: Help shape our research
+    IntroText: Some introductory text
+  - Language: "ru"
+    ShortTitle: Карта биоразнообразия Арктики
+    LongTitle: Долгосрочные изменения биоразнообразия Арктики - систематическая карта
+    Subtitle: Помогите сформировать наше исследование
+    IntroText: Некоторый вводный текст
 
-Languages: [ "en-GB", "" ]
+Languages: [ "en-GB", "ru-RU", "fi-FI", "nb-NO", "is-IS", "fr-CA", "sv-SE" ]

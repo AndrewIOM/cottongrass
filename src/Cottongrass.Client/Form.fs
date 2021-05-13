@@ -192,7 +192,6 @@ module Parser =
             if Option.isNone builder
             then question handler |> lift |> Some |> parseYaml' langCode sectionId remainingQs.Tail answerMap dispatch
             else builder |> Option.map (andQuestion (question handler) (remainingQs |> Seq.head).Visible) |> parseYaml' langCode sectionId remainingQs.Tail answerMap dispatch
-            // TODO - dependent questions.
 
     let parseYaml language sectionId section answers dispatch =
         parseYaml' language sectionId section answers dispatch None

@@ -15,7 +15,7 @@ type Model =
         SiteConfig: ConsultationConfig.SiteConfig option
         Consultations: ConsultationConfig.Index.consultations_Item_Type list
         SelectedConsultation: ActiveConsultation option
-        LanguageCode: string
+        CultureCode: string
         Error: string option
     }
 
@@ -32,12 +32,13 @@ let initModel =
         Consultations = []
         SiteConfig = None
         SelectedConsultation = None
-        LanguageCode = "en"
+        CultureCode = "en-GB"
         Error = None
     }
 
 type Message =
     | SetPage of Page
+    | SetLanguage of string
     | LoadSiteConfig
     | LoadedSiteConfig of ConsultationConfig.SiteConfig
     | LoadIndex
@@ -50,6 +51,7 @@ type Message =
 let update message model =
     match message with
     | SetPage page -> { model with page = page }, Cmd.none
+    | SetLanguage l -> { model with CultureCode = l }, Cmd.none
     | LoadIndex -> 
         model, 
         Cmd.OfAsync.either
@@ -72,7 +74,7 @@ let update message model =
             (fun c -> LoadedSiteConfig c)
             Error
     | LoadedSiteConfig data ->
-        { model with SiteConfig = Some data }, Cmd.none
+        { model with SiteConfig = Some data; CultureCode = data.Languages.[0] }, Cmd.none
     | Error e -> { model with Error = e.ToString() |> Some }, Cmd.none
     | SetDynamicAnswer(section,question,answer) -> 
         match model.SelectedConsultation with
@@ -81,6 +83,9 @@ let update message model =
         
 let router = Router.infer SetPage (fun m -> m.page)
 
+let currentLanguage (cultureCode:string) = cultureCode.Split("-").[0]
+let currentCountry (cultureCode:string) = cultureCode.Split("-").[1]
+
 let homeView model dispatch =
     concat [
         if model.Error.IsSome then textf "Error: %A" model.Error.Value
@@ -88,18 +93,24 @@ let homeView model dispatch =
             div [ attr.``class`` "hero-body" ] [
                 cond model.SiteConfig <| function
                 | Some sc ->
-                    concat [
-                        p [ attr.``class`` "title" ] [ text sc.Site.LongTitle ]
-                        p [ attr.``class`` "subtitle" ] [ text sc.Site.Subtitle ]
-                    ]
+                    cond (sc.Site |> Seq.tryFind (fun o -> o.Language = currentLanguage model.CultureCode)) <| function
+                    | Some sc ->
+                        concat [
+                            p [ attr.``class`` "title" ] [ text sc.LongTitle ]
+                            p [ attr.``class`` "subtitle" ] [ text sc.Subtitle ]
+                        ]
+                    | None -> empty
                 | None -> p [ attr.``class`` "title" ] [ text "Loading..." ]
             ]
         ]
         section [ attr.``class`` "section"; attr.name "Consultation list" ] [
             div [ attr.``class`` "container" ] [
                 cond model.SiteConfig <| function
-                | Some sc -> p [] [ text sc.Site.IntroText ]
                 | None -> empty
+                | Some sc ->
+                    cond (sc.Site |> Seq.tryFind (fun o -> o.Language = currentLanguage model.CultureCode)) <| function
+                    | Some sc -> p [] [ text sc.IntroText ]
+                    | None -> empty
                 h2 [ attr.``class`` "is-size-3" ] [ text "Open consultations" ]
                 forEach model.Consultations <| fun c ->
                     div [ attr.``class`` "card" ] [
@@ -128,64 +139,99 @@ let heroHeading title subtitle =
     ]
 
 let detailView shortcode (active:ConsultationConfig.Consultation) model dispatch =
-    concat [
-        heroHeading active.Title None
-        section [ attr.name "consultation-details" ] [
-            div [ attr.``class`` "columns" ] [
-                div [ attr.``class`` "column is-three-quarters" ] [
-                    div [ attr.``class`` "block" ] [ text active.Description ]
-                    p [] [ text active.Description ]
-                    p [] [ textf "There are %i sections." active.Questions.Count]
-                    div [ attr.``class`` "block" ] [
-                        a [ 
-                            attr.``class`` "button is-light is-primary is-medium"
-                            router.HRef <| AnswerForm (shortcode,1) ] [
-                            text "Start now"
+    let activeInfo = active.Information |> Seq.tryFind(fun l -> l.Language = currentLanguage model.CultureCode)
+    cond activeInfo <| function
+    | None -> text "The consultation is not configured correctly. Please contact the administrator."
+    | Some activeInfo ->
+        concat [
+            heroHeading activeInfo.Title None
+            section [ attr.name "consultation-details" ] [
+                div [ attr.``class`` "container" ] [
+                    div [ attr.``class`` "columns" ] [
+                        div [ attr.``class`` "column is-three-quarters" ] [
+                            div [ attr.``class`` "block" ] [ text activeInfo.Description ]
+                            p [] [ text activeInfo.Description ]
+                            p [] [ textf "There are %i sections." active.Questions.Count]
+                            div [ attr.``class`` "block" ] [
+                                a [ 
+                                    attr.``class`` "button is-light is-primary is-medium"
+                                    router.HRef <| AnswerForm (shortcode,1) ] [
+                                    text "Start now"
+                                ]
+                            ]
                         ]
-                    ]
-                ]
-                div [ attr.``class`` "column" ] [
-                    article [ attr.``class`` "message" ] [
-                        div [ attr.``class`` "message-body" ] [
-                            h2 [] [ text "Who is consulting?" ]
-                            p [] [ text "Bla bla bla "]
-                            h2 [] [ text "Where can I find more information?" ]
-                            p [] [ text "Bla bla bla..." ]
+                        div [ attr.``class`` "column" ] [
+                            article [ attr.``class`` "message" ] [
+                                div [ attr.``class`` "message-body" ] [
+                                    h2 [] [ text "Who is consulting?" ]
+                                    p [] [ text "Bla bla bla "]
+                                    h2 [] [ text "Where can I find more information?" ]
+                                    p [] [ text "Bla bla bla..." ]
+                                ]
+                            ]
                         ]
                     ]
                 ]
             ]
         ]
-    ]
+
+let flagFromCountryCode (country:string) =
+    country.ToUpper() 
+    |> Seq.map(fun c -> (int c) + 0x1F1A5 |> System.Char.ConvertFromUtf32)
+    |> String.concat ""
 
 let navbar model dispatch =
     nav [ attr.``class`` "navbar"; attr.aria "label" "main navigation" ] [
         div [ attr.``class`` "navbar-brand" ] [
             a [ attr.``class`` "navbar-item has-text-weight-bold is-size-5"; router.HRef Home ] [
                 img [ attr.style "height:40px"; attr.src "/images/logo-small.png" ]
-                text " Cottongrass"
+                cond model.SiteConfig <| function
+                | Some sc ->
+                    cond (sc.Site |> Seq.tryFind (fun o -> o.Language = currentLanguage model.CultureCode)) <| function
+                    | Some sc -> text sc.ShortTitle
+                    | None -> text " Cottongrass"
+                | None -> text " Cottongrass"
             ]
         ]
+        // Language selection:
+        cond model.SiteConfig <| function
+        | None -> empty
+        | Some c ->
+            div [ attr.``class`` "navbar-end" ] [
+                div [ attr.``class`` "navbar-item" ] [
+                    div [ attr.``class`` "dropdown is-hoverable" ] [
+                        div [ attr.``class`` "dropdown-trigger" ] [
+                            button [ attr.``class`` "button" ] [
+                                span [] [
+                                    model.CultureCode
+                                    |> currentCountry
+                                    |> flagFromCountryCode 
+                                    |> text
+                                    text (System.Globalization.CultureInfo.GetCultureInfo(model.CultureCode).DisplayName)
+                                ]
+                                span [ attr.``class`` "icon is-small" ] [
+                                    i [ attr.``class`` "fas fa-angle-down" ] []
+                                ]
+                            ]
+                            div [ attr.``class`` "dropdown-menu" ] [
+                                div [ attr.``class`` "dropdown-content" ] [
+                                    forEach c.Languages <| fun l ->
+                                        a [ attr.``class`` "dropdown-item"
+                                            on.click(fun _ -> l |> SetLanguage |> dispatch) ] [
+                                            l |> currentCountry
+                                            |> flagFromCountryCode 
+                                            |> text
+                                            text (System.Globalization.CultureInfo.GetCultureInfo(l).DisplayName)
+                                        ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
     ]
 
-        // Use conditional elements on model properties?
-
-        // - INPUT: 
-        // What do we need to compile?
-        // - A node that contains all rendered fields
-        // - Fields have actions attached to update model values
-
-        // let formSection languageCode model =
-        //     binaryChoice "" "" "" false
-        //     |> lift
-        //     |> andDependentQuestion (textQuestion "Label" ["placeholder"] "value") ((=) true)
-        //     |> andQuestion (textQuestion "Label" ["placeholder"] "value")
-        //     |> compile
-
-
-
-
-let aboutYouSection title dispatch =
+let aboutYouSection dispatch =
     concat [
         // Render some form elements
         form [] [
@@ -208,35 +254,37 @@ let answerFormView shortcode section (model:Model) dispatch =
         let subtitle =
             if section = 1 then "About You" |> Some
             else if currentSection.IsSome
-            then (currentSection.Value.Name |> Seq.find(fun (d:ConsultationConfig.Consultation.Questions_Item_Type.Name_Item_Type) -> d.Language = model.LanguageCode)).Translation |> Some
+            then (currentSection.Value.Name |> Seq.tryFind(fun (d:ConsultationConfig.Consultation.Questions_Item_Type.Name_Item_Type) -> d.Language = currentLanguage model.CultureCode)) |> Option.map (fun l -> l.Translation)
             else None
         let description =
             if currentSection.IsSome
-            then (currentSection.Value.Description |> Seq.find(fun (d:ConsultationConfig.Consultation.Questions_Item_Type.Description_Item_Type) -> d.Language = model.LanguageCode)).Translation |> Some
+            then (currentSection.Value.Description |> Seq.tryFind(fun (d:ConsultationConfig.Consultation.Questions_Item_Type.Description_Item_Type) -> d.Language = currentLanguage model.CultureCode)) |> Option.map (fun l -> l.Translation)
             else None
         concat [
-            heroHeading con.Config.Title subtitle
+            cond (con.Config.Information |> Seq.tryFind(fun l -> l.Language = currentLanguage model.CultureCode)) <| function
+            | Some i -> heroHeading i.Title subtitle
+            | None -> heroHeading "Consultation" subtitle
             // Each answer form has sections of questions.
             // Display a sidebar containing the section progress.
             div [ attr.``class`` "container" ] [
                 div [ attr.``class`` "columns" ] [
+                    div [ attr.``class`` "column" ] [
+                        if description.IsSome then p [] [ text description.Value ]
+                        if section = 1 
+                        then aboutYouSection dispatch
+                        else 
+                            cond (con.Config.Questions |> Seq.tryItem (section - 2)) <| function
+                            | None -> text "Error"
+                            | Some s -> Form.Parser.parseYaml (currentLanguage model.CultureCode) section (s.Questions |> Seq.toList) con.Answers (SetDynamicAnswer >> dispatch)
+                        button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
+                    ]
                     div [ attr.``class`` "column is-one-quarter" ] [
                         ol [] [
                             concat [
                                 li [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ text "About you" ]
-                                forEach [1 .. con.Config.Questions.Count] (fun i -> li [ on.click (fun _ -> AnswerForm(shortcode,i+1) |> SetPage |> dispatch ) ] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = model.LanguageCode)).Translation ])
+                                forEach [1 .. con.Config.Questions.Count] (fun i -> li [ on.click (fun _ -> AnswerForm(shortcode,i+1) |> SetPage |> dispatch ) ] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ])
                             ]
                         ]
-                    ]
-                    div [ attr.``class`` "column" ] [
-                        if description.IsSome then p [] [ text description.Value ]
-                        if section = 1 
-                        then aboutYouSection con.Config.Title dispatch
-                        else 
-                            cond (con.Config.Questions |> Seq.tryItem (section - 2)) <| function
-                            | None -> text "Error"
-                            | Some s -> Form.Parser.parseYaml "en" section (s.Questions |> Seq.toList) con.Answers (SetDynamicAnswer >> dispatch)
-                        button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
                     ]
                 ]
             ]

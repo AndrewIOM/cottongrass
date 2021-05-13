@@ -1,6 +1,11 @@
 Site:
-  ShortTitle: Arctic Biodiversity Map
-  LongTitle: Long-term changes in Arctic biodiversity - a systematic map
-  Subtitle: Help shape our research
+  - Language: "en"
+    ShortTitle: Arctic Biodiversity Map
+    LongTitle: Long-term changes in Arctic biodiversity - a systematic map
+    Subtitle: Help shape our research
+  - Language: "ru"
+    ShortTitle: Карта биоразнообразия Арктики
+    LongTitle: Долгосрочные изменения биоразнообразия Арктики - систематическая карта
+    Subtitle: Помогите сформировать наше исследование
 
-Languages: [ "en-GB", "" ]
+Languages: [ "en-GB", "ru-RU", "fi-FI", "nb-NO", "is-IS", "fr-CA", "sv-SE" ]
