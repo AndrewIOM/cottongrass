@@ -1,6 +1,5 @@
 module Cottongrass.Client.Form
 
-open Elmish
 open Bolero
 open Bolero.Html
 
@@ -15,11 +14,12 @@ let field labelText contents =
         contents
     ]
 
-let textField labelText placeholder helpText value dispatch =
+let textField name labelText placeholder helpText value dispatch =
     field labelText (concat [ 
         div [ attr.``class`` "control" ] [
         input [ attr.``class`` "input"
                 attr.``type`` "text"
+                attr.``name`` name
                 attr.placeholder placeholder
                 bind.change.string value dispatch ]
         ]
@@ -120,8 +120,8 @@ module Parser =
         { View = optionField name question choices value (Choice >> dispatch)
           Answer = Choice value }
 
-    let textQuestion label placeholder value dispatchAnswer =
-        { View = textField label placeholder None value (Text >> dispatchAnswer)
+    let textQuestion name label placeholder value dispatchAnswer =
+        { View = textField name label placeholder None value (Text >> dispatchAnswer)
           Answer = Text value }
 
     let compile builder =
@@ -142,6 +142,7 @@ module Parser =
             match q.Question |> Seq.tryFind(fun q -> q.Language = langCode) with
             | Some q -> q.Translation
             | None -> failwith "No translation for question found"
+        let name = sprintf "q-%i" identifier
         match q.Type with
         | "binary choice" ->
             let labels =
@@ -156,7 +157,7 @@ module Parser =
                     match a with
                     | BinaryChoice v -> v
                     | _ -> false
-            binaryChoice (sprintf "q-%i" identifier) qText labels.[0] labels.[1] current
+            binaryChoice name qText labels.[0] labels.[1] current
         | "choice" ->
             let labels =
                 match q.Choices |> Seq.tryFind(fun q -> q.Language = langCode) with
@@ -169,15 +170,15 @@ module Parser =
                     match a with
                     | Choice v -> v
                     | _ -> ""
-            choiceQuestion (sprintf "q-%i" identifier) qText labels current
+            choiceQuestion name qText labels current
         | "freetext"
         | _ -> 
             match answer with
-            | None -> textQuestion qText "" ""
+            | None -> textQuestion name qText "" ""
             | Some a -> 
                 match a with
-                | Text t -> textQuestion qText "" t
-                | _ -> textQuestion qText "" ""
+                | Text t -> textQuestion name qText "" t
+                | _ -> textQuestion name qText "" ""
 
     let rec parseYaml' langCode sectionId (remainingQs:ConsultationConfig.Consultation.Questions_Item_Type.Questions_Item_Type list) answerMap dispatch (builder:QuestionSectionBuilder option) =
         match Seq.isEmpty remainingQs with

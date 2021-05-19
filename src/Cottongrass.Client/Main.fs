@@ -47,6 +47,37 @@ type Message =
     | LoadedConsultation of ConsultationConfig.Consultation * string
     | Error of exn
     | SetDynamicAnswer of int * int * Form.DynamicQuestionAnswer // Section * Question * Answer
+    | SendCompletedAnswers
+    | SentCompletedAnswers
+
+module RemoteFormHandler =
+
+    open System.Net.Http
+    open System.Net.Http.Json
+    open Form
+
+    // TODO Need to turn Map of DQA DU type into key value dictionary.
+    let flattenValues (con:Map<int * int,DynamicQuestionAnswer>) =
+        con|> Seq.map(fun pair ->
+            let key = sprintf "section%i-question%i" (fst pair.Key) (snd pair.Key)
+            let value =
+                match pair.Value with
+                | Text s -> s
+                | BinaryChoice c -> c.ToString()
+                | Choice c -> c
+            key, value )
+
+    let trySend (con:ActiveConsultation) =
+        async {
+            use client = new HttpClient(BaseAddress = con.Config.Endpoint)
+            let! post =
+                client.PostAsJsonAsync(con.Config.Endpoint, con.Answers |> flattenValues)
+                |> Async.AwaitTask
+            if post.IsSuccessStatusCode
+            then return Ok ()
+            else return Result.Error "Could not post form data to external service"
+        }
+
 
 let update message model =
     match message with
@@ -80,11 +111,25 @@ let update message model =
         match model.SelectedConsultation with
         | None -> model, Cmd.none
         | Some c -> { model with SelectedConsultation = Some { c with Answers = c.Answers |> Map.add (section,question) answer } }, Cmd.none
-        
+    | SendCompletedAnswers -> 
+        match model.SelectedConsultation with
+        | None -> model, Cmd.none
+        | Some c -> 
+            model, 
+            Cmd.OfAsync.either
+                RemoteFormHandler.trySend c
+                (fun _ -> SentCompletedAnswers)
+                Error
+    // TODO Thank you page?
+    | SentCompletedAnswers -> model, Cmd.ofMsg (SetPage Home)
+
 let router = Router.infer SetPage (fun m -> m.page)
 
 let currentLanguage (cultureCode:string) = cultureCode.Split("-").[0]
 let currentCountry (cultureCode:string) = cultureCode.Split("-").[1]
+
+let htmlFromMarkdown (str:string) =
+    str |> Markdig.Markdown.ToHtml |> RawHtml
 
 let homeView model dispatch =
     concat [
@@ -104,12 +149,12 @@ let homeView model dispatch =
             ]
         ]
         section [ attr.``class`` "section"; attr.name "Consultation list" ] [
-            div [ attr.``class`` "container" ] [
+            div [ attr.``class`` "container content" ] [
                 cond model.SiteConfig <| function
                 | None -> empty
                 | Some sc ->
                     cond (sc.Site |> Seq.tryFind (fun o -> o.Language = currentLanguage model.CultureCode)) <| function
-                    | Some sc -> p [] [ text sc.IntroText ]
+                    | Some sc -> htmlFromMarkdown sc.IntroText
                     | None -> empty
                 h2 [ attr.``class`` "is-size-3" ] [ text "Open consultations" ]
                 forEach model.Consultations <| fun c ->
@@ -149,8 +194,7 @@ let detailView shortcode (active:ConsultationConfig.Consultation) model dispatch
                 div [ attr.``class`` "container" ] [
                     div [ attr.``class`` "columns" ] [
                         div [ attr.``class`` "column is-three-quarters" ] [
-                            div [ attr.``class`` "block" ] [ text activeInfo.Description ]
-                            p [] [ text activeInfo.Description ]
+                            div [ attr.``class`` "content" ] [ htmlFromMarkdown activeInfo.Description ]
                             p [] [ textf "There are %i sections." active.Questions.Count]
                             div [ attr.``class`` "block" ] [
                                 a [ 
@@ -276,13 +320,22 @@ let answerFormView shortcode section (model:Model) dispatch =
                             cond (con.Config.Questions |> Seq.tryItem (section - 2)) <| function
                             | None -> text "Error"
                             | Some s -> Form.Parser.parseYaml (currentLanguage model.CultureCode) section (s.Questions |> Seq.toList) con.Answers (SetDynamicAnswer >> dispatch)
-                        button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
+                        
+                        // Submit form or move to next section?
+                        if section = con.Config.Questions.Count + 1
+                        then
+                            div [ attr.``class`` "box" ] [
+                                p [] [ text "Please confirm below to send your responses to us and complete the consultation." ]
+                                button [ attr.``class`` "button"; on.click (fun _ -> SendCompletedAnswers |> dispatch ) ] [ text "Finish" ]
+                            ]
+                        else button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
                     ]
                     div [ attr.``class`` "column is-one-quarter" ] [
-                        ol [] [
+                        ul [ attr.``class`` "box" ] [
                             concat [
-                                li [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ text "About you" ]
-                                forEach [1 .. con.Config.Questions.Count] (fun i -> li [ on.click (fun _ -> AnswerForm(shortcode,i+1) |> SetPage |> dispatch ) ] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ])
+                                li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ text "About you" ]]
+                                forEach [1 .. con.Config.Questions.Count] (fun i -> 
+                                    li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,i+1) |> SetPage |> dispatch ) ] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ]])
                             ]
                         ]
                     ]
