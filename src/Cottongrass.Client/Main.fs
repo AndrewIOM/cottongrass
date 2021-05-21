@@ -283,16 +283,16 @@ let aboutYouSection answers dispatch =
         match answers |> Map.tryFind (1,i) with
         | Some a ->
             match a with
-            | Form.DynamicQuestionAnswer.Text s -> s
-            | _ -> ""
-        | None -> ""
+            | Form.DynamicQuestionAnswer.Text s -> Some s
+            | _ -> None
+        | None -> None
     let binaryAnswer i =
         match answers |> Map.tryFind (1,i) with
         | Some a ->
             match a with
-            | Form.DynamicQuestionAnswer.BinaryChoice s -> s
-            | _ -> false
-        | None -> false
+            | Form.DynamicQuestionAnswer.BinaryChoice s -> Some s
+            | _ -> None
+        | None -> None
 
     Form.Parser.textQuestion "firstname" "First Name" "" (textAnswer 1) (handler 1)
     |> Form.Parser.lift

@@ -68,7 +68,7 @@ module Parser =
     }
 
     type Question = {
-        Answer: DynamicQuestionAnswer
+        Answer: DynamicQuestionAnswer option
         View: Node
     }
 
@@ -89,40 +89,42 @@ module Parser =
             | s when s = "always" -> true
             | s when Regex.IsMatch(s, "previous question (is not|is) (true|false|.*)") ->
                 let m = Regex.Match(s, "previous question (is not|is) (true|false|.*)")
-                printfn "R1 is %s" m.Groups.[1].Value
-                printfn "R2 is %s" m.Groups.[2].Value
                 if m.Groups.[2].Value = "true" || m.Groups.[2].Value = "false"
                 then
                     match q.Answer with
-                    | BinaryChoice b ->
-                        printfn "Binary choice. Current is %A" b
-                        if m.Groups.[1].Value = "is" && b = Boolean.Parse m.Groups.[2].Value then true
-                        else if m.Groups.[1].Value = "is not" && b <> Boolean.Parse m.Groups.[2].Value then true
-                        else false
-                    | _ -> false
+                    | None -> false
+                    | Some a -> 
+                        match a with
+                        | BinaryChoice b ->
+                            if m.Groups.[1].Value = "is" && b = Boolean.Parse m.Groups.[2].Value then true
+                            else if m.Groups.[1].Value = "is not" && b <> Boolean.Parse m.Groups.[2].Value then true
+                            else false
+                        | _ -> false
                 else
                     match q.Answer with
-                    | Choice c
-                    | Text c ->
-                        if m.Groups.[1].Value = "is" then c = m.Groups.[2].Value
-                        else c <> m.Groups.[2].Value
-                    | _ -> false
+                    | None -> false
+                    | Some a -> 
+                        match a with
+                        | Choice c
+                        | Text c ->
+                            if m.Groups.[1].Value = "is" then c = m.Groups.[2].Value
+                            else c <> m.Groups.[2].Value
+                        | _ -> false
             | _ -> false
-
 
     let lift question = { CurrentQ = question, true; PreviousQs = empty; PreviousQuestionModel = Map.empty }
 
     let binaryChoice name question labelOne labelTwo value dispatchAnswer =
         { View = binaryOptionField name question labelOne labelTwo value (BinaryChoice >> dispatchAnswer)
-          Answer = BinaryChoice value }
+          Answer = value |> Option.map BinaryChoice }
 
     let choiceQuestion name question choices value dispatch =
         { View = optionField name question choices value (Choice >> dispatch)
-          Answer = Choice value }
+          Answer = value |> Option.map Choice }
 
     let textQuestion name label placeholder value dispatchAnswer =
-        { View = textField name label placeholder None value (Text >> dispatchAnswer)
-          Answer = Text value }
+        { View = textField name label placeholder None (if value |> Option.isSome then value.Value else "") (Text >> dispatchAnswer)
+          Answer = value |> Option.map Text }
 
     let compile builder =
         concat [
@@ -150,13 +152,11 @@ module Parser =
                 | Some choices -> choices.Translation
                 | None -> failwith "No translation for choices found"
             if labels.Count <> 2 then failwith "Binary choice must have two options"
-            let current = // TODO Make values optional
-                match answer with
-                | None -> false
-                | Some a -> 
+            let current =
+                answer |> Option.map(fun a ->
                     match a with
                     | BinaryChoice v -> v
-                    | _ -> false
+                    | _ -> false )
             binaryChoice name qText labels.[0] labels.[1] current
         | "choice" ->
             let labels =
@@ -164,21 +164,19 @@ module Parser =
                 | Some choices -> choices.Translation
                 | None -> failwith "No translation for choices found"
             let current =
-                match answer with
-                | None -> ""
-                | Some a -> 
+                answer |> Option.map(fun a ->
                     match a with
                     | Choice v -> v
-                    | _ -> ""
+                    | _ -> "" )
             choiceQuestion name qText labels current
         | "freetext"
         | _ -> 
             match answer with
-            | None -> textQuestion name qText "" ""
+            | None -> textQuestion name qText "" None
             | Some a -> 
                 match a with
-                | Text t -> textQuestion name qText "" t
-                | _ -> textQuestion name qText "" ""
+                | Text t -> textQuestion name qText "" (Some t)
+                | _ -> textQuestion name qText "" None
 
     let rec parseYaml' langCode sectionId (remainingQs:ConsultationConfig.Consultation.Questions_Item_Type.Questions_Item_Type list) answerMap dispatch (builder:QuestionSectionBuilder option) =
         match Seq.isEmpty remainingQs with
