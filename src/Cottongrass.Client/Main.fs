@@ -275,18 +275,31 @@ let navbar model dispatch =
             ]
     ]
 
-let aboutYouSection dispatch =
-    concat [
-        // Render some form elements
-        form [] [
-            // Form.textField "First name" "" None
-            // Form.textField "Last name" "" None
+// TODO Multi-lingual text for code-defined strings
+let aboutYouSection answers dispatch =
+    let handler qn q = (1,qn,q) |> SetDynamicAnswer |> dispatch
 
-            //if Option.isSome model.Organisation
+    let textAnswer i = 
+        match answers |> Map.tryFind (1,i) with
+        | Some a ->
+            match a with
+            | Form.DynamicQuestionAnswer.Text s -> s
+            | _ -> ""
+        | None -> ""
+    let binaryAnswer i =
+        match answers |> Map.tryFind (1,i) with
+        | Some a ->
+            match a with
+            | Form.DynamicQuestionAnswer.BinaryChoice s -> s
+            | _ -> false
+        | None -> false
 
-            // Conditional - organisation name?
-        ]
-    ]
+    Form.Parser.textQuestion "firstname" "First Name" "" (textAnswer 1) (handler 1)
+    |> Form.Parser.lift
+    |> Form.Parser.andQuestion (Form.Parser.textQuestion "lastname" "Last Name" "" (textAnswer 2) (handler 2)) "always"
+    |> Form.Parser.andQuestion (Form.Parser.binaryChoice "org" "Are you representing an organisation?" "Yes" "No" (binaryAnswer 3) (handler 3)) "always"
+    |> Form.Parser.andQuestion (Form.Parser.textQuestion "orgname" "Organisation Name" "" (textAnswer 4) (handler 4)) "previous question is true"
+    |> Form.Parser.compile
 
 /// The answer form renders form fields from yaml in the selected
 /// language.
@@ -315,7 +328,7 @@ let answerFormView shortcode section (model:Model) dispatch =
                     div [ attr.``class`` "column" ] [
                         if description.IsSome then p [] [ text description.Value ]
                         if section = 1 
-                        then aboutYouSection dispatch
+                        then aboutYouSection con.Answers dispatch
                         else 
                             cond (con.Config.Questions |> Seq.tryItem (section - 2)) <| function
                             | None -> text "Error"
@@ -362,4 +375,4 @@ type MyApp() =
     override this.Program =
         Program.mkProgram (fun _ -> initModel, Cmd.batch [Cmd.ofMsg LoadIndex; Cmd.ofMsg LoadSiteConfig ]) update view
         |> Program.withRouter router
-        |> Program.withConsoleTrace
+        // |> Program.withConsoleTrace

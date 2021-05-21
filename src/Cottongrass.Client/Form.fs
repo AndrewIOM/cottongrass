@@ -91,13 +91,13 @@ module Parser =
                 let m = Regex.Match(s, "previous question (is not|is) (true|false|.*)")
                 printfn "R1 is %s" m.Groups.[1].Value
                 printfn "R2 is %s" m.Groups.[2].Value
-                if m.Groups.[1].Value = "true" || m.Groups.[1].Value = "false"
+                if m.Groups.[2].Value = "true" || m.Groups.[2].Value = "false"
                 then
                     match q.Answer with
                     | BinaryChoice b ->
                         printfn "Binary choice. Current is %A" b
                         if m.Groups.[1].Value = "is" && b = Boolean.Parse m.Groups.[2].Value then true
-                        else if b <> Boolean.Parse m.Groups.[2].Value then true
+                        else if m.Groups.[1].Value = "is not" && b <> Boolean.Parse m.Groups.[2].Value then true
                         else false
                     | _ -> false
                 else
