@@ -37,6 +37,7 @@ Questions:
         - Language: en
           Translation: [ "Yes", "No" ]        
         Visible: always
+        Required: true
 
       - Question:
         - Language: en

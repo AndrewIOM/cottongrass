@@ -6,6 +6,7 @@
   <ItemGroup>
     <Compile Include="Config.fs" />
     <Compile Include="Form.fs" />
+    <Compile Include="Remote.fs" />
     <Compile Include="Main.fs" />
     <Compile Include="Startup.fs" />
   </ItemGroup>

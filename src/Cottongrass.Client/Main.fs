@@ -8,6 +8,7 @@ type Page =
     | Home
     | Consultation of shortcode: string
     | AnswerForm of shortcode: string * section: int
+    | ThankYou
 
 type Model =
     {
@@ -24,7 +25,12 @@ and ActiveConsultation = {
     Config: ConsultationConfig.Consultation
     CurrentSection: int
     Answers: Map<int*int,Form.DynamicQuestionAnswer>
+    RequiredQuestions: int list
 }
+
+and Required =
+    | Required
+    | NotRequired
 
 let initModel =
     {
@@ -46,42 +52,18 @@ type Message =
     | LoadConsultation of string
     | LoadedConsultation of ConsultationConfig.Consultation * string
     | Error of exn
+    | CheckValidation of int
     | SetDynamicAnswer of int * int * Form.DynamicQuestionAnswer // Section * Question * Answer
     | SendCompletedAnswers
     | SentCompletedAnswers
 
-module RemoteFormHandler =
-
-    open System.Net.Http
-    open System.Net.Http.Json
-    open Form
-
-    // TODO Need to turn Map of DQA DU type into key value dictionary.
-    let flattenValues (con:Map<int * int,DynamicQuestionAnswer>) =
-        con|> Seq.map(fun pair ->
-            let key = sprintf "section%i-question%i" (fst pair.Key) (snd pair.Key)
-            let value =
-                match pair.Value with
-                | Text s -> s
-                | BinaryChoice c -> c.ToString()
-                | Choice c -> c
-            key, value )
-
-    let trySend (con:ActiveConsultation) =
-        async {
-            use client = new HttpClient(BaseAddress = con.Config.Endpoint)
-            let! post =
-                client.PostAsJsonAsync(con.Config.Endpoint, con.Answers |> flattenValues)
-                |> Async.AwaitTask
-            if post.IsSuccessStatusCode
-            then return Ok ()
-            else return Result.Error "Could not post form data to external service"
-        }
-
-
 let update message model =
     match message with
-    | SetPage page -> { model with page = page }, Cmd.none
+    | SetPage page -> 
+        { model with page = page },
+        match page with
+        | AnswerForm (_,section) -> Cmd.ofMsg (CheckValidation section)
+        | _ -> Cmd.none
     | SetLanguage l -> { model with CultureCode = l }, Cmd.none
     | LoadIndex -> 
         model, 
@@ -96,8 +78,7 @@ let update message model =
             ConsultationConfig.loadConsultation shortcode
             (fun c -> LoadedConsultation (c,shortcode))
             Error
-    | LoadedConsultation (data,sc) ->
-        { model with SelectedConsultation = Some { Config = data; CurrentSection = 1; ShortCode = sc; Answers = Map.empty } }, Cmd.none
+    | LoadedConsultation (data,sc) -> { model with SelectedConsultation = Some { Config = data; CurrentSection = 1; ShortCode = sc; Answers = Map.empty; RequiredQuestions = [] } }, Cmd.none
     | LoadSiteConfig -> 
         model, 
         Cmd.OfAsync.either
@@ -107,21 +88,39 @@ let update message model =
     | LoadedSiteConfig data ->
         { model with SiteConfig = Some data; CultureCode = data.Languages.[0] }, Cmd.none
     | Error e -> { model with Error = e.ToString() |> Some }, Cmd.none
+    | CheckValidation section ->
+        printfn "Checking validation requirements"
+        match model.SelectedConsultation with
+        | None -> model, Cmd.none
+        | Some c -> 
+            let required =
+                if section = 1
+                then [ 1 .. 7 ] // TODO: Is in 'about you' section - everything is required.
+                else
+                    let currentSection = c.Config.Questions |> Seq.tryItem (section - 2)
+                    Form.Parser.requiredQuestions c.Answers (currentSection.Value.Questions |> Seq.toList) |> Seq.toList
+            { model with SelectedConsultation = Some { c with RequiredQuestions = required } }, Cmd.none
     | SetDynamicAnswer(section,question,answer) -> 
         match model.SelectedConsultation with
         | None -> model, Cmd.none
-        | Some c -> { model with SelectedConsultation = Some { c with Answers = c.Answers |> Map.add (section,question) answer } }, Cmd.none
+        | Some c -> 
+            let required =
+                if section = 1
+                then [ 1 .. 7 ] // TODO: Is in 'about you' section - everything is required.
+                else
+                    let currentSection = c.Config.Questions |> Seq.tryItem (section - 2)
+                    Form.Parser.requiredQuestions c.Answers (currentSection.Value.Questions |> Seq.toList) |> Seq.toList
+            { model with SelectedConsultation = Some { c with Answers = c.Answers |> Map.add (section,question) answer; RequiredQuestions = required } }, Cmd.none
     | SendCompletedAnswers -> 
         match model.SelectedConsultation with
         | None -> model, Cmd.none
         | Some c -> 
             model, 
             Cmd.OfAsync.either
-                RemoteFormHandler.trySend c
+                (RemoteFormHandler.trySend c.Config.Endpoint) c.Answers
                 (fun _ -> SentCompletedAnswers)
                 Error
-    // TODO Thank you page?
-    | SentCompletedAnswers -> model, Cmd.ofMsg (SetPage Home)
+    | SentCompletedAnswers -> model, Cmd.ofMsg (SetPage ThankYou)
 
 let router = Router.infer SetPage (fun m -> m.page)
 
@@ -275,30 +274,37 @@ let navbar model dispatch =
             ]
     ]
 
+let textAnswer i answers = 
+    match answers |> Map.tryFind (1,i) with
+    | Some a ->
+        match a with
+        | Form.DynamicQuestionAnswer.Text s -> Some s
+        | _ -> None
+    | None -> None
+let binaryAnswer i answers =
+    match answers |> Map.tryFind (1,i) with
+    | Some a ->
+        match a with
+        | Form.DynamicQuestionAnswer.BinaryChoice s -> Some s
+        | _ -> None
+    | None -> None
+
 // TODO Multi-lingual text for code-defined strings
 let aboutYouSection answers dispatch =
     let handler qn q = (1,qn,q) |> SetDynamicAnswer |> dispatch
+    Form.Parser.textQuestion "firstname" "First Name" "" (textAnswer 1 answers) true (handler 1)
+    |> Form.Parser.lift true
+    |> Form.Parser.andQuestion (Form.Parser.textQuestion "lastname" "Last Name" "" (textAnswer 2 answers) true (handler 2)) "always" true
+    |> Form.Parser.andQuestion (Form.Parser.binaryChoice "org" "Are you representing an organisation?" "Yes" "No" (binaryAnswer 3 answers) true (handler 3)) "always" true
+    |> Form.Parser.andQuestion (Form.Parser.textQuestion "orgname" "Organisation Name" "" (textAnswer 4 answers) true (handler 4)) "previous question is true" true
+    |> Form.Parser.andQuestion (Form.Parser.choiceQuestion "publishmethod" "Responses from all respondants will be collated and analysed together. As part of this work, we may publish an summary of the responses. We will only publish your responses if you give consent." [ "Do not publish my responses"; "Publish anonymised response in full"; "Publish response in full with name (and organisation if applicable)" ] (textAnswer 5 answers) true (handler 5)) "always" true
+    |> Form.Parser.andQuestion (Form.Parser.choiceQuestion "contactmethod" "If we would like to follow-up your answers, what is the best method of contact?" [ "Telephone"; "Email"; "I don't want to be contacted" ] (textAnswer 6 answers) true (handler 6)) "always" true
+    |> Form.Parser.andQuestion (Form.Parser.textQuestion "contactdetail" "Your telephone number or email" "" (textAnswer 7 answers) true (handler 7)) "previous question is not I don't want to be contacted" true
+    |> Form.Parser.andQuestion (Form.Parser.choiceQuestion "workinggroup" "As part of this project, we would like to involve the community so that our findings are most relevant and well-suited to all that may value them. Can we keep in contact with you for this purpose?" [ "Yes, I would like to be involved"; "No, but I would like to recieve updates"; "No, I would not like to be involved or recieve updates" ] (textAnswer 8 answers) true (handler 8)) "always" true
 
-    let textAnswer i = 
-        match answers |> Map.tryFind (1,i) with
-        | Some a ->
-            match a with
-            | Form.DynamicQuestionAnswer.Text s -> Some s
-            | _ -> None
-        | None -> None
-    let binaryAnswer i =
-        match answers |> Map.tryFind (1,i) with
-        | Some a ->
-            match a with
-            | Form.DynamicQuestionAnswer.BinaryChoice s -> Some s
-            | _ -> None
-        | None -> None
-
-    Form.Parser.textQuestion "firstname" "First Name" "" (textAnswer 1) (handler 1)
-    |> Form.Parser.lift
-    |> Form.Parser.andQuestion (Form.Parser.textQuestion "lastname" "Last Name" "" (textAnswer 2) (handler 2)) "always"
-    |> Form.Parser.andQuestion (Form.Parser.binaryChoice "org" "Are you representing an organisation?" "Yes" "No" (binaryAnswer 3) (handler 3)) "always"
-    |> Form.Parser.andQuestion (Form.Parser.textQuestion "orgname" "Organisation Name" "" (textAnswer 4) (handler 4)) "previous question is true"
+    // Credit for work - acknowledgements; would you like to work more closely with us?
+    // - i.e. be regularly consulted about the project and its progress?
+    
     |> Form.Parser.compile
 
 /// The answer form renders form fields from yaml in the selected
@@ -326,29 +332,48 @@ let answerFormView shortcode section (model:Model) dispatch =
             div [ attr.``class`` "container" ] [
                 div [ attr.``class`` "columns" ] [
                     div [ attr.``class`` "column" ] [
-                        if description.IsSome then p [] [ text description.Value ]
-                        if section = 1 
-                        then aboutYouSection con.Answers dispatch
-                        else 
-                            cond (con.Config.Questions |> Seq.tryItem (section - 2)) <| function
-                            | None -> text "Error"
-                            | Some s -> Form.Parser.parseYaml (currentLanguage model.CultureCode) section (s.Questions |> Seq.toList) con.Answers (SetDynamicAnswer >> dispatch)
-                        
-                        // Submit form or move to next section?
-                        if section = con.Config.Questions.Count + 1
-                        then
-                            div [ attr.``class`` "box" ] [
-                                p [] [ text "Please confirm below to send your responses to us and complete the consultation." ]
-                                button [ attr.``class`` "button"; on.click (fun _ -> SendCompletedAnswers |> dispatch ) ] [ text "Finish" ]
-                            ]
-                        else button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
-                    ]
-                    div [ attr.``class`` "column is-one-quarter" ] [
-                        ul [ attr.``class`` "box" ] [
+                        cond description.IsSome <| function
+                        | true -> 
                             concat [
-                                li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ text "About you" ]]
+                                htmlFromMarkdown description.Value
+                                hr [] ]
+                        | false -> empty
+                        cond (section = 1) <| function
+                        | true -> 
+                            concat [
+                                aboutYouSection con.Answers dispatch
+                                button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
+                            ]
+                        | false -> 
+                            cond (con.Config.Questions |> Seq.tryItem (section - 2)) <| function
+                            | None -> text "There was a problem: this section doesn't exist."
+                            | Some s -> 
+                                let form, _ = Form.Parser.parseYaml (currentLanguage model.CultureCode) section (s.Questions |> Seq.toList) con.Answers (SetDynamicAnswer >> dispatch)
+                                concat [ form;
+                                    cond ( Set.isSubset (Set.ofList con.RequiredQuestions) (con.Answers |> Seq.map(fun k -> k.Key) |> Seq.where(fun (a,_) -> a = section) |> Seq.map snd |> Set.ofSeq)) <| function
+                                    | false -> textf "Please answer all the required questions before continuing: %A, %A" con.RequiredQuestions con.Answers
+                                    | true ->
+                                        cond (section = con.Config.Questions.Count + 1) <| function
+                                        | true ->
+                                            div [ attr.``class`` "box" ] [
+                                                p [] [ text "Please confirm below to send your responses to us and complete the consultation." ]
+                                                button [ attr.``class`` "button"; on.click (fun _ -> SendCompletedAnswers |> dispatch ) ] [ text "Finish" ]
+                                            ]
+                                        | false -> button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
+                                ]
+                    ]
+                    div [ attr.``class`` "column is-one-quarter with-left-line" ] [
+                        label [] [ textf "Section %i of %i" section (con.Config.Questions.Count+1) ]
+                        progress [ attr.``class`` "progress is-primary"
+                                   attr.value section
+                                   attr.max (con.Config.Questions.Count+1) ] [ textf "%i%%" (section / (con.Config.Questions.Count+1)) ]
+                        ul [ attr.``class`` "bar" ] [
+                            concat [
+                                if section = 1 then li [] [ text "About You" ]
+                                else li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ text "About you" ]]
                                 forEach [1 .. con.Config.Questions.Count] (fun i -> 
-                                    li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,i+1) |> SetPage |> dispatch ) ] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ]])
+                                    if (i+1) = section then li [] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ]
+                                    else li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,i+1) |> SetPage |> dispatch ) ] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ]])
                             ]
                         ]
                     ]
@@ -356,6 +381,8 @@ let answerFormView shortcode section (model:Model) dispatch =
             ]
         ]
 
+let thankYouView dispatch =
+    p [] [ text "Thank you for your responses." ]
 
 let view model dispatch =
     concat [
@@ -367,6 +394,7 @@ let view model dispatch =
             | None -> text "Loading consultation..."
             | Some con -> detailView con.ShortCode con.Config model dispatch
         | AnswerForm (code,section) -> answerFormView code section model dispatch
+        | ThankYou -> thankYouView dispatch
     ]
 
 type MyApp() =
@@ -375,4 +403,4 @@ type MyApp() =
     override this.Program =
         Program.mkProgram (fun _ -> initModel, Cmd.batch [Cmd.ofMsg LoadIndex; Cmd.ofMsg LoadSiteConfig ]) update view
         |> Program.withRouter router
-        // |> Program.withConsoleTrace
+        //|> Program.withConsoleTrace
