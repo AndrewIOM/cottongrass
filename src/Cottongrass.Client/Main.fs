@@ -18,6 +18,7 @@ type Model =
         SelectedConsultation: ActiveConsultation option
         CultureCode: string
         Error: string option
+        BaseUri: System.Uri
     }
 
 and ActiveConsultation = {
@@ -32,7 +33,7 @@ and Required =
     | Required
     | NotRequired
 
-let initModel =
+let initModel baseUri =
     {
         page = Home
         Consultations = []
@@ -40,6 +41,7 @@ let initModel =
         SelectedConsultation = None
         CultureCode = "en-GB"
         Error = None
+        BaseUri = baseUri
     }
 
 type Message =
@@ -68,21 +70,21 @@ let update message model =
     | LoadIndex -> 
         model, 
         Cmd.OfAsync.either
-            ConsultationConfig.loadIndex ()
+            ConsultationConfig.loadIndex model.BaseUri
             (fun items -> LoadedIndex (items |> Seq.toList))
             Error
     | LoadedIndex items -> { model with Consultations = items }, Cmd.none
     | LoadConsultation shortcode -> 
         model, 
         Cmd.OfAsync.either
-            ConsultationConfig.loadConsultation shortcode
+            ConsultationConfig.loadConsultation (model.BaseUri,shortcode)
             (fun c -> LoadedConsultation (c,shortcode))
             Error
     | LoadedConsultation (data,sc) -> { model with SelectedConsultation = Some { Config = data; CurrentSection = 1; ShortCode = sc; Answers = Map.empty; RequiredQuestions = [] } }, Cmd.none
     | LoadSiteConfig -> 
         model, 
         Cmd.OfAsync.either
-            ConsultationConfig.loadConfig ()
+            ConsultationConfig.loadConfig model.BaseUri
             (fun c -> LoadedSiteConfig c)
             Error
     | LoadedSiteConfig data ->
@@ -227,7 +229,7 @@ let navbar model dispatch =
     nav [ attr.``class`` "navbar"; attr.aria "label" "main navigation" ] [
         div [ attr.``class`` "navbar-brand" ] [
             a [ attr.``class`` "navbar-item has-text-weight-bold is-size-5"; router.HRef Home ] [
-                img [ attr.style "height:40px"; attr.src "/images/logo-small.png" ]
+                img [ attr.style "height:40px"; attr.src (model.BaseUri.AbsoluteUri + "images/logo-small.png") ]
                 cond model.SiteConfig <| function
                 | Some sc ->
                     cond (sc.Site |> Seq.tryFind (fun o -> o.Language = currentLanguage model.CultureCode)) <| function
@@ -397,10 +399,16 @@ let view model dispatch =
         | ThankYou -> thankYouView dispatch
     ]
 
+open Microsoft.AspNetCore.Components
+
 type MyApp() =
     inherit ProgramComponent<Model, Message>()
 
+    [<Inject>]
+    member val NavigationManager = Unchecked.defaultof<NavigationManager> with get, set
+
     override this.Program =
-        Program.mkProgram (fun _ -> initModel, Cmd.batch [Cmd.ofMsg LoadIndex; Cmd.ofMsg LoadSiteConfig ]) update view
+        let baseUri = System.Uri this.NavigationManager.BaseUri
+        Program.mkProgram (fun _ -> initModel baseUri, Cmd.batch [Cmd.ofMsg LoadIndex; Cmd.ofMsg LoadSiteConfig ]) update view
         |> Program.withRouter router
         //|> Program.withConsoleTrace

@@ -8,9 +8,9 @@ type Consultation = YamlConfig<"templates/consultation.yml">
 type Index = YamlConfig<"templates/index.yml">
 type SiteConfig = YamlConfig<"templates/config.yml">
 
-let loadIndex () =
+let loadIndex baseUri =
     async {
-        use client = new HttpClient(BaseAddress = Uri("http://localhost:5000"))
+        use client = new HttpClient(BaseAddress = baseUri)
         let reader = Index ()
         let! data =
             "data/consultations/index.yml"
@@ -20,9 +20,9 @@ let loadIndex () =
         return reader.consultations |> seq
     }
 
-let loadConsultation shortcode =
+let loadConsultation (baseUri,shortcode) =
     async {
-        use client = new HttpClient(BaseAddress = Uri("http://localhost:5000"))
+        use client = new HttpClient(BaseAddress = baseUri)
         let reader = Consultation()
         let! data =
             ("data/consultations/" + shortcode + ".yml")
@@ -32,9 +32,9 @@ let loadConsultation shortcode =
         return reader
     }
 
-let loadConfig () =
+let loadConfig baseUri =
     async {
-        use client = new HttpClient(BaseAddress = Uri("http://localhost:5000"))
+        use client = new HttpClient(BaseAddress = baseUri)
         let reader = SiteConfig()
         let! data =
             "data/config.yml"
