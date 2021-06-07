@@ -5,13 +5,19 @@ env:
 # Controls when the action will run
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: Setup .NET SDK
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+        include-prerelease: true
 
     - name: Publish app
       run: dotnet publish -c Release
@@ -20,7 +26,7 @@ jobs:
       uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
       with:
         html_path: ${{ env.PUBLISH_DIR }}/index.html
-        base_href: /Cottongrass/
+        base_href: /cottongrass/
 
     - name: GitHub Pages
       if: success()
