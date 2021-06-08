@@ -4,46 +4,58 @@ Site:
     LongTitle: Long-term changes in Arctic biodiversity - a systematic map
     Subtitle: Help shape our research
     IntroText: >
-      # Markdown: Syntax
+      ## What is the research?
 
-      *   [Overview](#overview)
-          *   [Philosophy](#philosophy)
-          *   [Inline HTML](#html)
-          *   [Automatic Escaping for Special Characters](#autoescape)
+      Climate change is driving rapid warming of the Arctic region, with impacts on Arctic plants, 
+      animals, and other species. To better understand how life in the Arctic may respond to these changes - 
+      and what can be done to protect it - we can look to the past. Rates of change in the diversity 
+      and distribution of *biodiversity* within the last ten thousand years can be used to inform
+      our current models and projections of how biodiversity will be affected in the 21st century.
+      
 
-      **Note:** This document is itself written using Markdown; you
-      can [see the source for it by adding '.text' to the URL](/projects/markdown/syntax.text).
+      To understand past changes in Arctic biodiversity, we are compiling a *systematic map* of the
+      current evidence. A systematic map provides a complete and unbiased synthesis of the state of
+      knowledge on a particular topic. The process involves looking into library collections, looking
+      for unpublished research, and technical reports to find all relevant scientific work.
 
-      ----
+      ## How do researchers understand past changes in Arctic biodiversity over thousands of years?
 
-      ## Overview
+      Plants, animals, fungi, and others can leave behind traces that they existed in the environment.
+      Examples include bones, tiny microscopic fossils (such as plant pollen), pine cones, leaves, 
+      and seeds, and mammoth tusks. They are often left behind in 'environmental archives' 
+      like lake sediments, peat, and frozen ground. 
+      The remains can be dated using radio-carbon and other dating methods, giving us an idea of 
+      what species existed, when, and their numbers.
 
-      ### Philosophy
+      ## Working together to a common goal - we need your help
 
-      Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
+      This project is a wide collaboration across languages and with all those that have an 
+      interest in Arctic biodiversity.
+      There are many ways in which your input is important: from defining the boundaries (such as the
+      included taxonomic groups, places, and times), contributing to the study design, to identifying
+      possible sources of new information. 
 
-      Readability, however, is emphasized above all else. A Markdown-formatted
-      document should be publishable as-is, as plain text, without looking
-      like it's been marked up with tags or formatting instructions. While
-      Markdown's syntax has been influenced by several existing text-to-HTML
-      filters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html), [atx](http://www.aaronsw.com/2002/atx/), [Textile](http://textism.com/tools/textile/), [reStructuredText](http://docutils.sourceforge.net/rst.html),
-      [Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of
-      inspiration for Markdown's syntax is the format of plain text email.
 
-      ## Block Elements
+      [Please add your thoughts and register your interest in our initial consultation.]()
 
-      ### Paragraphs and Line Breaks
 
-      A paragraph is simply one or more consecutive lines of text, separated
-      by one or more blank lines. (A blank line is any line that looks like a
-      blank line -- a line containing nothing but spaces or tabs is considered
-      blank.) Normal paragraphs should not be indented with spaces or tabs.
+      We are especially interested to work with those who call the Arctic their home, 
+      academic researchers, Government organisations, Arctic land managers, museums and interpretation
+      centres, Non-Governmental Organisations (NGOs) with an interest in Arctic environments.
+      All are welcome to work with us.
 
-      The implication of the "one or more consecutive lines of text" rule is
-      that Markdown supports "hard-wrapped" text paragraphs. This differs
-      significantly from most other text-to-HTML formatters (including Movable
-      Type's "Convert Line Breaks" option) which translate every line break
-      character in a paragraph into a `<br />` tag.
+      ## Who are the review team and how are they funded?
+
+      The review team (who search for and compile the evidence) are an international group
+      of academic researchers from the Finland, Russia, Sweden, the UK, Iceland, and Denmark. 
+      
+      The research is being funded by the European Commission through a Horizon 2020 collaboration.
+      The collaboration is called CHARTER - 'Changes in Arctic Terrestrial Biodiversity'. You can find
+      more information on the [CHARTER website](https://charter-arctic.org).
+
+      ^^^
+      ![Arctic ground squirrel](images/ground-squirrel.jpg)
+      ^^^ Arctic ground squirrel
 
   - Language: "ru"
     ShortTitle: Карта биоразнообразия Арктики

@@ -128,8 +128,13 @@ let router = Router.infer SetPage (fun m -> m.page)
 let currentLanguage (cultureCode:string) = cultureCode.Split("-").[0]
 let currentCountry (cultureCode:string) = cultureCode.Split("-").[1]
 
-let htmlFromMarkdown (str:string) =
-    str |> Markdig.Markdown.ToHtml |> RawHtml
+module Markdown =
+
+    open Markdig
+
+    let pipeline = MarkdownPipelineBuilder().UseAdvancedExtensions().Build()
+    let htmlFromMarkdown (str:string) =
+        Markdown.ToHtml(str, pipeline) |> RawHtml
 
 let homeView model dispatch =
     concat [
@@ -154,7 +159,7 @@ let homeView model dispatch =
                 | None -> empty
                 | Some sc ->
                     cond (sc.Site |> Seq.tryFind (fun o -> o.Language = currentLanguage model.CultureCode)) <| function
-                    | Some sc -> htmlFromMarkdown sc.IntroText
+                    | Some sc -> Markdown.htmlFromMarkdown sc.IntroText
                     | None -> empty
                 h2 [ attr.``class`` "is-size-3" ] [ text "Open consultations" ]
                 forEach model.Consultations <| fun c ->
@@ -194,7 +199,7 @@ let detailView shortcode (active:ConsultationConfig.Consultation) model dispatch
                 div [ attr.``class`` "container" ] [
                     div [ attr.``class`` "columns" ] [
                         div [ attr.``class`` "column is-three-quarters" ] [
-                            div [ attr.``class`` "content" ] [ htmlFromMarkdown activeInfo.Description ]
+                            div [ attr.``class`` "content" ] [ Markdown.htmlFromMarkdown activeInfo.Description ]
                             p [] [ textf "There are %i sections." active.Questions.Count]
                             div [ attr.``class`` "block" ] [
                                 a [ 
@@ -303,7 +308,7 @@ let answerFormView shortcode section (model:Model) dispatch =
                         cond description.IsSome <| function
                         | true -> 
                             concat [
-                                htmlFromMarkdown description.Value
+                                Markdown.htmlFromMarkdown description.Value
                                 hr [] ]
                         | false -> empty
                         cond (section = 1) <| function

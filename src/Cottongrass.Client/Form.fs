@@ -6,7 +6,7 @@ open Bolero.Html
 type DynamicQuestionAnswer =
     | BinaryChoice of bool
     | Text of string
-    | Choice of string
+    | Choice of string // TODO make int * string (with choice number)
 
 let field labelText required contents =
     div [ attr.``class`` "field box question-box" ] [
