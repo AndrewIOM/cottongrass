@@ -120,6 +120,7 @@ module Parser =
                         match a with
                         | Choice c
                         | Text c ->
+                            printfn "C is %s, new is %s" c m.Groups.[2].Value
                             if m.Groups.[1].Value = "is" then c = m.Groups.[2].Value
                             else c <> m.Groups.[2].Value
                         | _ -> false
@@ -150,7 +151,7 @@ module Parser =
         ]
 
     let andQuestion nextQuestion displayCondition isRequired builder =
-        let n = builder.PreviousQuestionModel.Count + 1
+        let n = builder.PreviousQuestionModel.Count + 2
         let visible = Visibility.isVisible (fst builder.CurrentQ).Answer displayCondition
         { CurrentQ = nextQuestion, visible
           PreviousQs = compile builder
@@ -222,9 +223,42 @@ module Parser =
         parseYaml' 1 language sectionId section answers dispatch None
         
     let requiredQuestions 
-        (answers:Map<'a * int,DynamicQuestionAnswer>) 
+        (section: int)
+        (answers:Map<int * int,DynamicQuestionAnswer>) 
         (questions:ConsultationConfig.Consultation.Questions_Item_Type.Questions_Item_Type list) =
         questions
-        |> Seq.mapi(fun i q -> if q.Required then Some (i+1) else None)
+        |> Seq.mapi(fun i q -> 
+            let answer = answers |> Map.tryFind (section, i)
+            match Visibility.isVisible answer q.Visible with
+                | true -> if q.Required then Some (i+1) else None
+                | false -> None )
         |> Seq.choose id
-        // Know the previous answere
+
+
+let textAnswer i answers = 
+    match answers |> Map.tryFind (1,i) with
+    | Some a ->
+        match a with
+        | DynamicQuestionAnswer.Text s -> Some s
+        | _ -> None
+    | None -> None
+
+let binaryAnswer i answers =
+    match answers |> Map.tryFind (1,i) with
+    | Some a ->
+        match a with
+        | DynamicQuestionAnswer.BinaryChoice s -> Some s
+        | _ -> None
+    | None -> None
+
+// TODO Multi-lingual text for code-defined strings
+let aboutYouSection answers handler =
+    Parser.textQuestion "firstname" "First Name" "" (textAnswer 1 answers) true (handler 1)
+    |> Parser.lift true
+    |> Parser.andQuestion (Parser.textQuestion "lastname" "Last Name" "" (textAnswer 2 answers) true (handler 2)) "always" true
+    |> Parser.andQuestion (Parser.binaryChoice "org" "Are you representing an organisation?" "Yes" "No" (binaryAnswer 3 answers) true (handler 3)) "always" true
+    |> Parser.andQuestion (Parser.textQuestion "orgname" "Organisation Name" "" (textAnswer 4 answers) true (handler 4)) "previous question is true" true
+    |> Parser.andQuestion (Parser.choiceQuestion "publishmethod" "Responses from all respondants will be collated and analysed together. As part of this work, we may publish an summary of the responses. We will only publish your responses if you give consent." [ "Do not publish my responses"; "Publish anonymised response in full"; "Publish response in full with name (and organisation if applicable)" ] (textAnswer 5 answers) true (handler 5)) "always" true
+    |> Parser.andQuestion (Parser.choiceQuestion "contactmethod" "If we would like to follow-up your answers, what is the best method of contact?" [ "Telephone"; "Email"; "I don't want to be contacted" ] (textAnswer 6 answers) true (handler 6)) "always" true
+    |> Parser.andQuestion (Parser.textQuestion "contactdetail" "Your telephone number or email" "" (textAnswer 7 answers) true (handler 7)) "previous question is not I don't want to be contacted" true
+    |> Parser.andQuestion (Parser.choiceQuestion "workinggroup" "As part of this project, we would like to involve the community so that our findings are most relevant and well-suited to all that may value them. Can we keep in contact with you for this purpose?" [ "Yes, I would like to be involved"; "No, but I would like to recieve updates"; "No, I would not like to be involved or recieve updates" ] (textAnswer 8 answers) true (handler 8)) "always" true
