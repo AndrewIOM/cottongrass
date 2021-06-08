@@ -314,8 +314,8 @@ let answerFormView shortcode section (model:Model) dispatch =
                                 | false -> 
                                     article [ attr.``class`` "message is-warning" ] [
                                         div [ attr.``class`` "message-body" ] [ 
-                                            textf "Please answer the required questions above before continuing (marked by a red asterisk). There are %i remaining. %A / %A" 
-                                                (con.RequiredQuestions.Length - (con.Answers |> Seq.map(fun k -> k.Key) |> Seq.where(fun (a,_) -> a = section) |> Seq.map snd |> Seq.where(fun i -> con.RequiredQuestions |> Seq.contains i) |> Seq.length)) con.Answers con.RequiredQuestions
+                                            textf "Please answer the required questions above before continuing (marked by a red asterisk). There are %i remaining." 
+                                                (con.RequiredQuestions.Length - (con.Answers |> Seq.map(fun k -> k.Key) |> Seq.where(fun (a,_) -> a = section) |> Seq.map snd |> Seq.where(fun i -> con.RequiredQuestions |> Seq.contains i) |> Seq.length))
                                         ]
                                     ]
                                 | true -> button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
