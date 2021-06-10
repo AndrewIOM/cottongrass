@@ -312,7 +312,7 @@ let answerFormView shortcode section (model:Model) dispatch =
                     div [ attr.``class`` "column" ] [
                         cond description.IsSome <| function
                         | true -> 
-                            concat [
+                            div [ attr.``class`` "content" ] [ 
                                 Markdown.htmlFromMarkdown description.Value
                                 hr [] ]
                         | false -> empty

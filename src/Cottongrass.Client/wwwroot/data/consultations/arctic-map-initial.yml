@@ -51,10 +51,7 @@ Information:
 
 TimeEstimateToCompleteInMinutes: 20
 MoreInformationUrl: http://charter-arctic.org
-
-# Requirements for who is filling in the consulation (GDPR etc.)
 AllowAnonymousResponses: false
-# Specify an endpoint to send data to (i.e., form processing as-a-service)
 Endpoint: https://submit-form.com/eQ1viAtb
 
 Questions:
@@ -217,8 +214,64 @@ Questions:
     Description:
     - Language: en
       Translation: >
-        The 'search strategy' that we use within the systematic map is the formal
-        method through which we identify all relevant sources of information. The most
+        The 'search strategy' is the formal method through which we identify all 
+        relevant sources of information relating to past changes in
+        Arctic biodiversity. The important considerations are:
+        
+        1. Identifying the core concepts that can indicate a document or source contains
+           information relevant to us.
+
+        2. Deciding the databases and archives to look within.
+
+        3. Finding out who has access to unpublished work that may be relevant, and if it
+           can be shared with us. We call this 'grey literature'.
+
+        To best identify and structure our search concepts, we took the research question
+        and looked for the connections between the parts. A common method used in systematic
+        maps is to identify the **Population**, **Exposure**, **Comparator**, and **Outcome**.
+        We can then identify studies where all of these components are present. Please take a
+        look at the diagram below, following the arrows from the top-left corner:
+
+
+        ![The theory of change used in this study](images/peco-simple.png)
+
+
+        Here, our **population** (Arctic biota) are **exposed** to the movement of time,
+        resulting in changes to the **outcomes** (measures of biodiversity, such as the
+        diversity and distribution of species).
+
+
+        Looking into the past is not straightforward, as we never observe changes as they
+        happen. Rather, we see traces of animals, plants, and other biota (or 'proxies').
+        Examples of proxies include: pollen or spores; ancient DNA fragments; 
+        fossil insects or plant parts; or bones and tusks. 
+
+    Questions:
+      - Question:
+        - Language: en
+          Translation:
+            If you do not agree with or understand our definition of the PECO (Population, 
+            Exposure, Comparator and Outcomes) in the diagram, please tell us here.
+        Type: freetext
+        Visible: always
+        Required: false
+      - Question:
+        - Language: en
+          Translation:
+            Are you aware of specific sources of information that may be relevant to us? 
+            This may include libraries, organisational websites, or other databases.
+        Type: freetext
+        Visible: always
+        Required: false
+
+  - Section:
+    Name:
+    - Language: en
+      Translation: Search Concepts - Population
+    Description:
+    - Language: en
+      Translation: >
+        The most
         important part of this is the 'search string', within which we list topics and
         their synonyms that indicate that a source is relevant to us. We aim to identify
         as much relevant material as possible, while avoiding finding sources that are not
@@ -232,23 +285,7 @@ Questions:
         - requires that all parts are present for a source to be identified.
         - is tailored to each specific database source.
 
-    Questions:
-      - Question:
-        - Language: en
-          Translation:
-            Are you aware of specific sources of information that may be relevant to us? 
-            This may include libraries, organisational websites, or other databases.
-        Type: freetext
-        Visible: always
-        Required: false
-
-  - Section:
-    Name:
-    - Language: en
-      Translation: Search concepts - Arctic Biota
-    Description:
-    - Language: en
-      Translation: >
+        
         The 'Population' used in our research is 'Arctic biota'. We have included the following concepts:
 
           | Concept                                         | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -278,7 +315,7 @@ Questions:
   - Section:
     Name:
     - Language: en
-      Translation: Search concepts - Arctic Biota
+      Translation: Search Concepts - Exposure
     Description:
     - Language: en
       Translation: >
@@ -307,11 +344,38 @@ Questions:
         Type: freetext
         Visible: always
         Required: false
+  - Section:
+    Name:
+    - Language: en
+      Translation: Search Concepts - Outcomes
+    Description:
+    - Language: en
+      Translation: >
+        The 'Population' used in our research is 'Arctic biota'. We have included the following concepts:
 
-
-
-
-
+          | Concept                                         | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                         |
+          | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+          | Plants (general)                                | ("plant?" OR "flora" OR "vegetation" OR "Plantae" OR "vegetational" OR "pal?eovegetation" OR "floristic") OR                                                                                                                                                                                                                                                                                                 |
+          | Non-vascular plants                             | ("bryophyte" OR "Bryophyta" OR "liverwort?" OR "moss" OR "mosses") OR                                                                                                                                                                                                                                                                                                                                        |
+          | Fungi                                           | ("lichen?") OR                                                                                                                                                                                                                                                                                                                                                                                               |
+          | Herbacous plants                                | ("forb?") OR                                                                                                                                                                                                                                                                                                                                                                                                 |
+          | Vascular plants                                 | ("shrub?" OR "woody plant" OR "vascular plant" OR "fern?" OR "pteridophyt?" OR "spermatopht?" OR "xerophyte" OR "tree species" OR "coniferous" OR "conifer" OR "deciduous" OR "herb") OR                                                                                                                                                                                                                     |
+          | Amphibians and aquatic groups                   | ("amphibian" OR "Amphibia" OR "aquatic animal" OR "algae" OR "algal") OR                                                                                                                                                                                                                                                                                                                                     |
+          | Reptiles                                        | ("reptile") OR                                                                                                                                                                                                                                                                                                                                                                                               |
+          | Birds                                           | ("bird?" OR "Aves") OR                                                                                                                                                                                                                                                                                                                                                                                       |
+          | Mammals                                         | ("mammal" OR "mammalian" OR "mammoth" OR "reindeer" OR "caribou" OR "polar bear" OR "Mammuthus primigenius" OR "steppe bison" OR "Bison priscus" OR "muskox" OR "Ovibos moschatus" OR "moose" OR "Alcos alces" OR "reindeer" OR "Rangifer tarandus" OR "horse" OR "Equus caballus" OR "wolf" OR "wolves" OR "Canis lupus" OR "dog" OR "squirrel" OR "arctic fox" OR "vulpes lagopus" OR "alopex lagopus") OR |
+          | Invertebrates - general concepts                | ("insect") OR                                                                                                                                                                                                                                                                                                                                                                                                |
+          | Vertebrates - general concepts                  | ("animal" OR "fauna" OR "faunal" OR "megafauna" OR "megaherbivore" OR "vertebrata" OR "vertebrate") OR                                                                                                                                                                                                                                                                                                       |
+          | Boreal forest / treeline species, shrub species | ("forest species" OR "treeline species" OR "tree-line species" OR "larch" OR "Larix" OR "spruce" OR "picea" OR "western hemlock" OR "Tsuga" OR "Sitka" OR "alnus" OR "cottonwood" OR "Populus" OR "Pinus" OR "birch" OR "alder" OR "pine" OR "Betula" OR "willow")                                                                                                                                           |
+    
+    Questions:
+      - Question:
+        - Language: en
+          Translation:
+            Does your language have specific concepts or terms for 'Arctic biota' that we are currently missing?
+        Type: freetext
+        Visible: always
+        Required: false
 
   - Section:
     Name:
@@ -366,4 +430,20 @@ Questions:
         Visible: previous question is true
         Required: false
 
-    # 'Is there anything else' question.
+  - Section:
+    Name:
+    - Language: en
+      Translation: Anything else?
+    Description:
+    - Language: en
+      Translation:
+        Is there anything that we have missed?
+    Questions:
+      - Question:
+        - Language: en
+          Translation: 
+            Please tell us below if there anything else that you would like 
+            to comment on to help improve this research project?
+        Type: freetext
+        Visible: always
+        Required: false
