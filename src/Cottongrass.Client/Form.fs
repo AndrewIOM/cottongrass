@@ -240,6 +240,7 @@ let textAnswer i answers =
     | Some a ->
         match a with
         | DynamicQuestionAnswer.Text s -> Some s
+        | DynamicQuestionAnswer.Choice s -> Some s
         | _ -> None
     | None -> None
 
