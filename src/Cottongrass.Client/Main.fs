@@ -188,6 +188,13 @@ let heroHeading title subtitle =
         ]
     ]
 
+let startButton shortcode =
+    a [ 
+        attr.``class`` "button is-light is-primary is-medium"
+        router.HRef <| AnswerForm (shortcode,1) ] [
+        text "Start now"
+    ]
+
 let detailView shortcode (active:ConsultationConfig.Consultation) model dispatch =
     let activeInfo = active.Information |> Seq.tryFind(fun l -> l.Language = currentLanguage model.CultureCode)
     cond activeInfo <| function
@@ -201,21 +208,19 @@ let detailView shortcode (active:ConsultationConfig.Consultation) model dispatch
                         div [ attr.``class`` "column is-three-quarters" ] [
                             div [ attr.``class`` "content" ] [ Markdown.htmlFromMarkdown activeInfo.Description ]
                             p [] [ textf "There are %i sections." active.Questions.Count]
-                            div [ attr.``class`` "block" ] [
-                                a [ 
-                                    attr.``class`` "button is-light is-primary is-medium"
-                                    router.HRef <| AnswerForm (shortcode,1) ] [
-                                    text "Start now"
-                                ]
-                            ]
+                            div [ attr.``class`` "block" ] [ startButton shortcode ]
                         ]
                         div [ attr.``class`` "column" ] [
                             article [ attr.``class`` "message" ] [
-                                div [ attr.``class`` "message-body" ] [
-                                    h2 [] [ text "Who is consulting?" ]
-                                    p [] [ text "Bla bla bla "]
-                                    h2 [] [ text "Where can I find more information?" ]
-                                    p [] [ text "Bla bla bla..." ]
+                                div [ attr.``class`` "message-body content" ] [
+                                    h4 [] [ text "Who is consulting?" ]
+                                    p [] [
+                                        text activeInfo.WhoIsConsulting
+                                        a [ attr.href activeInfo.WhoIsConsultingUrl; attr.target "_blank" ] [ text "See more." ] ]
+                                    h4 [] [ text "How long will it take?" ]
+                                    p [] [ textf "It should take abount %i minutes." active.TimeEstimateToCompleteInMinutes ]
+                                    h4 [] [ text "Where can I find more information?" ]
+                                    p [] [ a [ attr.href active.MoreInformationUrl; attr.target "_blank" ] [ text "More information is available here." ] ]
                                 ]
                             ]
                         ]

@@ -3,17 +3,59 @@ Information:
   - Language: en
     Title: Initial consultation
     Description: >
-      ## Core Principles of Systematic Mapping
+      ## What are we consulting on?
+
+      To understand past changes in Arctic biodiversity, we are compiling a *systematic map* of the
+      current evidence. A systematic map provides a complete and unbiased synthesis of the state of
+      knowledge on a particular topic. The process involves looking into library collections, looking
+      for unpublished research, and technical reports to find all relevant scientific work.
+
+
+      This research is a large undertaking, and we want to make sure that it has the most relevance
+      to the most people, groups, and organisations.
+
+
+      There are many ways in which your input is important: from defining the boundaries (such as the
+      included taxonomic groups, places, and times), contributing to the study design, to identifying
+      possible sources of new information. 
+
+      ### Core Principles of Systematic Mapping
       
-      Systematic mapping is an objective method to characterise the evidence base of a broad topic and identify evidence gaps, while reducing any potential biases. The process is focused on mapping the literature, and the resultant map is not necessarily a geographic map. Metadata about sources is extracted and the methods used often assessed for rigour. A related approach is systematic review, which is usually focused on a less-broad key question but involves the compilation and analysis of the underlying data to address the research question in a data synthesis. Systematic mapping is a hypothesis-generating approach, which can feed into later systematic reviews (which address the hypotheses); there is therefore scope for this after the map. A key consideration is development and publication of a systematic mapping protocol, which is a separate peer-reviewed publication that is completed before work commences on searches and data extraction (for a second peer-reviewed publication of the final map). For more information on the methods used within systematic mapping, Neil Haddaway from the Stockholm Environment Institute has produced good introductory resources for evidence synthesis techniques at: [https://systematicmappingmethods.github.io/intro.html](https://systematicmappingmethods.github.io/intro.html). 
+      Systematic mapping is an objective method to characterise the evidence base of a broad topic 
+      and identify evidence gaps, while reducing any potential biases. The process is focused on 
+      mapping the literature, and the resultant map is not necessarily a geographic map. 
+      Metadata about sources is extracted and the methods used often assessed for rigour. 
+      A related approach is systematic review, which is usually focused on a less-broad key 
+      question but involves the compilation and analysis of the underlying data to address 
+      the research question in a data synthesis. Systematic mapping is a hypothesis-generating 
+      approach, which can feed into later systematic reviews (which address the hypotheses); 
+      there is therefore scope for this after the map. A key consideration is development and 
+      publication of a systematic mapping protocol, which is a separate peer-reviewed 
+      publication that is completed before work commences on searches and data extraction 
+      (for a second peer-reviewed publication of the final map). 
+      For more information on the methods used within systematic mapping, Neil Haddaway 
+      from the Stockholm Environment Institute has produced good introductory resources 
+      for evidence synthesis techniques at: 
+      [https://systematicmappingmethods.github.io/intro.html](https://systematicmappingmethods.github.io/intro.html). 
+    WhoIsConsulting: >
+      We are the 'CHARTER consortium', an international collaboration of scientists
+      funded by the European Commission. The 'lead reviewer' for this project is Dr
+      Andrew Martin, University of Oxford.
+    WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
+
   - Language: ru
     Title: Первичная консультация
     Description: Первичная консультация по систематической карте CHARTER
+    WhoIsConsulting: Some text here, with reference to russian-speaking contact
+    WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
+
+TimeEstimateToCompleteInMinutes: 20
+MoreInformationUrl: http://charter-arctic.org
 
 # Requirements for who is filling in the consulation (GDPR etc.)
 AllowAnonymousResponses: false
 # Specify an endpoint to send data to (i.e., form processing as-a-service)
-Endpoint: https://someformprocessorservice.io/form123
+Endpoint: https://submit-form.com/eQ1viAtb
 
 Questions:
 

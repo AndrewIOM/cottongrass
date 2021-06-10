@@ -3,6 +3,14 @@ Information:
   - Language: en
     Title: Initial consultation
     Description: "An initial consultation on the CHARTER systematic map"
+    WhoIsConsulting: >
+      We are the 'CHARTER consortium', an international collaboration of scientists
+      funded by the European Commission. The 'lead reviewer' for this project is Dr
+      Andrew Martin, University of Oxford.
+    WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
+
+TimeEstimateToCompleteInMinutes: 20
+MoreInformationUrl: http://charter-arctic.org
 
 # Requirements for who is filling in the consulation (GDPR etc.)
 AllowAnonymousResponses: false
