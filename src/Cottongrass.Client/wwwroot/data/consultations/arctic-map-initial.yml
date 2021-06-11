@@ -68,6 +68,12 @@ Questions:
       Translation: 
         The scope of the research defines the boundaries within which information 
         will be collected.
+
+        For our research, we used a number of specific terms. We have 
+        further defined these terms to make sure that we can clearly define the areas of study
+        that will be included or excluded from our project.
+
+
     - Language: ru
       Translation: Объем исследования определяет границы, в которых будет собираться информация.
     Questions:
@@ -92,14 +98,48 @@ Questions:
         Visible: previous question is false
         Required: false
 
+
+      # Definitions: population
+      - Question:
+        - Language: en
+          Translation: For which Arctic taxonomic group would the synthesised information be most interesting to you for work or otherwise?
+        Type: choice
+        Visible: always
+        Required: false
+        Choices:
+        - Language: en
+          Translation: [ "No specific group", "Aquatic plants", "Aquatic animals", "Fungi", "Mammals (all)", "Plants", "Reindeer", "Other" ]
+      - Question:
+        - Language: en
+          Translation: Which taxonomic group, genus, or species is of most interest to you?
+        Type: short text
+        Visible: previous question is Other
+        Required: false
+
+      # Scope: population
+      - Question:
+        - Language: en
+          Translation: >
+            We will only include information for the following taxonomic groups: 
+            plants, mammals, birds, reptiles, amphibians, fungi, algae, aquatic arthropods, chironomids, and lichens.
+            Do you think the scope is:
+        Type: choice
+        Choices:
+        - Language: en
+          Translation: [ "fine", "too narrow", "too broad" ]
+        Visible: always
+        Required: false
+      - Question:
+        - Language: en
+          Translation: How should we broaden or narrow the scope to suit your interests?
+        Type: freetext
+        Visible: previous question is not fine
+        Required: true
+
       # Definitions: context
       - Question:
         - Language: en
           Translation:
-            Within the research question, we used a number of specific terms. We have 
-            further defined these terms to make sure that we can clearly define the areas of study
-            that will be included or excluded from our project.
-
             We need to clearly define the boundaries of the Arctic region. There are many possible
             ways of doing this. Which of the following would best define the Arctic when looking
             at changes in biodiversity over the last ten thousand years?
@@ -124,7 +164,7 @@ Questions:
           Translation: What are the issues with the proposed definitions, and how would you seek to address them?
         Type: freetext
         Visible: previous question is Something else
-        Required: false
+        Required: true
 
       - Question:
         - Language: en
@@ -157,54 +197,36 @@ Questions:
         Visible: previous question is false
         Required: false
 
-      - Question:
-        - Language: en
-          Translation:
-            We have chosen to exclude data from 1950 AD to the present day, as we are
-            mainly interested in long-term changes (over thousands of years).
-        Type: freetext
-        Visible: always
-        Required: false
-
-      # Definitions: population
-      - Question:
-        - Language: en
-          Translation: For which Arctic taxonomic group would the synthesised information be most interesting to you for work or otherwise?
-        Type: choice
-        Visible: always
-        Required: false
-        Choices:
-        - Language: en
-          Translation: [ "No specific group", "Aquatic plants", "Aquatic animals", "Fungi", "Mammals (all)", "Plants", "Reindeer", "Other" ]
-      - Question:
-        - Language: en
-          Translation: Which taxonomic group, genus, or species is of most interest to you?
-        Type: freetext
-        Visible: previous question is Other
-        Required: false
-
-      - Question:
-        - Language: en
-          Translation:
-            Biodiversity is the variability in living organisms as well as the nature
-            of their interactions. Organisms differ by species (taxonomic), genetics, 
-            morphology, and the ways in which habitats are structured.
-        Type: freetext
-        Visible: always
-        Required: false
+      # - Question:
+      #   - Language: en
+      #     Translation:
+      #       We have chosen to exclude data from 1950 AD to the present day, as we are
+      #       mainly interested in long-term changes (over thousands of years).
+      #   Type: freetext
+      #   Visible: always
+      #   Required: false
 
       # Definition: outcomes
       - Question:
         - Language: en
           Translation:
             We have defined 'biodiversity' as the variability of living organisms and the
-            ecological complexities of their interactions. 
+            ecological complexities of their interactions. Organisms differ by species (taxonomic), genetics, 
+            morphology, and the ways in which habitats are structured. Is this definition suitable for understanding
+            centennial-scale changes in Arctic biodiversity?
         Type: binary choice
         Choices:
         - Language: en
-          Translation: [ "Yes", "No" ]
+          Translation: [ "Suitable", "Not suitable" ]
         Visible: always
         Required: false
+      - Question:
+        - Language: en
+          Translation: How could we change the definition of 'biodiversity' to better suit your work or interests?
+        Type: freetext
+        Visible: previous question is false
+        Required: false
+
 
 
   - Section:
@@ -255,35 +277,31 @@ Questions:
         Type: freetext
         Visible: always
         Required: false
-      - Question:
-        - Language: en
-          Translation:
-            Are you aware of specific sources of information that may be relevant to us? 
-            This may include libraries, organisational websites, or other databases.
-        Type: freetext
-        Visible: always
-        Required: false
 
   - Section:
     Name:
     - Language: en
-      Translation: Search Concepts - Population
+      Translation: Search Concepts - Population (Arctic Biota)
     Description:
     - Language: en
       Translation: >
-        The most
-        important part of this is the 'search string', within which we list topics and
+        The most important part of this is the 'search string', within which we list topics and
         their synonyms that indicate that a source is relevant to us. We aim to identify
         as much relevant material as possible, while avoiding finding sources that are not
         actually relevant. We have designed the search strings using thesauri and a test list
         of known relevant sources. 
 
         The search string:
-        - is defined in many languages
-        - is defined in multiple parts, all of which must be present in the source
-        - includes wildcards to detect optional letters (?) and words with multiple endings (*).
-        - requires that all parts are present for a source to be identified.
-        - is tailored to each specific database source.
+
+        * is defined in many languages
+
+        * is defined in multiple parts, all of which must be present in the source
+
+        * includes wildcards to detect optional letters (?) and words with multiple endings (*).
+
+        * requires that all parts are present for a source to be identified.
+
+        * is tailored to each specific database source.
 
         
         The 'Population' used in our research is 'Arctic biota'. We have included the following concepts:
@@ -292,22 +310,67 @@ Questions:
           | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
           | Plants (general)                                | ("plant?" OR "flora" OR "vegetation" OR "Plantae" OR "vegetational" OR "pal?eovegetation" OR "floristic") OR                                                                                                                                                                                                                                                                                                 |
           | Non-vascular plants                             | ("bryophyte" OR "Bryophyta" OR "liverwort?" OR "moss" OR "mosses") OR                                                                                                                                                                                                                                                                                                                                        |
-          | Fungi                                           | ("lichen?") OR                                                                                                                                                                                                                                                                                                                                                                                               |
           | Herbacous plants                                | ("forb?") OR                                                                                                                                                                                                                                                                                                                                                                                                 |
           | Vascular plants                                 | ("shrub?" OR "woody plant" OR "vascular plant" OR "fern?" OR "pteridophyt?" OR "spermatopht?" OR "xerophyte" OR "tree species" OR "coniferous" OR "conifer" OR "deciduous" OR "herb") OR                                                                                                                                                                                                                     |
+          | Boreal forest / treeline species, shrub species | ("forest species" OR "treeline species" OR "tree-line species" OR "larch" OR "Larix" OR "spruce" OR "picea" OR "western hemlock" OR "Tsuga" OR "Sitka" OR "alnus" OR "cottonwood" OR "Populus" OR "Pinus" OR "birch" OR "alder" OR "pine" OR "Betula" OR "willow") OR                                                                                                                                        |
           | Amphibians and aquatic groups                   | ("amphibian" OR "Amphibia" OR "aquatic animal" OR "algae" OR "algal") OR                                                                                                                                                                                                                                                                                                                                     |
           | Reptiles                                        | ("reptile") OR                                                                                                                                                                                                                                                                                                                                                                                               |
           | Birds                                           | ("bird?" OR "Aves") OR                                                                                                                                                                                                                                                                                                                                                                                       |
           | Mammals                                         | ("mammal" OR "mammalian" OR "mammoth" OR "reindeer" OR "caribou" OR "polar bear" OR "Mammuthus primigenius" OR "steppe bison" OR "Bison priscus" OR "muskox" OR "Ovibos moschatus" OR "moose" OR "Alcos alces" OR "reindeer" OR "Rangifer tarandus" OR "horse" OR "Equus caballus" OR "wolf" OR "wolves" OR "Canis lupus" OR "dog" OR "squirrel" OR "arctic fox" OR "vulpes lagopus" OR "alopex lagopus") OR |
           | Invertebrates - general concepts                | ("insect") OR                                                                                                                                                                                                                                                                                                                                                                                                |
           | Vertebrates - general concepts                  | ("animal" OR "fauna" OR "faunal" OR "megafauna" OR "megaherbivore" OR "vertebrata" OR "vertebrate") OR                                                                                                                                                                                                                                                                                                       |
-          | Boreal forest / treeline species, shrub species | ("forest species" OR "treeline species" OR "tree-line species" OR "larch" OR "Larix" OR "spruce" OR "picea" OR "western hemlock" OR "Tsuga" OR "Sitka" OR "alnus" OR "cottonwood" OR "Populus" OR "Pinus" OR "birch" OR "alder" OR "pine" OR "Betula" OR "willow")                                                                                                                                           |
+          | Fungi                                           | ("lichen?")                                                                                                                                                                                                                                                                                                                                                                                                  |
     
     Questions:
       - Question:
         - Language: en
           Translation:
-            Does your language have specific concepts or terms for 'Arctic biota' that we are currently missing?
+            Concepts - Are there specific English (or other language) concepts for 'Arctic biota' that you think we are missing?
+        Type: freetext
+        Visible: always
+        Required: false
+      - Question:
+        - Language: en
+          Translation:
+            Terms - For the concepts listed, are there additional terms that you think would better capture relevant information?
+        Type: freetext
+        Visible: always
+        Required: false
+
+
+  - Section:
+    Name:
+    - Language: en
+      Translation: Search Concepts - Population Context (Arctic)
+    Description:
+    - Language: en
+      Translation: >
+        To ensure that we only include information relevant to the Arctic, we limit studies to those that
+        contain an Arctic-specific concept. We have included the following concepts:
+
+          | Concept                            | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+          | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+          | Labels for the Arctic              | ("arctic" OR "high-latitude" OR "oro-arctic" OR "North Polar region" OR "subarctic" OR "northern environ\*") OR                                                                                                                                                                                                                                                                                                                                                    |
+          | Arctic countries                   | ("Canada" OR "Russia" OR "Russian Federation" OR "USSR" OR "RSFSR" OR "Russian Federation" OR "Norway" OR "Finland" OR "Sweden") OR                                                                                                                                                                                                                                                                                                                                |
+          | Arctic biomes                      | ("tundra" OR "permafrost" OR "mammoth steppe") OR                                                                                                                                                                                                                                                                                                                                                                                                                  |
+          | Canada / USA                       | ("Yukon Territory" OR "Northwest Territories" OR "Nunavut" OR "Baffin Island" OR "Belcher Islands" OR "Ellesmere Island" OR "Southampton Island" OR "Mackenzie River" OR "Great Slave Lake" OR "Great Bear Lake" OR "Yukon River" OR "Alaska" OR "Teshekpuk Lake" OR "Queen Elizabeth Islands" OR "Victoria Island" OR "Banks Island" OR "Wrangel Island" OR "Seward peninsula" OR "Hudson Bay") OR                                                                |
+          | Russia                             | ("Siberia" OR "Lake Baikal" OR "Lena River" OR "New Siberian Islands" OR "Severnaya Zemlya" OR "Franz Josef Land" OR "Novaya Zemlya" OR "Chukotka Autonomous Okrug" OR "Kamchatka Krai" OR "Magadan Oblast" OR "Murmansk Oblast" OR "Sakha" OR "Arkhangelsk Oblast" OR "Irkutsk Oblast" OR "Khabarovsk Krai" OR "Komi Republic" OR "Krasnoyarsk Krai" OR "Republic of Karelia" OR "Sakhalin Oblast" OR "Tuva" OR "Tyumen Oblast" OR "Polar Urals" OR "Yamalia") OR |
+          | Europe (Finland / Sweden / Norway) | ("Svalbard" OR "Spitsbergen" OR "Bjørnøya" OR "Jan Mayen" OR "Finnmark" OR "Troms" OR "Lapland" or "Lappi" OR "Grímsey" OR "Lappland" OR "Norrbotten" OR "North West Europe" OR "Northwest Europe" OR "north\* Europe" OR "Scandes" OR "Kola Peninsula") OR                                                                                                                                                                                                        |
+          | Beringia                           | ("beringia" OR "beringian") OR                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+          | Global datasets                    | ("global data\*")                                                                                                                                                                                                                                                                                                                                                                                                                                                  |    
+
+    Questions:
+      - Question:
+        - Language: en
+          Translation:
+            Concepts - Are there specific English (or other language) concepts for 'Arctic biota' that you think we are missing?
+        Type: freetext
+        Visible: always
+        Required: false
+      - Question:
+        - Language: en
+          Translation:
+            Terms - For the concepts listed, are there additional terms that you think would better capture relevant information?
         Type: freetext
         Visible: always
         Required: false
@@ -315,64 +378,149 @@ Questions:
   - Section:
     Name:
     - Language: en
-      Translation: Search Concepts - Exposure
+      Translation: Search Concepts - Exposure (Time)
     Description:
     - Language: en
       Translation: >
-        The 'Population' used in our research is 'Arctic biota'. We have included the following concepts:
+        The 'Exposure' used in our research is 'the movement of time'. 
+        
+        We are only interested in long-term (100s or 1000s of years) dynamics. The concepts here therefore reflect
+        those that indicate that a study includes long-term dynamics. We have included the following concepts:
 
-          | Concept                                         | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                         |
-          | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-          | Plants (general)                                | ("plant?" OR "flora" OR "vegetation" OR "Plantae" OR "vegetational" OR "pal?eovegetation" OR "floristic") OR                                                                                                                                                                                                                                                                                                 |
-          | Non-vascular plants                             | ("bryophyte" OR "Bryophyta" OR "liverwort?" OR "moss" OR "mosses") OR                                                                                                                                                                                                                                                                                                                                        |
-          | Fungi                                           | ("lichen?") OR                                                                                                                                                                                                                                                                                                                                                                                               |
-          | Herbacous plants                                | ("forb?") OR                                                                                                                                                                                                                                                                                                                                                                                                 |
-          | Vascular plants                                 | ("shrub?" OR "woody plant" OR "vascular plant" OR "fern?" OR "pteridophyt?" OR "spermatopht?" OR "xerophyte" OR "tree species" OR "coniferous" OR "conifer" OR "deciduous" OR "herb") OR                                                                                                                                                                                                                     |
-          | Amphibians and aquatic groups                   | ("amphibian" OR "Amphibia" OR "aquatic animal" OR "algae" OR "algal") OR                                                                                                                                                                                                                                                                                                                                     |
-          | Reptiles                                        | ("reptile") OR                                                                                                                                                                                                                                                                                                                                                                                               |
-          | Birds                                           | ("bird?" OR "Aves") OR                                                                                                                                                                                                                                                                                                                                                                                       |
-          | Mammals                                         | ("mammal" OR "mammalian" OR "mammoth" OR "reindeer" OR "caribou" OR "polar bear" OR "Mammuthus primigenius" OR "steppe bison" OR "Bison priscus" OR "muskox" OR "Ovibos moschatus" OR "moose" OR "Alcos alces" OR "reindeer" OR "Rangifer tarandus" OR "horse" OR "Equus caballus" OR "wolf" OR "wolves" OR "Canis lupus" OR "dog" OR "squirrel" OR "arctic fox" OR "vulpes lagopus" OR "alopex lagopus") OR |
-          | Invertebrates - general concepts                | ("insect") OR                                                                                                                                                                                                                                                                                                                                                                                                |
-          | Vertebrates - general concepts                  | ("animal" OR "fauna" OR "faunal" OR "megafauna" OR "megaherbivore" OR "vertebrata" OR "vertebrate") OR                                                                                                                                                                                                                                                                                                       |
-          | Boreal forest / treeline species, shrub species | ("forest species" OR "treeline species" OR "tree-line species" OR "larch" OR "Larix" OR "spruce" OR "picea" OR "western hemlock" OR "Tsuga" OR "Sitka" OR "alnus" OR "cottonwood" OR "Populus" OR "Pinus" OR "birch" OR "alder" OR "pine" OR "Betula" OR "willow")                                                                                                                                           |
-    
+          | Concept                      | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                                             |
+          | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+          | Reconstructions              | ("reconstruct") OR                                                                                                                                                                                                                                                                                                                                                                                                               |
+          | Palaeoecology etc.           | ("pal?eo\*" OR "micropal?entol\*") OR                                                                                                                                                                                                                                                                                                                                                                                            |
+          | Archeology                   | ("arch?eolog\*" OR "artefact") OR                                                                                                                                                                                                                                                                                                                                                                                                |
+          | Historical                   | ("history" OR "historic site" OR "historical record") OR                                                                                                                                                                                                                                                                                                                                                                         |
+          | Wood ring dating             | ("dendrochron\*" OR "dendroclim\*" OR "dendroeco\*" OR "growth ring" OR "tree ring") OR                                                                                                                                                                                                                                                                                                                                          |
+          | Radiocarbon dating           | ("radiocarbon" OR "radio-carbon" OR "AMS" OR "accelerator mass spectrometry") OR                                                                                                                                                                                                                                                                                                                                                 |
+          | Age determination            | ("age determination" OR "years before present" OR "yr BP" OR "calibration of age" OR "age model" OR "age-depth model") OR                                                                                                                                                                                                                                                                                                        |
+          | Old dates                    | ("1?,??? 14C yr B?P" OR "1? ??? 14C Yr B?P" OR "1?,??? yr B?P" OR "1? ??? yr B?P" OR "1?,??? cal yr B?P" OR "1? ??? cal yr B?P" OR "?,??? 14C yr B?P" OR "? ??? 14C Yr B?P" OR "?,??? yr B?P" OR "? ??? yr B?P" OR "?,??? cal yr B?P" OR "? ??? cal yr B?P" OR "pre-1???" OR "pre-20th century" OR "1?th century" OR "last ?,??? years" OR "last 1?,??? years" OR "14C dates" OR "\*th century" OR "? Cal Ka" OR "1? Cal Ka") OR |
+          | Fossils                      | ("fossil" OR "sub-fossil" OR "macrofossil" OR "megafossil" OR "microfossil" OR "subfossil") OR                                                                                                                                                                                                                                                                                                                                   |
+          | Palynology                   | ("palynolog\*") OR                                                                                                                                                                                                                                                                                                                                                                                                               |
+          | Archeology time periods      | ("prehistoric" OR "prehistory" OR "Iron Age" OR "BC") OR                                                                                                                                                                                                                                                                                                                                                                         |
+          | Time periods (Holocene etc.) | ("Holocene" OR "MidHolocene" OR "Mid-Holocene" OR "late Pleistocene" OR "end of the Pleistocene" OR "Late Quaternary" OR "Little Ice Age" OR "Medieval Climate Anomoly" OR "Younger Dryas" OR "MIS 1" OR "marine isotope stage 1") OR                                                                                                                                                                                            |
+          | Temporal variability         | ("centennial" OR "centuries" OR "millenial" OR "millenia" OR "submillenial" OR "chronolog\*" OR "temporal trend") OR                                                                                                                                                                                                                                                                                                             |
+          | Time periods: chronozones    | ("preboreal chronozone" OR "boreal chronozone" OR "atlantic chronozone" OR "subboreal chronozone") OR                                                                                                                                                                                                                                                                                                                            |
+          | Sediment cores               | ("sediment core" OR "sedimentary sequence" OR "lake sediment" OR "multiproxy sediment\* analysis" OR "transfer function") OR                                                                                                                                                                                                                                                                                                     |
+          | aDNA                         | ("ancient DNA" OR "aDNA" OR "sedDNA" OR "sedimentary DNA") OR                                                                                                                                                                                                                                                                                                                                                                    |
+          | Glaciers                     | ("postglacial" OR "post-glacial" OR "deglaciation" OR "deglacial") OR                                                                                                                                                                                                                                                                                                                                                            |
+          | Persistence                  | ("last appearance date" OR "refugia") OR                                                                                                                                                                                                                                                                                                                                                                                         |
+          | Proxies                      | ("multiproxy" OR "proxy record" OR "proxy archive" OR "proxy" OR "proxy study" OR "proxy studies") OR                                                                                                                                                                                                                                                                                                                            |
+          | Research Fields              | ("long-term ecology" OR "long-term record") OR                                                                                                                                                                                                                                                                                                                                                                                   |
+          | Chronosequences and surveys  | ("chronosequence" OR "resurveyed" OR "one century")                                                                                                                                                                                                                                                                                                                                                                              |
+      
     Questions:
       - Question:
         - Language: en
           Translation:
-            Does your language have specific concepts or terms for 'Arctic biota' that we are currently missing?
+            Concepts - Are there specific English (or other language) concepts for 'Arctic biota' that you think we are missing?
         Type: freetext
         Visible: always
         Required: false
+      - Question:
+        - Language: en
+          Translation:
+            Terms - For the concepts listed, are there additional terms that you think would better capture relevant information?
+        Type: freetext
+        Visible: always
+        Required: false
+
   - Section:
     Name:
     - Language: en
-      Translation: Search Concepts - Outcomes
+      Translation: Search Concepts - Outcomes (Measure of Biodiversity)
     Description:
     - Language: en
       Translation: >
-        The 'Population' used in our research is 'Arctic biota'. We have included the following concepts:
+        The 'Outcomes' used in our research are 'Measure of Biodiversity'. We have included the following concepts:
 
-          | Concept                                         | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                         |
-          | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-          | Plants (general)                                | ("plant?" OR "flora" OR "vegetation" OR "Plantae" OR "vegetational" OR "pal?eovegetation" OR "floristic") OR                                                                                                                                                                                                                                                                                                 |
-          | Non-vascular plants                             | ("bryophyte" OR "Bryophyta" OR "liverwort?" OR "moss" OR "mosses") OR                                                                                                                                                                                                                                                                                                                                        |
-          | Fungi                                           | ("lichen?") OR                                                                                                                                                                                                                                                                                                                                                                                               |
-          | Herbacous plants                                | ("forb?") OR                                                                                                                                                                                                                                                                                                                                                                                                 |
-          | Vascular plants                                 | ("shrub?" OR "woody plant" OR "vascular plant" OR "fern?" OR "pteridophyt?" OR "spermatopht?" OR "xerophyte" OR "tree species" OR "coniferous" OR "conifer" OR "deciduous" OR "herb") OR                                                                                                                                                                                                                     |
-          | Amphibians and aquatic groups                   | ("amphibian" OR "Amphibia" OR "aquatic animal" OR "algae" OR "algal") OR                                                                                                                                                                                                                                                                                                                                     |
-          | Reptiles                                        | ("reptile") OR                                                                                                                                                                                                                                                                                                                                                                                               |
-          | Birds                                           | ("bird?" OR "Aves") OR                                                                                                                                                                                                                                                                                                                                                                                       |
-          | Mammals                                         | ("mammal" OR "mammalian" OR "mammoth" OR "reindeer" OR "caribou" OR "polar bear" OR "Mammuthus primigenius" OR "steppe bison" OR "Bison priscus" OR "muskox" OR "Ovibos moschatus" OR "moose" OR "Alcos alces" OR "reindeer" OR "Rangifer tarandus" OR "horse" OR "Equus caballus" OR "wolf" OR "wolves" OR "Canis lupus" OR "dog" OR "squirrel" OR "arctic fox" OR "vulpes lagopus" OR "alopex lagopus") OR |
-          | Invertebrates - general concepts                | ("insect") OR                                                                                                                                                                                                                                                                                                                                                                                                |
-          | Vertebrates - general concepts                  | ("animal" OR "fauna" OR "faunal" OR "megafauna" OR "megaherbivore" OR "vertebrata" OR "vertebrate") OR                                                                                                                                                                                                                                                                                                       |
-          | Boreal forest / treeline species, shrub species | ("forest species" OR "treeline species" OR "tree-line species" OR "larch" OR "Larix" OR "spruce" OR "picea" OR "western hemlock" OR "Tsuga" OR "Sitka" OR "alnus" OR "cottonwood" OR "Populus" OR "Pinus" OR "birch" OR "alder" OR "pine" OR "Betula" OR "willow")                                                                                                                                           |
-    
+          | Concept                              | Terms within concept                                                                                     |
+          | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+          | Biodiversity                         | ("biodiversity") OR                                                                                      |
+          | Diversity                            | ("diversity") OR                                                                                         |
+          | Richness                             | ("richness" OR "number of species") OR                                                                   |
+          | Composition                          | ("composition" OR "assemblage" OR "pal?eocommunit\*" OR "compositional shift" OR "species dominance") OR |
+          | Presence/Absence                     | ("presence" OR "present" OR "absence" OR "absent" OR "occurrence" OR "occurred") OR                      |
+          | Persistence                          | ("stability" OR "persistence" OR "persisted" OR "disappeared" OR "extinction") OR                        |
+          | Abundance                            | ("abundance") OR                                                                                         |
+          | Succession                           | ("succession" OR "vegetation development" OR "plant cover" OR "zonation pattern") OR                     |
+          | Distribution                         | ("distribution" OR "distributed") OR                                                                     |
+          | Colonisation                         | ("coloni?ed" OR "coloni?ation" OR "established" OR "spread to") OR                                       |
+          | Establishment / Establishment limits | ("established") OR                                                                                       |
+          | Habitat Diversity                    | "habitat diversity" OR                                                                                   |
+          | Ecotone / Zonation / Treeline        | ("northern limit" OR "northern treeline" OR "ecotone")                                                   |    
+      
     Questions:
       - Question:
         - Language: en
           Translation:
-            Does your language have specific concepts or terms for 'Arctic biota' that we are currently missing?
+            Concepts - Are there specific English (or other language) concepts for 'Arctic biota' that you think we are missing?
+        Type: freetext
+        Visible: always
+        Required: false
+      - Question:
+        - Language: en
+          Translation:
+            Terms - For the concepts listed, are there additional terms that you think would better capture relevant information?
+        Type: freetext
+        Visible: always
+        Required: false
+
+
+  - Section:
+    Name:
+    - Language: en
+      Translation: Search Concepts - Biotic Proxies used for Environmental Reconstruction
+    Description:
+    - Language: en
+      Translation: >
+        Looking into the past is not straightforward, as we never observe changes as they
+        happen. Rather, we see traces of animals, plants, and other biota (or 'proxies').
+        Examples of proxies include: pollen or spores; ancient DNA fragments; 
+        fossil insects or plant parts; or bones and tusks. 
+
+        Scientific papers sometimes discuss changes in *biotic proxies* through time, but do not link these
+        to particular plants, animals, or other species. To capture these papers, we have included additional
+        concepts that relate to individual proxy methods. We have included the following concepts:
+
+        ## Population - additional concepts
+
+          | Concept                   | Terms within concept                                                                                                                                                                                    |
+          | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+          | Palynology etc.           | ("pollen" OR "palynology" OR "macrofossil" OR "pal?eobotanical" OR "leaf wax" OR "palynomorph") OR                                                                                                      |
+          | Individual biotic proxies | ("diatom" OR "chironomid" OR "insect" OR "ostracod" OR "ostracode" OR "macroinvertebrate" OR "macro-invertebrate" OR "testate amoeba" OR "organic biomarker" OR "sporomiella" OR "dung fungal pore") OR |
+          | Dendro proxies            | ("ring width" OR "wood ring" OR "tree ring" OR "stem sample" OR "driftwood") OR                                                                                                                         |
+          | General terms             | ("terrestrial proxies" OR "terrestrial proxy")                                                                                                                                                          |    
+          
+        ## Outcomes - additional concepts
+
+          | Concept                                    | Terms within concept                                                                                                         |
+          | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+          | Temperature                                | ("warming" OR "cooling" OR "temperature" OR "temperatures" OR "warm period" OR "cold period" OR "summer warmth") OR          |
+          | Precipitation and Hydrology                | ("hydroclimate" OR "precipitation") OR                                                                                       |
+          | Past climates                              | ("pal?eoclimat\*" OR "past climate" OR "climate of the past") OR                                                             |
+          | Lake levels                                | ("lake level") OR                                                                                                            |
+          | Vegetation productivity                    | ("vegetation productivity" OR "plant productivity" OR "radial growth" OR "annual growth" OR "growth rate" OR "fuel load") OR |
+          | Climate (general)                          | ("climate variable" OR "climate interpretation" OR "proxy climate record") OR                                                |
+          | Snow patterns                              | ("snow cover" OR "snow extent") OR                                                                                           |
+          | Carbon storage                             | ("organic carbon release" OR "permafrost carbon" OR "soil carbon release") OR                                                |
+          | Sea ice extent                             | ("sea ice extent" OR "relative sea level" OR "sea level rise") OR                                                            |
+          | Human interactions with animals and plants | ("hunting" OR "husbandry" OR "domestication" OR "construction activity" OR "settlement history")                             |
+
+    Questions:
+      - Question:
+        - Language: en
+          Translation:
+            Concepts - Are there specific English (or other language) concepts for proxies that you think we are missing?
+        Type: freetext
+        Visible: always
+        Required: false
+      - Question:
+        - Language: en
+          Translation:
+            Terms - For the concepts listed, are there additional terms that you think would better capture relevant information?
         Type: freetext
         Visible: always
         Required: false
@@ -398,8 +546,16 @@ Questions:
     Questions:
       - Question:
         - Language: en
+          Translation:
+            Are you aware of specific sources of PUBLISHED information that may be relevant to us? 
+            This may include libraries, organisational websites, or other databases.
+        Type: freetext
+        Visible: always
+        Required: false
+      - Question:
+        - Language: en
           Translation: 
-            Do you personally hold or have access to unpublished datasets (that relate to past 
+            Do you personally hold or have access to UNPUBLISHED datasets (that relate to past 
             Arctic biodiversity)? These could for example include places where fossils were 
             found, archaeological sites, pollen counts from lake or peat sediment cores, or other proxy records.
         Type: binary choice
