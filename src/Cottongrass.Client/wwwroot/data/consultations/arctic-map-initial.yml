@@ -42,7 +42,13 @@ Information:
       funded by the European Commission. The 'lead reviewer' for this project is Dr
       Andrew Martin, University of Oxford.
     WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
-
+  - Language: fi
+    Title: Text here
+    Description: >
+      Text here
+    WhoIsConsulting: >
+      Text here
+    WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
   - Language: ru
     Title: Первичная консультация
     Description: Первичная консультация по систематической карте CHARTER
@@ -65,14 +71,28 @@ Questions:
       Translation: Объем исследования
     Description:
     - Language: en
-      Translation: 
-        The scope of the research defines the boundaries within which information 
-        will be collected.
+      Translation: > 
+        From this point on, you can skip any questions that you do not wish to answer.
 
-        For our research, we used a number of specific terms. We have 
-        further defined these terms to make sure that we can clearly define the areas of study
-        that will be included or excluded from our project.
+        
+        In this section, we would like to know whether the current **scope** of the research
+        suits your interests in Arctic biodiversity. The **scope** defines which study areas will
+        be included and excluded from our systematic map. 
 
+
+        We have defined a **primary research question**, which states the scientific problem
+        that our map will address. Within the research question, some key terms require
+        defining and 'scoping':
+
+
+          * the Arctic region (where to set the geographical limits?)
+          * Holocene *or* long-term (what are the start and end dates?)
+          * Arctic biota (what groups and species to include?)
+          * Measures of biodiversity (what measures exist?)
+
+
+        For each term, we need to decide the limits within which the systematic map will be
+        most useful to the widest audience, but also practical to complete.
 
     - Language: ru
       Translation: Объем исследования определяет границы, в которых будет собираться информация.
@@ -84,7 +104,7 @@ Questions:
           Translation:
             Our main research question is 'what evidence exists for temporal variability 
             in the measures of Arctic terrestrial and aquatic biodiversity throughout the Holocene?'.
-            Does this question broadly include your interest in long-term changes in Arctic biodiversity?
+            Does this question broadly capture your interests in long-term changes in Arctic biodiversity?
         Type: binary choice
         Choices:
         - Language: en
@@ -149,19 +169,18 @@ Questions:
           Translation: [
             the Arctic Circle - defined by the number of daylight hours during the 
             summer and winter solstice,
-            high-latitude tundra - north of the taiga forest,
+            high-latitude tundra - north of the taiga forest (in the modern day),
             cold northern areas - where mean summer temperatures (in the modern day) are 
             less than 10 degrees Celsius,
-            northern latitudes - north of a fixed latitudinal band (such as all land area 
-            north of the 58th parallel - this would include the Isle of Lewis in Scotland 
-            and all of Norway and Finland),
+            northern latitudes - north of the 58th parallel (this would include the 
+            Isle of Lewis in Scotland and all of Norway and Finland),
             Something else
           ]
         Visible: always
         Required: false
       - Question:
         - Language: en
-          Translation: What are the issues with the proposed definitions, and how would you seek to address them?
+          Translation: What are the issues with the proposed definitions for the Arctic, and how would you seek to address them?
         Type: freetext
         Visible: previous question is Something else
         Required: true
@@ -169,8 +188,9 @@ Questions:
       - Question:
         - Language: en
           Translation:
-            Do you see any benefit to including ecosystems on the fringes of the Arctic tundra,
-            such as the transition area between boreal forest and tundra?
+            Should we include ecosystems on the fringes of the Arctic tundra,
+            such as the transition area between boreal forest and tundra? 
+            If so, what geographical limits could we use to indicate these areas?
         Type: freetext
         Visible: always
         Required: false
@@ -192,7 +212,7 @@ Questions:
         Required: false
       - Question:
         - Language: en
-          Translation: How could we define the Holocene to better suit your work or interests?
+          Translation: How could we define the Holocene to better suit your interests in long-term changes in Arctic biodiversity?
         Type: freetext
         Visible: previous question is false
         Required: false
@@ -240,7 +260,7 @@ Questions:
         relevant sources of information relating to past changes in
         Arctic biodiversity. The important considerations are:
         
-        1. Identifying the core concepts that can indicate a document or source contains
+        1. Identifying the core **search concepts** that can indicate a document or source contains
            information relevant to us.
 
         2. Deciding the databases and archives to look within.
@@ -250,9 +270,11 @@ Questions:
 
         To best identify and structure our search concepts, we took the research question
         and looked for the connections between the parts. A common method used in systematic
-        maps is to identify the **Population**, **Exposure**, **Comparator**, and **Outcome**.
-        We can then identify studies where all of these components are present. Please take a
-        look at the diagram below, following the arrows from the top-left corner:
+        maps is to identify the **Population** (what is under study?), **Exposure** (what is it 
+        subject to?), **Comparator** (what are the different levels of exposure?), and 
+        **Outcome** (what are the responses?). We can then identify studies where all 
+        of these components are present. Please take a look at the diagram below, following 
+        the arrows from the top-left corner:
 
 
         ![The theory of change used in this study](images/peco-simple.png)
@@ -272,8 +294,9 @@ Questions:
       - Question:
         - Language: en
           Translation:
-            If you do not agree with or understand our definition of the PECO (Population, 
-            Exposure, Comparator and Outcomes) in the diagram, please tell us here.
+            Do you have any comments on the way in which we have understood 
+            the Population, Exposure, and Outcome, as shown in the diagram above? Please
+            tell us here.
         Type: freetext
         Visible: always
         Required: false
@@ -285,26 +308,30 @@ Questions:
     Description:
     - Language: en
       Translation: >
-        The most important part of this is the 'search string', within which we list topics and
-        their synonyms that indicate that a source is relevant to us. We aim to identify
+        The most important part of the **search strategy** is the 'search string'. The string is made up of concepts - and
+        terms / synonyms that relate to them - to indicate that a source is relevant to our research question. The concepts should identify
         as much relevant material as possible, while avoiding finding sources that are not
-        actually relevant. We have designed the search strings using thesauri and a test list
+        actually relevant (false positives). We have determined a list of concepts and terms by using thesauri and a test list
         of known relevant sources. 
+
 
         The search string:
 
+        * requires that the **Population** (Arctic biota), **Exposure** (movement of time over decades to centuries), and **Outcomes** (measures of biodiversity) are all present
+
         * is defined in many languages
-
-        * is defined in multiple parts, all of which must be present in the source
-
-        * includes wildcards to detect optional letters (?) and words with multiple endings (*).
-
-        * requires that all parts are present for a source to be identified.
 
         * is tailored to each specific database source.
 
-        
-        The 'Population' used in our research is 'Arctic biota'. We have included the following concepts:
+        * includes wildcards to detect optional letters (?) and words with multiple endings (*).
+
+
+        We would like to ask you whether you think we have included all of the concepts that
+        are important for each of the Population, Exposure, and Outcome in the following sections.
+
+
+        First, we would like to ask you about **Arctic biota**, our Population.
+        We have included the following concepts and their related terms:
 
           | Concept                                         | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                         |
           | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -325,7 +352,7 @@ Questions:
       - Question:
         - Language: en
           Translation:
-            Concepts - Are there specific English (or other language) concepts for 'Arctic biota' that you think we are missing?
+            Concepts - Are there specific concepts for 'Arctic biota' that you think we are missing?
         Type: freetext
         Visible: always
         Required: false
@@ -345,8 +372,11 @@ Questions:
     Description:
     - Language: en
       Translation: >
-        To ensure that we only include information relevant to the Arctic, we limit studies to those that
-        contain an Arctic-specific concept. We have included the following concepts:
+        To ensure that we only include information relevant to Arctic biota, we
+        have chosen to limit studies to those that contain an Arctic-specific concept. 
+        
+        
+        We have currently included the following concepts:
 
           | Concept                            | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                                                                               |
           | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -363,7 +393,7 @@ Questions:
       - Question:
         - Language: en
           Translation:
-            Concepts - Are there specific English (or other language) concepts for 'Arctic biota' that you think we are missing?
+            Concepts - Are there specific concepts for the Arctic that you think we are missing?
         Type: freetext
         Visible: always
         Required: false
@@ -382,10 +412,15 @@ Questions:
     Description:
     - Language: en
       Translation: >
-        The 'Exposure' used in our research is 'the movement of time'. 
-        
+        Next, we would like to ask you about how we identify 'the movement of time', our Exposure.
+
+
         We are only interested in long-term (100s or 1000s of years) dynamics. The concepts here therefore reflect
-        those that indicate that a study includes long-term dynamics. We have included the following concepts:
+        those that indicate that a study includes long-term dynamics. For example, the concepts below include methods
+        (like dating methods), and fields of study (like palaeoecology) that indicate the analysis of something from the past.
+        
+
+        We have included the following concepts:
 
           | Concept                      | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                                             |
           | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -415,7 +450,16 @@ Questions:
       - Question:
         - Language: en
           Translation:
-            Concepts - Are there specific English (or other language) concepts for 'Arctic biota' that you think we are missing?
+            Many subject areas have special terms for labelling time periods. The labels often vary depending
+            on the region of the world and the context of the research. Are there any sets of these labels
+            that you can see we are missing? If so, please tell us below.
+        Type: freetext
+        Visible: always
+        Required: false
+      - Question:
+        - Language: en
+          Translation:
+            Concepts - Are there other specific concepts for 'the movement of time' / 'long-term dynamics' that you think we are missing?
         Type: freetext
         Visible: always
         Required: false
@@ -434,7 +478,16 @@ Questions:
     Description:
     - Language: en
       Translation: >
-        The 'Outcomes' used in our research are 'Measure of Biodiversity'. We have included the following concepts:
+        Next, we would like to ask you about how we identify that a study includes 'measures of
+        biodiversity', our Outcome.
+        
+
+        By 'measures of biodiversity', we mean measures, metrics, and statistics that quantify
+        how biodiversity may change through time. Examples include presence-absence, abundance, and diversity.
+        Some terms, such as 'palaeocommunities', are specific to the study of the past.
+
+        
+        We have included the following concepts:
 
           | Concept                              | Terms within concept                                                                                     |
           | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
@@ -456,7 +509,7 @@ Questions:
       - Question:
         - Language: en
           Translation:
-            Concepts - Are there specific English (or other language) concepts for 'Arctic biota' that you think we are missing?
+            Concepts - Are there specific concepts for 'measures of biodiversity' that you think we are missing?
         Type: freetext
         Visible: always
         Required: false
@@ -475,17 +528,20 @@ Questions:
       Translation: Search Concepts - Biotic Proxies used for Environmental Reconstruction
     Description:
     - Language: en
-      Translation: >
+      Translation: >        
         Looking into the past is not straightforward, as we never observe changes as they
-        happen. Rather, we see traces of animals, plants, and other biota (or 'proxies').
-        Examples of proxies include: pollen or spores; ancient DNA fragments; 
-        fossil insects or plant parts; or bones and tusks. 
+        happen. Rather, we see traces of animals, plants, and other biota (or **biotic proxies**).
+        Examples of these include: pollen or spores; ancient DNA fragments; 
+        fossil insects or plant parts; or bones and tusks. These proxies cause two additional
+        problems that we need to look at seperately, which are described below.
 
-        Scientific papers sometimes discuss changes in *biotic proxies* through time, but do not link these
-        to particular plants, animals, or other species. To capture these papers, we have included additional
-        concepts that relate to individual proxy methods. We have included the following concepts:
+        ### Problem 1. Links between fossils and biota
 
-        ## Population - additional concepts
+        Scientific papers sometimes discuss changes in **biotic proxies** through time, 
+        but do not link these to particular plants, animals, or other species. As these sources
+        may be important sources of additional information, we included additional concepts within
+        the 'Population' to identify them:
+        
 
           | Concept                   | Terms within concept                                                                                                                                                                                    |
           | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -493,8 +549,16 @@ Questions:
           | Individual biotic proxies | ("diatom" OR "chironomid" OR "insect" OR "ostracod" OR "ostracode" OR "macroinvertebrate" OR "macro-invertebrate" OR "testate amoeba" OR "organic biomarker" OR "sporomiella" OR "dung fungal pore") OR |
           | Dendro proxies            | ("ring width" OR "wood ring" OR "tree ring" OR "stem sample" OR "driftwood") OR                                                                                                                         |
           | General terms             | ("terrestrial proxies" OR "terrestrial proxy")                                                                                                                                                          |    
-          
-        ## Outcomes - additional concepts
+
+        ### Problem 2. Other reconstructions
+        
+        Sometimes, scientific papers contain relevant information on the long-term temporal 
+        dynamics of Arctic biodiversity, but their research questions are not interested in
+        changes in biodiversity. In these cases, they may use the data to reconstruct 
+        environmental change through time, such as summer air temperatures or winter precipitation. 
+        We want to capture these papers as important sources of additional information, 
+        so we have included additional concepts relating to these reconstructions in our Outcomes:
+        
 
           | Concept                                    | Terms within concept                                                                                                         |
           | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -513,14 +577,16 @@ Questions:
       - Question:
         - Language: en
           Translation:
-            Concepts - Are there specific English (or other language) concepts for proxies that you think we are missing?
+            Population. Are there other 'biotic proxies' that can indicate changes in biodiversity that 
+            we should be including in our search concepts?
         Type: freetext
         Visible: always
         Required: false
       - Question:
         - Language: en
           Translation:
-            Terms - For the concepts listed, are there additional terms that you think would better capture relevant information?
+            Outcomes. Are there other environmental factors that can be reconstructed from 'biotic proxies'
+            that we are missing and you think may be important?
         Type: freetext
         Visible: always
         Required: false
@@ -595,6 +661,15 @@ Questions:
       Translation:
         Is there anything that we have missed?
     Questions:
+      - Question:
+        - Language: en
+          Translation: 
+            Have you ever used data from the past (e.g., from the fossil record) in your
+            work? If you, and in your experience, did you face challenges finding, using, or
+            interpreting the data?
+        Type: freetext
+        Visible: always
+        Required: false
       - Question:
         - Language: en
           Translation: 
