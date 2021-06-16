@@ -110,13 +110,13 @@ Questions:
         - Language: en
           Translation: [ "Yes", "No" ]
         Visible: always
-        Required: true
+        Required: false
       - Question:
         - Language: en
           Translation: "Please tell us how we could make our question more relevant to your work or interests."
         Type: freetext
         Visible: previous question is false
-        Required: false
+        Required: true
 
 
       # Definitions: population
@@ -134,7 +134,7 @@ Questions:
           Translation: Which taxonomic group, genus, or species is of most interest to you?
         Type: short text
         Visible: previous question is Other
-        Required: false
+        Required: true
 
       # Scope: population
       - Question:
@@ -635,7 +635,7 @@ Questions:
           Translation: Please can you briefly describe the nature and number of these datasets?
         Type: freetext
         Visible: previous question is true
-        Required: false
+        Required: true
       - Question:
         - Language: en
           Translation: Are you aware of the existence of other unpublished datasets (that you do not have personal access to)?
@@ -650,7 +650,7 @@ Questions:
           Translation: Please can you briefly describe the nature and number of these datasets?
         Type: freetext
         Visible: previous question is true
-        Required: false
+        Required: true
 
   - Section:
     Name:
