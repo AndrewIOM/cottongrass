@@ -90,4 +90,45 @@ Site:
       
       
       Tutkimusta rahoitetaan Euroopan Komission Horisontti 2020 -puiteohjelman kautta. Rahoitetun yhteistyöhankkeen nimi on CHARTER - 'Changes in Arctic Terrestrial Biodiversity'. Hankkeesta löytyy lisätietoa [CHARTER:n verkkosivuilta](https://charter-arctic.org). 
+
 Languages: [ "en-GB", "fi-FI" ]
+
+Translations:
+  - { It: "Loading...", In: fi, Is: "Lastaaminen..." }
+  - { It: "Open consultations", In: fi, Is: "Avoimet kuulemiset" }
+  - { It: "See more", In: fi, Is: "Katso lisää" }
+  - { It: "Start now", In: fi, Is: "Aloita nyt" }
+  - { It: "The consultation is not configured correctly. Please contact the administrator.", In: fi, Is: "onsultationia ei ole määritetty oikein. Ota yhteyttä järjestelmänvalvojaan." }
+  - { It: "Who is consulting?", In: fi, Is: "Kuka konsultoi?" }
+  - { It: "How long will it take?", In: fi, Is: "Kauanko se kestää?" }
+  - { It: "Where can I find more information?", In: fi, Is: "Mistä löydän lisätietoja?" }
+  - { It: "More information is available here.", In: fi, Is: "Lisätietoja täältä." }
+  - { It: "Next", In: fi, Is: "Seuraava" }
+  - { It: "There was a problem: this section doesn't exist.", In: fi, Is: "Oli ongelma: tätä osaa ei ole olemassa." }
+  - { It: "Please confirm below to send your responses to us and complete the consultation.", In: fi, Is: "Vahvista alla lähettääksesi vastauksesi meille ja saattaaksesi kuulemisen päätökseen." }
+  - { It: "Finish", In: fi, Is: "Lopettaa" }
+  - { It: "About You", In: fi, Is: "Tietoja henkilöstäsi" }
+  - { It: "Thank you for your responses.", In: fi, Is: "Kiitos vastauksistanne." }
+  - { It: "There are %i sections.", In: fi, Is: "Osia on %i." }
+  - { It: "It should take about %i minutes.", In: fi, Is: "Sen pitäisi kestää noin %i minuuttia." }
+  - { It: "Please answer the required questions above before continuing (marked by a red asterisk). There are %i remaining.", In: fi, Is: "Ole hyvä ja vastaa yllä oleviin pakollisiin kysymyksiin (merkitty punaisella tähdellä) ennen jatkamista. Kysymyksiä on jäljellä %i." }
+  - { It: "Section %i of %i", In: fi, Is: "Osa %i /%i" }
+  - { It: "First Name", In: fi, Is: "Etunimi" }
+  - { It: "Last Name", In: fi, Is: "Sukunimi" }
+  - { It: "Are you representing an organisation?", In: fi, Is: "Edustatko jotain organisaatiota?" }
+  - { It: "Yes", In: fi, Is: "Kyllä" }
+  - { It: "No", In: fi, Is: "En" }
+  - { It: "Organisation Name", In: fi, Is: "Organisaation nimi" }
+  - { It: "Responses from all respondants will be collated and analysed together. As part of this work, we may publish a summary of the responses. We will only publish your responses if you give consent.", In: fi, Is: "Kaikkien vastaajien vastaukset kootaan yhteen ja ne analysoidaan kokonaisuutena. Saatamme julkaista yhteenvedon kaikista vastauksista osana tätä tutkimusta. Julkaisemme antamasi vastaukset vain siinä tapauksessa, että annat meille siihen luvan." }
+  - { It: "Do not publish my responses", In: fi, Is: "Vastauksiani ei saa julkaista" }
+  - { It: "Publish anonymised response in full", In: fi, Is: "Vastaukset voi julkaista anonyymisti" }
+  - { It: "Publish response in full with name (and organisation if applicable)", In: fi, Is: "Vastaukseni saa julkaista nimi- ja (soveltuvin osin) organisaatiotietoineen" }
+  - { It: "If we would like to follow-up your answers, what is the best method of contact?", In: fi, Is: "Jos haluamme olla sinuun yhteydessä antamiisi vastuksiin liittyen, mikä olisi paras menetelmä yhteydenottoon?" }
+  - { It: "Telephone", In: fi, Is: "Puhelin" }
+  - { It: "Email", In: fi, Is: "Sähköposti" }
+  - { It: "I don't want to be contacted", In: fi, Is: "En halua, että minuun otetaan yhteyttä" }
+  - { It: "Your telephone number or email", In: fi, Is: "Puhelinnumerosi tai sähköpostiosoitteesi" }
+  - { It: "As part of this project, we would like to involve the community so that our findings are most relevant and well-suited to all that may value them. Can we keep in contact with you for this purpose?", In: fi, Is: "Osana projektia haluamme myös osallistaa niitä yhteisöjä, jotka saattaisivat arvostaa tuloksia. Tavoitteena on, että löydökset olisivat mahdollisimman käyttökelpoisia ja sopivia useiden eri tahojen tarpeisiin. Voimmeko pitää sinuun yhteyttä tätä tarkoitusta varten?" }
+  - { It: "Yes, I would like to be involved", In: fi, Is: "Kyllä, haluan olla mukana" }
+  - { It: "No, but I would like to recieve updates", In: fi, Is: "En halua olla mukana, mutta haluan että tiedotatte minulle tuloksista" }
+  - { It: "No, I would not like to be involved or recieve updates", In: fi, Is: "En halua olla mukana, enkä halua, että tiedotatte minulle tuloksista" }

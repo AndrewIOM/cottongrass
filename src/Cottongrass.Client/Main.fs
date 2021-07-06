@@ -33,13 +33,15 @@ and Required =
     | Required
     | NotRequired
 
+let initialCulture = "en-GB"
+
 let initModel baseUri =
     {
         page = Home
         Consultations = []
         SiteConfig = None
         SelectedConsultation = None
-        CultureCode = "en-GB"
+        CultureCode = initialCulture
         Error = None
         BaseUri = baseUri
     }
@@ -96,7 +98,9 @@ let update message model =
         | Some c -> 
             let required =
                 if section = 1
-                then (Form.aboutYouSection c.Answers (fun _ -> ignore)).RequiredQuestions
+                then 
+                    let translations = if model.SiteConfig.IsSome then model.SiteConfig.Value.Translations |> Seq.toList else []
+                    (Form.aboutYouSection c.Answers translations (fun _ -> ignore)).RequiredQuestions
                 else
                     let currentSection = c.Config.Questions |> Seq.tryItem (section - 2)
                     Form.Parser.requiredQuestions section c.Answers (currentSection.Value.Questions |> Seq.toList) |> Seq.toList
@@ -107,7 +111,9 @@ let update message model =
         | Some c -> 
             let required =
                 if section = 1
-                then (Form.aboutYouSection c.Answers (fun _ -> ignore)).RequiredQuestions
+                then 
+                    let translations = if model.SiteConfig.IsSome then model.SiteConfig.Value.Translations |> Seq.toList else []
+                    (Form.aboutYouSection c.Answers translations (fun _ -> ignore)).RequiredQuestions
                 else
                     let currentSection = c.Config.Questions |> Seq.tryItem (section - 2)
                     Form.Parser.requiredQuestions section c.Answers (currentSection.Value.Questions |> Seq.toList) |> Seq.toList
@@ -136,6 +142,20 @@ module Markdown =
     let htmlFromMarkdown (str:string) =
         Markdown.ToHtml(str, pipeline) |> RawHtml
 
+/// Get strings from translation lookup
+let translate english (config:ConsultationConfig.SiteConfig option) cultureCode =
+    cond config <| function
+    | None -> text english
+    | Some sc ->
+        let lang = currentLanguage cultureCode
+        cond (cultureCode = initialCulture) <| function
+        | true -> text english
+        | false -> 
+            cond (sc.Translations |> Seq.tryFind(fun x -> x.It = english && x.In = lang)) <| function
+            | Some t -> text t.Is
+            | None -> text english
+
+
 let homeView model dispatch =
     concat [
         if model.Error.IsSome then textf "Error: %A" model.Error.Value
@@ -150,7 +170,7 @@ let homeView model dispatch =
                             p [ attr.``class`` "subtitle" ] [ text sc.Subtitle ]
                         ]
                     | None -> empty
-                | None -> p [ attr.``class`` "title" ] [ text "Loading..." ]
+                | None -> p [ attr.``class`` "title" ] [ translate "Loading..." model.SiteConfig model.CultureCode ]
             ]
         ]
         section [ attr.``class`` "section"; attr.name "Consultation list" ] [
@@ -161,7 +181,7 @@ let homeView model dispatch =
                     cond (sc.Site |> Seq.tryFind (fun o -> o.Language = currentLanguage model.CultureCode)) <| function
                     | Some sc -> Markdown.htmlFromMarkdown sc.IntroText
                     | None -> empty
-                h2 [ attr.``class`` "is-size-3" ] [ text "Open consultations" ]
+                h2 [ attr.``class`` "is-size-3" ] [ translate "Open consultations" model.SiteConfig model.CultureCode ]
                 forEach model.Consultations <| fun c ->
                     div [ attr.``class`` "card" ] [
                         header [ attr.``class`` "card-header" ] [
@@ -173,7 +193,7 @@ let homeView model dispatch =
                         div [ attr.``class`` "card-content" ] [ c.description |> text ]
                         div [ attr.``class`` "card-footer" ] [
                             a [ router.HRef <| Consultation c.shortcode
-                                on.click (fun _ -> LoadConsultation c.shortcode |> dispatch) ] [ text "See more" ]
+                                on.click (fun _ -> LoadConsultation c.shortcode |> dispatch) ] [ translate "See more" model.SiteConfig model.CultureCode ]
                         ]
                     ]
             ]
@@ -188,17 +208,17 @@ let heroHeading title subtitle =
         ]
     ]
 
-let startButton shortcode =
+let startButton shortcode model =
     a [ 
         attr.``class`` "button is-light is-primary is-medium"
         router.HRef <| AnswerForm (shortcode,1) ] [
-        text "Start now"
+        translate "Start now" model.SiteConfig model.CultureCode
     ]
 
 let detailView shortcode (active:ConsultationConfig.Consultation) model dispatch =
     let activeInfo = active.Information |> Seq.tryFind(fun l -> l.Language = currentLanguage model.CultureCode)
     cond activeInfo <| function
-    | None -> text "The consultation is not configured correctly. Please contact the administrator."
+    | None -> translate "The consultation is not configured correctly. Please contact the administrator." model.SiteConfig model.CultureCode
     | Some activeInfo ->
         concat [
             heroHeading activeInfo.Title None
@@ -208,19 +228,19 @@ let detailView shortcode (active:ConsultationConfig.Consultation) model dispatch
                         div [ attr.``class`` "column is-three-quarters" ] [
                             div [ attr.``class`` "content" ] [ Markdown.htmlFromMarkdown activeInfo.Description ]
                             p [] [ textf "There are %i sections." active.Questions.Count]
-                            div [ attr.``class`` "block" ] [ startButton shortcode ]
+                            div [ attr.``class`` "block" ] [ startButton shortcode model ]
                         ]
                         div [ attr.``class`` "column" ] [
                             article [ attr.``class`` "message" ] [
                                 div [ attr.``class`` "message-body content" ] [
-                                    h4 [] [ text "Who is consulting?" ]
+                                    h4 [] [ translate "Who is consulting?" model.SiteConfig model.CultureCode ]
                                     p [] [
                                         text activeInfo.WhoIsConsulting
-                                        a [ attr.href activeInfo.WhoIsConsultingUrl; attr.target "_blank" ] [ text "See more." ] ]
-                                    h4 [] [ text "How long will it take?" ]
-                                    p [] [ textf "It should take abount %i minutes." active.TimeEstimateToCompleteInMinutes ]
-                                    h4 [] [ text "Where can I find more information?" ]
-                                    p [] [ a [ attr.href active.MoreInformationUrl; attr.target "_blank" ] [ text "More information is available here." ] ]
+                                        a [ attr.href activeInfo.WhoIsConsultingUrl; attr.target "_blank" ] [ translate "See more" model.SiteConfig model.CultureCode ] ]
+                                    h4 [] [ translate "How long will it take?" model.SiteConfig model.CultureCode ]
+                                    p [] [ textf "It should take about %i minutes." active.TimeEstimateToCompleteInMinutes ]
+                                    h4 [] [ translate "Where can I find more information?" model.SiteConfig model.CultureCode ]
+                                    p [] [ a [ attr.href active.MoreInformationUrl; attr.target "_blank" ] [ translate "More information is available here." model.SiteConfig model.CultureCode ] ]
                                 ]
                             ]
                         ]
@@ -289,7 +309,7 @@ let navbar model dispatch =
 /// language.
 let answerFormView shortcode section (model:Model) dispatch =
     cond model.SelectedConsultation <| function
-    | None -> div [] [ text "Loading..." ]
+    | None -> div [] [ translate "Loading..." model.SiteConfig model.CultureCode ]
     | Some con ->
         let currentSection = con.Config.Questions |> Seq.tryItem (section - 2)
         let subtitle =
@@ -319,7 +339,7 @@ let answerFormView shortcode section (model:Model) dispatch =
                         cond (section = 1) <| function
                         | true -> 
                             concat [
-                                Form.Parser.compile (Form.aboutYouSection con.Answers (fun qn q -> (1,qn,q) |> SetDynamicAnswer |> dispatch))
+                                Form.Parser.compile (Form.aboutYouSection con.Answers (fun t -> translate t model.SiteConfig model.CultureCode) (fun qn q -> (1,qn,q) |> SetDynamicAnswer |> dispatch))
                                 cond ( Set.isSubset (Set.ofList con.RequiredQuestions) (con.Answers |> Seq.map(fun k -> k.Key) |> Seq.where(fun (a,_) -> a = section) |> Seq.map snd |> Set.ofSeq)) <| function
                                 | false -> 
                                     article [ attr.``class`` "message is-warning" ] [
@@ -328,11 +348,11 @@ let answerFormView shortcode section (model:Model) dispatch =
                                                 (con.RequiredQuestions.Length - (con.Answers |> Seq.map(fun k -> k.Key) |> Seq.where(fun (a,_) -> a = section) |> Seq.map snd |> Seq.where(fun i -> con.RequiredQuestions |> Seq.contains i) |> Seq.length))
                                         ]
                                     ]
-                                | true -> button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
+                                | true -> button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ translate "Next" model.SiteConfig model.CultureCode ]
                             ]
                         | false -> 
                             cond (con.Config.Questions |> Seq.tryItem (section - 2)) <| function
-                            | None -> text "There was a problem: this section doesn't exist."
+                            | None -> translate "There was a problem: this section doesn't exist." model.SiteConfig model.CultureCode
                             | Some s -> 
                                 let form, _ = Form.Parser.parseYaml (currentLanguage model.CultureCode) section (s.Questions |> Seq.toList) con.Answers (SetDynamicAnswer >> dispatch)
                                 concat [ form;
@@ -348,10 +368,10 @@ let answerFormView shortcode section (model:Model) dispatch =
                                         cond (section = con.Config.Questions.Count + 1) <| function
                                         | true ->
                                             div [ attr.``class`` "box" ] [
-                                                p [] [ text "Please confirm below to send your responses to us and complete the consultation." ]
-                                                button [ attr.``class`` "button"; on.click (fun _ -> SendCompletedAnswers |> dispatch ) ] [ text "Finish" ]
+                                                p [] [ translate "Please confirm below to send your responses to us and complete the consultation." model.SiteConfig model.CultureCode ]
+                                                button [ attr.``class`` "button"; on.click (fun _ -> SendCompletedAnswers |> dispatch ) ] [ translate "Finish" model.SiteConfig model.CultureCode ]
                                             ]
-                                        | false -> button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ text "Next" ]
+                                        | false -> button [ attr.``class`` "button"; on.click (fun _ -> AnswerForm(shortcode,section+1) |> SetPage |> dispatch ) ] [ translate "Next" model.SiteConfig model.CultureCode ]
                                 ]
                     ]
                     div [ attr.``class`` "column is-one-quarter with-left-line" ] [
@@ -361,8 +381,8 @@ let answerFormView shortcode section (model:Model) dispatch =
                                    attr.max (con.Config.Questions.Count+1) ] [ textf "%i%%" (section / (con.Config.Questions.Count+1)) ]
                         ul [ attr.``class`` "bar" ] [
                             concat [
-                                if section = 1 then li [] [ text "About You" ]
-                                else li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ text "About you" ]]
+                                if section = 1 then li [] [ translate "About You" model.SiteConfig model.CultureCode ]
+                                else li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ translate "About you" model.SiteConfig model.CultureCode ]]
                                 forEach [1 .. con.Config.Questions.Count] (fun i -> 
                                     if (i+1) = section then li [] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ]
                                     else if (i+1) >= section then li [] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ]
@@ -374,8 +394,8 @@ let answerFormView shortcode section (model:Model) dispatch =
             ]
         ]
 
-let thankYouView dispatch =
-    p [] [ text "Thank you for your responses." ]
+let thankYouView model dispatch =
+    p [] [ translate "Thank you for your responses." model.SiteConfig model.CultureCode ]
 
 let view model dispatch =
     concat [
@@ -384,10 +404,10 @@ let view model dispatch =
         | Home -> homeView model dispatch
         | Consultation _ ->
             cond model.SelectedConsultation <| function
-            | None -> text "Loading consultation..."
+            | None -> translate "Loading consultation..." model.SiteConfig model.CultureCode
             | Some con -> detailView con.ShortCode con.Config model dispatch
         | AnswerForm (code,section) -> answerFormView code section model dispatch
-        | ThankYou -> thankYouView dispatch
+        | ThankYou -> thankYouView model dispatch
     ]
 
 open Microsoft.AspNetCore.Components

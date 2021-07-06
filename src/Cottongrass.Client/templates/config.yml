@@ -11,3 +11,11 @@ Site:
     IntroText: Некоторый вводный текст
 
 Languages: [ "en-GB", "ru-RU", "fi-FI", "nb-NO", "is-IS", "fr-CA", "sv-SE" ]
+
+Translations:
+  - It: Loading...
+    In: fi
+    Is: Loading...
+  - It: OpenConsultation
+    In: fi
+    Is: Open Consultations

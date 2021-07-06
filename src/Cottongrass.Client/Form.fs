@@ -252,8 +252,7 @@ let binaryAnswer i answers =
         | _ -> None
     | None -> None
 
-// TODO Multi-lingual text for code-defined strings
-let aboutYouSection answers handler =
+let aboutYouSection answers translations handler =
     Parser.textQuestion "firstname" "First Name" "" (textAnswer 1 answers) true (handler 1)
     |> Parser.lift true
     |> Parser.andQuestion (Parser.textQuestion "lastname" "Last Name" "" (textAnswer 2 answers) true (handler 2)) "always" true
