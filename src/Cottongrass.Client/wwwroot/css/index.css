@@ -1,3 +1,9 @@
+/**
+ * ==============================================
+ * Cottongrass - base styles
+ * ==============================================
+ */
+
 html, body {
   height: 100%;
 }
@@ -152,4 +158,83 @@ body {
   content: '*';
   color: red;
   margin-left: 2.5px;
+}
+
+.loading-background {
+  background-color: #3197EE1F;
+  height: 100%;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 3rem 0;
+  margin: 0 -5%;
+  overflow: hidden;
+}
+
+/**
+ * ==============================================
+ * Dot Revolution - from three-dots - v0.2.1 (Copyright (c) 2018 nzbin - MIT license)
+ * ==============================================
+ */
+ .dot-revolution {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3197EE;
+  color: #3197EE;
+}
+
+.dot-revolution::before, .dot-revolution::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+}
+
+.dot-revolution::before {
+  left: 0;
+  top: -15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3197EE;
+  color: #3197EE;
+  transform-origin: 5px 20px;
+  -webkit-animation: dot-revolution 1.4s linear infinite;
+  animation: dot-revolution 1.4s linear infinite;
+}
+
+.dot-revolution::after {
+  left: 0;
+  top: -30px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3197EE;
+  color: #3197EE;
+  transform-origin: 5px 35px;
+  -webkit-animation: dot-revolution 1s linear infinite;
+  animation: dot-revolution 1s linear infinite;
+}
+
+@-webkit-keyframes dot-revolution {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes dot-revolution {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0, 0, 0);
+  }
 }
