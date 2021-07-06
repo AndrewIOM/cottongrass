@@ -61,6 +61,42 @@ type Message =
     | SendCompletedAnswers
     | SentCompletedAnswers
 
+let currentLanguage (cultureCode:string) = cultureCode.Split("-").[0]
+let currentCountry (cultureCode:string) = cultureCode.Split("-").[1]
+
+module Markdown =
+
+    open Markdig
+
+    let pipeline = MarkdownPipelineBuilder().UseAdvancedExtensions().Build()
+    let htmlFromMarkdown (str:string) =
+        Markdown.ToHtml(str, pipeline) |> RawHtml
+
+let translateStr english (config:ConsultationConfig.SiteConfig option) cultureCode : string =
+    match config with
+    | None -> english
+    | Some sc ->
+        let lang = currentLanguage cultureCode
+        match (cultureCode = initialCulture) with
+        | true -> english
+        | false -> 
+            match (sc.Translations |> Seq.tryFind(fun x -> x.It = english && x.In = lang)) with
+            | Some t -> t.Is
+            | None -> english
+
+/// Get strings from translation lookup
+let translate english (config:ConsultationConfig.SiteConfig option) cultureCode : Node =
+    cond config <| function
+    | None -> text english
+    | Some sc ->
+        let lang = currentLanguage cultureCode
+        cond (cultureCode = initialCulture) <| function
+        | true -> text english
+        | false -> 
+            cond (sc.Translations |> Seq.tryFind(fun x -> x.It = english && x.In = lang)) <| function
+            | Some t -> text t.Is
+            | None -> text english
+
 let update message model =
     match message with
     | SetPage page -> 
@@ -100,7 +136,7 @@ let update message model =
                 if section = 1
                 then 
                     let translations = if model.SiteConfig.IsSome then model.SiteConfig.Value.Translations |> Seq.toList else []
-                    (Form.aboutYouSection c.Answers translations (fun _ -> ignore)).RequiredQuestions
+                    (Form.aboutYouSection c.Answers (fun t -> translateStr t model.SiteConfig model.CultureCode) (fun _ -> ignore)).RequiredQuestions
                 else
                     let currentSection = c.Config.Questions |> Seq.tryItem (section - 2)
                     Form.Parser.requiredQuestions section c.Answers (currentSection.Value.Questions |> Seq.toList) |> Seq.toList
@@ -113,7 +149,7 @@ let update message model =
                 if section = 1
                 then 
                     let translations = if model.SiteConfig.IsSome then model.SiteConfig.Value.Translations |> Seq.toList else []
-                    (Form.aboutYouSection c.Answers translations (fun _ -> ignore)).RequiredQuestions
+                    (Form.aboutYouSection c.Answers (fun t -> translateStr t model.SiteConfig model.CultureCode) (fun _ -> ignore)).RequiredQuestions
                 else
                     let currentSection = c.Config.Questions |> Seq.tryItem (section - 2)
                     Form.Parser.requiredQuestions section c.Answers (currentSection.Value.Questions |> Seq.toList) |> Seq.toList
@@ -130,31 +166,6 @@ let update message model =
     | SentCompletedAnswers -> model, Cmd.ofMsg (SetPage ThankYou)
 
 let router = Router.infer SetPage (fun m -> m.page)
-
-let currentLanguage (cultureCode:string) = cultureCode.Split("-").[0]
-let currentCountry (cultureCode:string) = cultureCode.Split("-").[1]
-
-module Markdown =
-
-    open Markdig
-
-    let pipeline = MarkdownPipelineBuilder().UseAdvancedExtensions().Build()
-    let htmlFromMarkdown (str:string) =
-        Markdown.ToHtml(str, pipeline) |> RawHtml
-
-/// Get strings from translation lookup
-let translate english (config:ConsultationConfig.SiteConfig option) cultureCode =
-    cond config <| function
-    | None -> text english
-    | Some sc ->
-        let lang = currentLanguage cultureCode
-        cond (cultureCode = initialCulture) <| function
-        | true -> text english
-        | false -> 
-            cond (sc.Translations |> Seq.tryFind(fun x -> x.It = english && x.In = lang)) <| function
-            | Some t -> text t.Is
-            | None -> text english
-
 
 let homeView model dispatch =
     concat [
@@ -313,7 +324,7 @@ let answerFormView shortcode section (model:Model) dispatch =
     | Some con ->
         let currentSection = con.Config.Questions |> Seq.tryItem (section - 2)
         let subtitle =
-            if section = 1 then "About You" |> Some
+            if section = 1 then (translateStr "About You" model.SiteConfig model.CultureCode) |> Some
             else if currentSection.IsSome
             then (currentSection.Value.Name |> Seq.tryFind(fun (d:ConsultationConfig.Consultation.Questions_Item_Type.Name_Item_Type) -> d.Language = currentLanguage model.CultureCode)) |> Option.map (fun l -> l.Translation)
             else None
@@ -339,7 +350,7 @@ let answerFormView shortcode section (model:Model) dispatch =
                         cond (section = 1) <| function
                         | true -> 
                             concat [
-                                Form.Parser.compile (Form.aboutYouSection con.Answers (fun t -> translate t model.SiteConfig model.CultureCode) (fun qn q -> (1,qn,q) |> SetDynamicAnswer |> dispatch))
+                                Form.Parser.compile (Form.aboutYouSection con.Answers (fun t -> translateStr t model.SiteConfig model.CultureCode) (fun qn q -> (1,qn,q) |> SetDynamicAnswer |> dispatch))
                                 cond ( Set.isSubset (Set.ofList con.RequiredQuestions) (con.Answers |> Seq.map(fun k -> k.Key) |> Seq.where(fun (a,_) -> a = section) |> Seq.map snd |> Set.ofSeq)) <| function
                                 | false -> 
                                     article [ attr.``class`` "message is-warning" ] [
