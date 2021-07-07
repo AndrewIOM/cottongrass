@@ -21,6 +21,10 @@
         );
       }
     }(window.location))
+    // Blazor access to browser language:
+    navigatorLanguages = function () {  
+      return Promise.resolve(navigator.languages);  
+    };
   </script>
 </head>
 

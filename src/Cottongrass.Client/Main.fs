@@ -3,6 +3,7 @@ module Cottongrass.Client.Main
 open Elmish
 open Bolero
 open Bolero.Html
+open Microsoft.JSInterop
 
 type Page =
     | Home
@@ -49,6 +50,8 @@ let initModel baseUri =
 type Message =
     | SetPage of Page
     | SetLanguage of string
+    | GetBrowserLanguage
+    | GotBrowserLanguages of string[]
     | LoadSiteConfig
     | LoadedSiteConfig of ConsultationConfig.SiteConfig
     | LoadIndex
@@ -97,14 +100,30 @@ let translate english (config:ConsultationConfig.SiteConfig option) cultureCode 
             | Some t -> text t.Is
             | None -> text english
 
-let update message model =
+let update (js: IJSRuntime) message model =
     match message with
     | SetPage page -> 
         { model with page = page },
         match page with
         | AnswerForm (_,section) -> Cmd.ofMsg (CheckValidation section)
         | _ -> Cmd.none
-    | SetLanguage l -> { model with CultureCode = l }, Cmd.none
+    | SetLanguage l -> 
+        { model with CultureCode = l }, Cmd.none
+    | GetBrowserLanguage ->
+        let cmd = Bolero.Remoting.Client.Cmd.OfJS.either js "navigatorLanguages" [||] GotBrowserLanguages Error
+        model, cmd
+    | GotBrowserLanguages languages ->
+        match model.SiteConfig with
+        | Some sc ->
+            let available = sc.Languages |> Seq.map(fun l -> l, currentLanguage l)
+            let overlapping = 
+                languages 
+                |> Seq.where(fun l -> available |> Seq.map fst |> Seq.contains l || available |> Seq.map snd |> Seq.contains l)
+                |> Seq.map(fun l -> available |> Seq.find(fun (c,a) -> c = l || a = l) |> fst)
+            if overlapping |> Seq.isEmpty 
+            then model, Cmd.none
+            else model, Cmd.ofMsg (SetLanguage (overlapping |> Seq.head))
+        | None -> model, Cmd.none
     | LoadIndex -> 
         model, 
         Cmd.OfAsync.either
@@ -126,7 +145,7 @@ let update message model =
             (fun c -> LoadedSiteConfig c)
             Error
     | LoadedSiteConfig data ->
-        { model with SiteConfig = Some data; CultureCode = data.Languages.[0] }, Cmd.none
+        { model with SiteConfig = Some data; CultureCode = data.Languages.[0] }, Cmd.ofMsg GetBrowserLanguage
     | Error e -> { model with Error = e.ToString() |> Some }, Cmd.none
     | CheckValidation section ->
         match model.SelectedConsultation with
@@ -431,6 +450,8 @@ type MyApp() =
 
     override this.Program =
         let baseUri = System.Uri this.NavigationManager.BaseUri
-        Program.mkProgram (fun _ -> initModel baseUri, Cmd.batch [Cmd.ofMsg LoadIndex; Cmd.ofMsg LoadSiteConfig ]) update view
+        Program.mkProgram (fun _ -> initModel baseUri, Cmd.batch [
+            Cmd.ofMsg LoadIndex
+            Cmd.ofMsg LoadSiteConfig ]) (update this.JSRuntime) view
         |> Program.withRouter router
         //|> Program.withConsoleTrace
