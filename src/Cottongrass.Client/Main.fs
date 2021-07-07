@@ -425,7 +425,18 @@ let answerFormView shortcode section (model:Model) dispatch =
         ]
 
 let thankYouView model dispatch =
-    p [] [ translate "Thank you for your responses." model.SiteConfig model.CultureCode ]
+
+    div [ attr.``class`` "section" ] [
+        div [ attr.``class`` "container" ] [
+            div [ attr.``class`` "columns" ] [
+                div [ attr.``class`` "column is-6 is-offset-3 has-text-centered" ] [
+                    p [] [ translate "Thank you for your responses." model.SiteConfig model.CultureCode ]
+                    p [] [ translate "We look forward to reading them. If you asked for us to keep in touch, you will hear from us soon." model.SiteConfig model.CultureCode ]
+                    a [ attr.``class`` "button"; on.click (fun _ -> Home |> SetPage |> dispatch ) ] [ text "Home Page" ]
+                ]
+            ]
+        ]
+    ]
 
 let view model dispatch =
     concat [
