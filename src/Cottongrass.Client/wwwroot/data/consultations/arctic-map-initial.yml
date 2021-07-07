@@ -567,6 +567,7 @@ Questions:
             Concepts - Are there specific concepts for the Arctic that you think we are missing?
         - Language: fi
           Translation: Käsitteet – Puuttuuko jokin mielestäsi olennainen arktiseen alueeseen liittyvä käsite?
+        Type: freetext
         Visible: always
         Required: false
       - Question:

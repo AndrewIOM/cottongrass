@@ -172,7 +172,16 @@ let update (js: IJSRuntime) message model =
                 else
                     let currentSection = c.Config.Questions |> Seq.tryItem (section - 2)
                     Form.Parser.requiredQuestions section c.Answers (currentSection.Value.Questions |> Seq.toList) |> Seq.toList
-            { model with SelectedConsultation = Some { c with Answers = c.Answers |> Map.add (section,question) answer; RequiredQuestions = required } }, Cmd.none
+            let newAnswers =
+                match answer with
+                | Form.DynamicQuestionAnswer.Text t ->
+                    if System.String.IsNullOrEmpty t then c.Answers |> Map.remove (section,question)
+                    else c.Answers |> Map.add (section,question) answer
+                | Form.DynamicQuestionAnswer.Choice a -> 
+                    if System.String.IsNullOrEmpty a then c.Answers |> Map.remove (section,question)
+                    else c.Answers |> Map.add (section,question) answer
+                | _ -> c.Answers |> Map.add (section,question) answer
+            { model with SelectedConsultation = Some { c with Answers = newAnswers; RequiredQuestions = required } }, Cmd.none
     | SendCompletedAnswers -> 
         match model.SelectedConsultation with
         | None -> model, Cmd.none
