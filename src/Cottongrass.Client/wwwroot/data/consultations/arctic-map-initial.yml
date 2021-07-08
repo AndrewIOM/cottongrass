@@ -173,7 +173,7 @@ Questions:
         - Language: fi
           Translation: Mikä taksonominen ryhmä, suku tai laji on itsesi kannalta kiinnostavin?
         Type: short text
-        Visible: previous question is Other
+        Visible: previous question is choice 8
         Required: true
 
       # Scope: population
@@ -202,7 +202,7 @@ Questions:
         - Language: fi
           Translation: Kuinka meidän tulisi laajentaa tai rajata tarkastelua, jotta se olisi mielestäsi tarkoituksenmukainen?
         Type: freetext
-        Visible: previous question is not fine
+        Visible: previous question is not choice 1
         Required: true
 
       # Definitions: context
@@ -243,7 +243,7 @@ Questions:
         - Language: fi
           Translation: Mitä ongelmia edellä ehdotettuihin arktisen alueen määritelmiin liittyy, ja miten niitä tulisi muuttaa?
         Type: freetext
-        Visible: previous question is Something else
+        Visible: previous question is choice 5
         Required: true
 
       - Question:

@@ -177,7 +177,7 @@ let update (js: IJSRuntime) message model =
                 | Form.DynamicQuestionAnswer.Text t ->
                     if System.String.IsNullOrEmpty t then c.Answers |> Map.remove (section,question)
                     else c.Answers |> Map.add (section,question) answer
-                | Form.DynamicQuestionAnswer.Choice a -> 
+                | Form.DynamicQuestionAnswer.Choice (i,a) -> 
                     if System.String.IsNullOrEmpty a then c.Answers |> Map.remove (section,question)
                     else c.Answers |> Map.add (section,question) answer
                 | _ -> c.Answers |> Map.add (section,question) answer
