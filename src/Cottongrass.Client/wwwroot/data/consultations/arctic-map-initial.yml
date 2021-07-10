@@ -63,8 +63,30 @@ Information:
     WhoIsConsulting: >
       Olemme "CHARTER-konsortio", kansainvälisten tutkijoiden muodostama yhteistyöhanke, jonka rahoitus tulee Euroopan Komissiolta. Kartoitusprojektia johtaa FT Andrew Martin Oxfordin yliopistosta. 
     WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
+  - Language: sv
+    Title: Inledande samråd
+    Description: >
+      ## Vad konsulterar vi om?
 
-TimeEstimateToCompleteInMinutes: 20
+      För att förstå tidigare förändringar i den arktiska biologiska mångfalden sammanställer vi en systematisk karta över de aktuella bevisen. En systematisk karta ger en fullständig och opartisk syntes av kunskapens tillstånd om ett visst ämne. Processen innebär att undersöka bibliotekssamlingar, leta efter opublicerad forskning och tekniska rapporter för att hitta allt relevant vetenskapligt arbete.      
+      
+      
+      Denna forskning är ett stort företag, och vi vill se till att den har störst relevans för de flesta människor, grupper och organisationer.
+      
+      
+      Det finns många sätt på vilka dina bidrag är viktiga: från att definiera gränserna (såsom de inkluderade taxonomiska grupperna, platserna och tiderna), att bidra till studiedesignen till att identifiera möjliga källor till ny information.
+      
+      ### Grundprinciper för systematisk kartläggning
+      
+      Systematisk kartläggning är en objektiv metod för att karakterisera evidensbasen för ett brett ämne och identifiera evidensbrister, samtidigt som eventuella fördomar minskas. Processen är inriktad på att kartlägga litteraturen, och den resulterande kartan är inte nödvändigtvis en geografisk karta. Metadata om källor extraheras och metoderna som används bedöms ofta för noggrannhet. Ett relaterat tillvägagångssätt är systematisk granskning, som vanligtvis fokuserar på en mindre bred nyckelfråga men involverar sammanställning och analys av underliggande data för att ta itu med forskningsfrågan i en datasyntes.
+
+
+      Systematisk kartläggning är ett hypotesgenererande tillvägagångssätt som kan matas in i senare systematiska granskningar (som tar upp hypoteserna); det finns därför utrymme för detta efter kartan. En viktig faktor är utveckling och publicering av ett systematiskt kartläggningsprotokoll, vilket är en separat peer-reviewed publikation som är klar innan arbetet pågår med sökningar och datautvinning (för en andra peer-reviewed publikation av den slutliga kartan). För mer information om metoderna som används inom systematisk kartläggning har Neil Haddaway från Stockholms miljöinstitut tagit fram bra introduktionsresurser för evidenssyntesmetoder på: [https://systematicmappingmethods.github.io/intro.html](https://systematicmappingmethods.github.io/intro.html). 
+    WhoIsConsulting: >
+      Vi är 'CHARTER-konsortiet', ett internationellt samarbete mellan forskare som finansieras av Europeiska kommissionen. Den ledande granskaren för detta projekt är Dr Andrew Martin, University of Oxford.
+    WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
+
+TimeEstimateToCompleteInMinutes: 25
 MoreInformationUrl: http://charter-arctic.org
 AllowAnonymousResponses: false
 Endpoint: https://submit-form.com/eQ1viAtb
@@ -78,6 +100,8 @@ Questions:
       Translation: Our primary research question - scope and definitions
     - Language: fi
       Translation: Ensisijainen tutkimuskysymys - sen laajuus ja määritelmät
+    - Language: sv
+      Translation: Vår primära forskningsfråga - omfattning och definitioner
     Description:
     - Language: en
       Translation: > 
@@ -122,6 +146,25 @@ Questions:
         
         Jokaisen termin kohdalla meidän päätettävä niistä rajoista, joissa systemaattinen kartta on mahdollisimman käyttökelpoinen mahdollisimman laajalle yleisölle, mutta myös järkevästi toteutettavissa.
 
+    - Language: sv
+      Translation: > 
+        Från och med den här punkt kan du hoppa över alla frågor som du inte vill svara på.
+        
+        
+        I det här avsnittet vill vi veta om det nuvarande forskningsområdet passar dina intressen för den arktiska biologiska mångfalden. Omfattningen definierar vilka studieområden som ska inkluderas och undantas från vår systematiska karta.
+        
+        
+        Vi har definierat en primär forskningsfråga som anger det vetenskapliga problemet som vår karta kommer att ta itu med. Inom forskningsfrågan kräver vissa nyckeltermer att man definierar och 'omfattar':
+        
+        
+          * den arktiska regionen (var ska man ange de geografiska gränserna?)
+          * Holocen eller långsiktig (vad är start- och slutdatum?)
+          * Arktisk biota (vilka grupper och arter ska inkluderas?)
+          * Åtgärder för biologisk mångfald (vilka åtgärder finns?)
+        
+        
+        För varje termin måste vi bestämma de gränser inom vilka den systematiska kartan är mest användbar för den bredaste publiken, men också praktisk att slutföra.
+
     Questions:
 
       # Research questions
@@ -135,12 +178,17 @@ Questions:
           Translation:
             Ensisijainen tutkimuskysymyksemme on 'mitä näyttöä on olemassa Holoseenin aikana arktisella alueella maalla ja vedessä vallinneesta biologisen monimuotoisuuden vaihtelusta?'.
             Ottaako tämä kysymys laajasti huomioon kiinnostuksenne arktisen luonnon monimuotoisuuden pitkäaikaisiin muutoksiin?
+        - Language: sv
+          Translation:
+            Vår huvudsakliga forskningsfråga är 'vilka bevis finns för tidsmässig variation i måtten på den arktiska terrestriska och akvatiska biologiska mångfalden i hela Holocen?'. Fångar den här frågan i stort sett dina intressen för långsiktiga förändringar av den arktiska biologiska mångfalden?
         Type: binary choice
         Choices:
         - Language: en
           Translation: [ "Yes", "No" ]
         - Language: fi
           Translation: [ "Kyllä", "Ei" ]
+        - Language: sv
+          Translation: [ "Ja", "Nej" ]
         Visible: always
         Required: false
       - Question:
@@ -148,6 +196,8 @@ Questions:
           Translation: "Please tell us how we could make our question more relevant to your work or interests."
         - Language: fi
           Translation: "Kerro kuinka voisimme muotoilla tutkimuskysymystä niin, että se liittyisi olennaisesti työhösi tai kiinnostuksen kohteeseesi."
+        - Language: sv
+          Translation: Berätta hur vi kan göra vår fråga mer relevant för ditt arbete eller intressen.
         Type: freetext
         Visible: previous question is false
         Required: true
@@ -159,6 +209,8 @@ Questions:
           Translation: For which Arctic taxonomic group would the synthesised information be most interesting to you for work or otherwise?
         - Language: fi
           Translation: Mihin arktiseen lajiryhmään liittyvä tieto olisi oman työsi kannalta kaikkein merkityksellisintä?
+        - Language: sv
+          Translation: För vilken arktisk taxonomisk grupp skulle den syntetiserade informationen vara mest intressant för dig för arbete eller på annat sätt?
         Type: choice
         Visible: always
         Required: false
@@ -167,11 +219,15 @@ Questions:
           Translation: [ "No specific group", "Aquatic plants", "Aquatic animals", "Fungi", "Mammals (all)", "Plants", "Reindeer", "Other" ]
         - Language: fi
           Translation: ["Ei mikään tietty ryhmä", "Vesikasvit", "Vesieläimet", "Sienet", "Nisäkkäät (kaikki)", "Kasvit", "Poro", "Muut" ]
+        - Language: sv
+          Translation: ["Ingen specifik grupp", "Vattenväxter", "Vattenlevande djur", "Svampar", "Däggdjur (alla)", "Växter", "Ren", "Övrig" ]
       - Question:
         - Language: en
           Translation: Which taxonomic group, genus, or species is of most interest to you?
         - Language: fi
           Translation: Mikä taksonominen ryhmä, suku tai laji on itsesi kannalta kiinnostavin?
+        - Language: sv
+          Translation: Vilken taxonomisk grupp, släkt eller art är mest intressant för dig?
         Type: short text
         Visible: previous question is Other
         Required: true
@@ -188,12 +244,19 @@ Questions:
             Kokoamme tietoa vain seuraavista lajiryhmistä: 
             kasvit, nisäkkäät, linnut, matelijat, sammakkoeläimet, sienet, levät, vedessä elävät niveljalkaiset, surviaissääsket ja jäkälät.
             Onko rajaus mielestäsi:
+        - Language: sv
+          Translation: >
+            Vi kommer endast att inkludera information för följande taxonomiska 
+            grupper: växter, däggdjur, fåglar, reptiler, amfibier, svampar, 
+            alger, akvatiska leddjur, fjädermyggor och lavar. Tror du att omfattningen är:
         Type: choice
         Choices:
         - Language: en
           Translation: [ "fine", "too narrow", "too broad" ]
         - Language: fi
           Translation: [ "hyvä", "liian tiukka", "liian laaja" ]
+        - Language: sv
+          Translation: [ "bra", "för smal", "för bred" ]
         Visible: always
         Required: false
       - Question:
@@ -201,6 +264,8 @@ Questions:
           Translation: How should we broaden or narrow the scope to suit your interests?
         - Language: fi
           Translation: Kuinka meidän tulisi laajentaa tai rajata tarkastelua, jotta se olisi mielestäsi tarkoituksenmukainen?
+        - Language: sv
+          Translation: Hur ska vi bredda eller begränsa räckvidden för att passa dina intressen?
         Type: freetext
         Visible: previous question is not fine
         Required: true
@@ -214,6 +279,8 @@ Questions:
             at changes in biodiversity over the last ten thousand years?
         - Language: fi
           Translation: Meidän on määriteltävä arktisen alueen rajat selkeästi. Tälle on olemassa useita eri vaihtoehtoja. Mikä seuraavista määritelmistä on paras tarkasteltaessa biodiversiteetin muutoksia viimeisten kymmenen tuhannen vuoden aikana? 
+        - Language: sv
+          Translation: Vi måste tydligt definiera gränserna för den arktiska regionen. Det finns många möjliga sätt att göra detta. Vilket av följande skulle bäst definiera Arktis när man tittar på förändringar i biologisk mångfald under de senaste tio tusen åren?
         Type: choice
         Choices:
         - Language: en
@@ -235,6 +302,14 @@ Questions:
             Pohjoiset leveysasteet – 58. leveysasteen pohjoispuoliset alueet (tällöin arktiseen alueeseen kuuluisivat myös Isle of Lewis Skotlannissa sekä koko Norja ja Suomi),
             Jotain muuta
           ]
+        - Language: sv
+          Translation: [
+            polcirkeln - definierad av antalet dagsljus timmar under sommar- och vintersolståndet,
+            hög latitud tundra - norr om taigaskogen (i modern tid),
+            kalla norra områden - där genomsnittliga sommartemperaturer (i dagens tid) är mindre än 10 grader Celsius,
+            norra breddgrader - norr om den 58 e parallellen (detta skulle inkludera Isle of Lewis i Skottland och hela Norge och Finland),
+            Något annat
+          ]
         Visible: always
         Required: false
       - Question:
@@ -242,6 +317,8 @@ Questions:
           Translation: What are the issues with the proposed definitions for the Arctic, and how would you seek to address them?
         - Language: fi
           Translation: Mitä ongelmia edellä ehdotettuihin arktisen alueen määritelmiin liittyy, ja miten niitä tulisi muuttaa?
+        - Language: sv
+          Translation: Vilka är problemen med de föreslagna definitionerna för Arktis, och hur skulle du försöka ta itu med dem?
         Type: freetext
         Visible: previous question is Something else
         Required: true
@@ -257,6 +334,8 @@ Questions:
             Pitäisikö meidän ottaa mukaan tundran reuna-alueiden ekosysteemejä, 
             kuten havumetsän ja tundran välinen vaihettumisvyöhyke?
             Jos pitäisi, miten nämä alueet tulisi rajata maantieteellisesti?
+        - Language: sv
+          Translation: Ska vi inkludera ekosystem i utkanten av den arktiska tundran, såsom övergångsområdet mellan boreal skog och tundra? Om så är fallet, vilka geografiska gränser kan vi använda för att ange dessa områden?
         Type: freetext
         Visible: always
         Required: false
@@ -272,12 +351,16 @@ Questions:
             the beginning of the Holocene. Do you agree with this definition?
         - Language: fi
           Translation: Tutkimuksemme keskittyy "Holoseeniin", joka on viimeisin ilmastollisesti vakaa aikakausi ja alkoi viimeisen jääkauden jälkeen jatkuen aina nykypäivään asti. Vaikka jäätiköt vetäytyivät arktisella alueella eri paikoissa eri aikaan, pidämme kaikkialla noin 11 500 vuotta sitten alkanutta lämmintä ilmastovaihetta Holoseenin alkuna. Oletko yhtä mieltä tämän määritelmän kanssa?
+        - Language: sv
+          Translation: Vår studie fokuserar på 'Holocen' - den senaste perioden av klimatstabilitet som har inträffat sedan den senaste istiden till idag. Även om glaciärer drog sig tillbaka vid olika tidpunkter runt polcirkeln, anser vi att det sedan 11 500 år före idag är att de varmare förhållandena inträffade i de flesta regioner som markerade början på Holocen. Håller du med den här definitionen?
         Type: binary choice
         Choices:
         - Language: en
           Translation: [ "Yes", "No" ]
         - Language: fi
           Translation: [ "Kyllä", "Ei" ]
+        - Language: sv
+          Translation: [ "Ja", "Nej" ]
         Visible: always
         Required: false
       - Question:
@@ -285,20 +368,11 @@ Questions:
           Translation: How could we define the Holocene to better suit your interests in long-term changes in Arctic biodiversity?
         - Language: fi
           Translation: Miten meidän tulisi määritellä Holoseeni, jotta se vastaisi paremmin mielikuvaasi arktisen biodiversiteetin pitkän ajan muutoksista?
+        - Language: sv
+          Translation: Hur skulle vi kunna definiera holocen för att bättre passa era intressen i långsiktiga förändringar av den arktiska biologiska mångfalden?
         Type: freetext
         Visible: previous question is false
         Required: false
-
-      # - Question:
-      #   - Language: en
-      #     Translation:
-      #       We have chosen to exclude data from 1950 AD to the present day, as we are
-      #       mainly interested in long-term changes (over thousands of years).
-      #   - Language: fi
-      #     Translation: Olemme päättäneet jättää tutkimuksen ulkopuolelle vuoden 1950 jälkeistä aikaa edustavan aineiston, koska olemme kiinnostuneita nimenomaan pitkän ajan (tuhansien vuosien) muutoksista. 
-      #   Type: freetext
-      #   Visible: always
-      #   Required: false
 
       # Definition: outcomes
       - Question:
@@ -312,12 +386,16 @@ Questions:
           Translation: 
             Olemme määritelleet 'biodiversiteetin' elollisten organismien ja niiden välisten vuorovaikutusten ekologisena monimuotoisuutena. Eliöiden monimuotoisuus ilmenee lajien, niiden ilmiasun ja perinnöllisyyden sekä eliöyhteisöjen rakenteen monimuotoisuutena. 
             Onko tämä määritelmä sopiva tutkittaessa vuosisataisia muutoksia arktisessa biodiversiteetissä?
+        - Language: sv
+          Translation: Vi har definierat 'biologisk mångfald' som levnadsorganismernas variationer och de ekologiska komplexiteten i deras interaktioner. Organismer skiljer sig åt efter art (taxonomisk), genetik, morfologi och hur livsmiljöerna är strukturerade. Är denna definition lämplig för att förstå förändringar i den arktiska biologiska mångfalden i hundra år?
         Type: binary choice
         Choices:
         - Language: en
           Translation: [ "Suitable", "Not Suitable" ]
         - Language: fi
           Translation: [ "Sopiva", "Sopimaton" ]
+        - Language: sv
+          Translation: [ "lämplig", "inte lämplig" ]
         Visible: always
         Required: false
       - Question:
@@ -325,6 +403,8 @@ Questions:
           Translation: How could we change the definition of 'biodiversity' to better suit your work or interests?
         - Language: fi
           Translation: Kuinka meidän tulisi muuttaa 'biodiversiteetin' määritelmää, jotta se vastaisi paremmin käsitystäsi?
+        - Language: sv
+          Translation: Hur kunde vi ändra definitionen av 'biologisk mångfald' så att den passar ditt arbete eller intressen bättre?
         Type: freetext
         Visible: previous question is false
         Required: false
@@ -337,6 +417,8 @@ Questions:
       Translation: Search Strategy
     - Language: fi
       Translation: Hakustrategia
+    - Language: sv
+      Translation: Sökstrategi
     Description:
     - Language: en
       Translation: >
@@ -395,6 +477,27 @@ Questions:
         
         Menneisyyden tarkasteleminen ei ole suoraviivaista, koska emme ole päässeet havainnoimaan muutoksia silloin kun ne ovat tapahtuneet. Sen sijaan voimme tutkia epäsuoria merkkejä eläimistä, kasveista ja muista eliöstä (eli ”prokseja”). Prokseja ovat esimerkiksi siitepölyt ja itiöt; muinais-DNA, fossiiliset hyönteiset tai kasvien osat sekä luut ja syöksyhampaat.
 
+    - Language: sv
+      Translation: > 
+        Sökstrategin' är den formella metoden genom vilken vi identifierar alla relevanta informationskällor om tidigare förändringar i den arktiska biologiska mångfalden. De viktiga övervägandena är:
+
+          1. Att identifiera de centrala sökbegrepp som kan indikera ett dokument eller en källa innehåller information som är relevant för oss.
+          
+          2. Att bestämma databaser och arkiv för att titta inom.
+          
+          3. Ta reda på vem som har tillgång till opublicerat arbete som kan vara relevant och om det kan delas med oss. Vi kallar detta för "grå litteratur".
+
+        För att bäst identifiera och strukturera våra sökbegrepp tog vi forskningsfrågan och letade efter kopplingarna mellan delarna. En vanlig metod som används i systematiska kartor är att identifiera befolkningen (vad studeras?), Exponering (vad är den föremål för?), Komparator (vilka är de olika exponeringsnivåerna?) Och utfall (vilka är svaren? ). Vi kan sedan identifiera studier där alla dessa komponenter finns. Ta en titt på diagrammet nedan och följ pilarna i det övre vänstra hörnet:
+
+
+        ![The theory of change used in this study](images/peco-simple.png)
+
+
+        Här utsätts vår population (arktisk biota) för tidens rörelse, vilket resulterar i förändringar av resultaten (mått på biologisk mångfald, såsom artens mångfald och fördelning).
+        
+        
+        Att titta in i det förflutna är inte enkelt, eftersom vi aldrig observerar förändringar när de händer. Snarare ser vi spår av djur, växter och annan biota (eller "proxies"). Exempel på ombud inkluderar: pollen eller sporer; forntida DNA-fragment; fossila insekter eller växtdelar; eller ben och betar.
+
     Questions:
       - Question:
         - Language: en
@@ -404,6 +507,8 @@ Questions:
             tell us here.
         - Language: fi
           Translation: Onko sinulla kommentoitavaa siihen, miten olemme käsitelleet populaatiota (Population), altistusta (Exposure) ja lopputulosta (Outcome) yllä olevassa kaaviossa? Kirjoita kommenttisi tähän. 
+        - Language: sv
+          Translation: Har du några kommentarer till hur vi har förstått population, exponeringen och resultatet, som visas i diagrammet ovan? Snälla berätta för oss här.
         Type: freetext
         Visible: always
         Required: false
@@ -414,6 +519,8 @@ Questions:
       Translation: Search Concepts - Population (Arctic Biota)
     - Language: fi
       Translation: Hakukonseptit – Populaatio (arktinen eliöstö)
+    - Language: sv
+      Translation: Sökbegrepp - Befolkning (Arktisk Biota)
     Description:
     - Language: en
       Translation: >
@@ -494,6 +601,42 @@ Questions:
             | Selkärangattomat - yleiskäsite                | ("hyönteis*") OR                                                                                                                                                                                                                                                                                                                                                                                                |
             | Selkärankaiset - yleiskäsite                  | ("eläi*" OR "fauna" OR "megafauna" OR "kasvinsyöj*" OR "suur* kasvinsyöj*" OR "selkärankais*") OR                                                                                                                                                                                                                                                                                                       |
             | Sienet                                           | ("jäkäl*")                                                                                                                                                                                                                                                                                                                                                                                                  |
+    
+    - Language: sv
+      Translation: >
+          Den viktigaste delen av sökstrategin är "söksträngen". Strängen består av begrepp - och termer / synonymer som relaterar till dem - för att indikera att en källa är relevant för vår forskningsfråga. Begreppen bör identifiera så mycket relevant material som möjligt, samtidigt som man undviker att hitta källor som inte är relevanta (falska positiva). Vi har bestämt en lista med begrepp och termer med hjälp av tesaurier och en testlista med kända relevanta källor.
+
+          
+          Söksträngen:
+
+          * kräver att population (arktisk biota), exponering (tidsrörelse över årtionden till århundraden) och resultat (mått på biologisk mångfald) är närvarande
+
+          * definieras på många språk
+
+          * är skräddarsydd för varje specifik databaskälla.
+
+          * innehåller jokertecken för att upptäcka valfria bokstäver (?) och ord med flera ändar (*).
+
+
+          Vi vill fråga dig om du tror att vi har inkluderat alla begrepp som är viktiga för var och en av befolkningen, exponeringen och resultatet i följande avsnitt.
+
+
+          Först vill vi fråga dig om arktisk biota, vår befolkning. Vi har inkluderat följande begrepp och deras relaterade termer:
+
+            | Concept                                         | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                         |
+            | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+            | Plants (general)                                | ("plant?" OR "flora" OR "vegetation" OR "Plantae" OR "vegetational" OR "pal?eovegetation" OR "floristic") OR                                                                                                                                                                                                                                                                                                 |
+            | Non-vascular plants                             | ("bryophyte" OR "Bryophyta" OR "liverwort?" OR "moss" OR "mosses") OR                                                                                                                                                                                                                                                                                                                                        |
+            | Herbacous plants                                | ("forb?") OR                                                                                                                                                                                                                                                                                                                                                                                                 |
+            | Vascular plants                                 | ("shrub?" OR "woody plant" OR "vascular plant" OR "fern?" OR "pteridophyt?" OR "spermatopht?" OR "xerophyte" OR "tree species" OR "coniferous" OR "conifer" OR "deciduous" OR "herb") OR                                                                                                                                                                                                                     |
+            | Boreal forest / treeline species, shrub species | ("forest species" OR "treeline species" OR "tree-line species" OR "larch" OR "Larix" OR "spruce" OR "picea" OR "western hemlock" OR "Tsuga" OR "Sitka" OR "alnus" OR "cottonwood" OR "Populus" OR "Pinus" OR "birch" OR "alder" OR "pine" OR "Betula" OR "willow") OR                                                                                                                                        |
+            | Amphibians and aquatic groups                   | ("amphibian" OR "Amphibia" OR "aquatic animal" OR "algae" OR "algal") OR                                                                                                                                                                                                                                                                                                                                     |
+            | Reptiles                                        | ("reptile") OR                                                                                                                                                                                                                                                                                                                                                                                               |
+            | Birds                                           | ("bird?" OR "Aves") OR                                                                                                                                                                                                                                                                                                                                                                                       |
+            | Mammals                                         | ("mammal" OR "mammalian" OR "mammoth" OR "reindeer" OR "caribou" OR "polar bear" OR "Mammuthus primigenius" OR "steppe bison" OR "Bison priscus" OR "muskox" OR "Ovibos moschatus" OR "moose" OR "Alcos alces" OR "reindeer" OR "Rangifer tarandus" OR "horse" OR "Equus caballus" OR "wolf" OR "wolves" OR "Canis lupus" OR "dog" OR "squirrel" OR "arctic fox" OR "vulpes lagopus" OR "alopex lagopus") OR |
+            | Invertebrates - general concepts                | ("insect") OR                                                                                                                                                                                                                                                                                                                                                                                                |
+            | Vertebrates - general concepts                  | ("animal" OR "fauna" OR "faunal" OR "megafauna" OR "megaherbivore" OR "vertebrata" OR "vertebrate") OR                                                                                                                                                                                                                                                                                                       |
+            | Fungi                                           | ("lichen?")                                                                                                                                                                                                                                                                                                                                                                                                  |
 
     Questions:
       - Question:
@@ -502,6 +645,8 @@ Questions:
             Concepts - Are there specific concepts for 'Arctic biota' that you think we are missing?
         - Language: fi
           Translation: Käsitteet – Puuttuuko mielestäsi jokin 'arktiseen eliöstöön' liittyvä käsite?
+        - Language: sv
+          Translation: Begrepp - Finns det specifika begrepp för 'Arctic biota' som du tror att vi saknar?
         Type: freetext
         Visible: always
         Required: false
@@ -511,6 +656,8 @@ Questions:
             Terms - For the concepts listed, are there additional terms that you think would better capture relevant information?
         - Language: fi
           Translation: Termit – Onko lueteltujen termien lisäksi olemassa joitakin muita termejä, jotka olisivat parempia olennaisen tiedon löytämiseksi?
+        - Language: sv
+          Translation: Termer - Finns det ytterligare termer för de begrepp som anges, som du tror bättre skulle fånga relevant information?
         Type: freetext
         Visible: always
         Required: false
@@ -522,6 +669,8 @@ Questions:
       Translation: Search Concepts - Population Context (Arctic)
     - Language: fi
       Translation: Hakukäsitteet – Populaation Sijainti (Arktis)
+    - Language: sv
+      Translation: Sökbegrepp - Population Context (Arctis)
     Description:
     - Language: en
       Translation: >
@@ -586,6 +735,8 @@ Questions:
       Translation: Search Concepts - Exposure (Time)
     - Language: fi
       Translation: Hakukäsitteet – Altistus (Aika)
+    - Language: sv
+      Translation: Sökbegrepp - Exponering (tid)
     Description:
     - Language: en
       Translation: >
@@ -697,6 +848,8 @@ Questions:
       Translation: Search Concepts - Outcomes (Measure of Biodiversity)
     - Language: fi
       Translation: Hakukäsitteet – Lopputulokset (biodiversiteetin mitattavissa olevat ominaisuudet)
+    - Language: sv
+      Translation: Sökbegrepp - resultat (mått på biologisk mångfald)
     Description:
     - Language: en
       Translation: >
@@ -780,6 +933,8 @@ Questions:
       Translation: Search Concepts - Biotic Proxies used for Environmental Reconstruction
     - Language: fi
       Translation: Hakukäsitteet – Elolliset proksit, joita käytetään ympäristön ennallistamiseen
+    - Language: sv
+      Translation: Sökbegrepp - Biotiska proxyer som används för återuppbyggnad av miljön
     Description:
     - Language: en
       Translation: >        
@@ -890,8 +1045,8 @@ Questions:
       Translation: Grey Literature Sources
     - Language: fi
       Translation: Harmaan kirjallisuuden lähteet
-    - Language: ru
-      Translation: Объем исследования
+    - Language: sv
+      Translation: Grå litteraturkällor
     Description:
     - Language: en
       Translation: >
@@ -976,6 +1131,8 @@ Questions:
       Translation: Anything else?
     - Language: fi
       Translation: Haluatko vielä lisätä jotain?
+    - Language: sv
+      Translation: Något annat?
     Description:
     - Language: en
       Translation:

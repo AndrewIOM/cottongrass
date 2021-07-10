@@ -92,10 +92,41 @@ Site:
       
       
       Tutkimusta rahoitetaan Euroopan Komission Horisontti 2020 -puiteohjelman kautta. Rahoitetun yhteistyöhankkeen nimi on CHARTER - 'Changes in Arctic Terrestrial Biodiversity'. Hankkeesta löytyy lisätietoa [CHARTER:n verkkosivuilta](https://charter-arctic.org). 
+  
+  - Language: "sv"
+    ShortTitle: Arktisk biologisk mångfaldskarta
+    LongTitle: Långsiktiga förändringar i den arktiska biologiska mångfalden - en systematisk karta.
+    Subtitle: Hjälp till att påverka vår forskning!
+    IntroText: >
+      ## Vad handlar vår forskning om?
 
-Languages: [ "en-GB", "fi-FI" ]
+      Klimatförändringen leder till en  snabb uppvärmning av den arktiska regionen - med konsekvenser för arktiska växter, djur och andra arter. För att bättre förstå hur livet i Arktis kan reagera på dessa förändringar - och vad som kan göras för att bevara det - kan vi se tillbaka till det förflutna. Hur fort mångfalden förändrades under de senaste tio tusen åren kan informera våra nuvarande modeller och prognoser om hur biologisk mångfald kommer att påverkas under 2000-talet.
+
+
+      För att förstå tidigare förändringar i den arktiska biologiska mångfalden sammanställer vi en så kallad systematisk karta över de aktuella bevisen. En systematisk karta ger en fullständig och opartisk syntes av kunskapens tillstånd om ett visst ämne. Processen innebär att man undersöker bibliotekssamlingar, letar efter opublicerad forskning och tekniska rapporter för att hitta alla relevanta vetenskapliga arbeten.
+
+
+      ![Arctic mammals](images/banner1.jpg)
+
+      ## Vad vet vi om tidigare förändringar i den arktiska biologiska mångfalden under tusentals år?
+
+      Växter, djur, svampar och andra arter kan lämna spår efter att de fanns i miljön. Exempel inkluderar ben, små mikroskopiska fossiler (som växtpollen), kottar, löv, frön och mammutbeten. De lämnas ofta kvar i ”miljöarkiv” som sjösediment, torv och frusen mark. Dessa kvarlämningar kan dateras med kol-14 och andra dateringsmetoder, vilket ger oss en uppfattning om vilken art som fanns, när och deras antal.
+
+      ## Att arbeta tillsammans för ett gemensamt mål:  vi behöver din hjälp
+      
+      Detta projekt är ett brett samarbete mellan olika länder och med alla som har ett intresse för arktisk biologisk mångfald. Det finns många sätt på vilka dina bidrag är viktiga: från att definiera ramen för vår studie (t.ex. vilka taxonomiska grupper skulle ingå, vilka platser och tidsramen), att bidra till studiedesignen till att identifiera möjliga källor till ny information.
+
+
+      Vi är särskilt intresserade av att arbeta med dem som kallar Arktis sitt hem, akademiska forskare, statliga organisationer, arktiska markförvaltare, museer och tolkningscentra, icke-statliga organisationer (NGO) med intresse för arktiska miljöer. Alla är välkomna att arbeta med oss.
+
+      ## Vem är granskningsteamet och hur finansieras de?
+
+      Granskningsteamet (som söker efter och sammanställer bevisen) är en internationell grupp av akademiska forskare från Finland, Ryssland, Sverige, Storbritannien, Island och Danmark. Forskningen finansieras av Europeiska kommissionen genom ett Horizon 2020-samarbete. Samarbetet heter CHARTER - "Förändringar i den arktiska terrestriska biologiska mångfalden". Du hittar mer information på [CHARTER-webbplatsen](https://charter-arctic.org).
+
+Languages: [ "en-GB", "fi-FI", "sv-SE" ]
 
 Translations:
+  # Finnish:
   - { It: "Loading...", In: fi, Is: "Lastaaminen..." }
   - { It: "Open consultations", In: fi, Is: "Avoimet kuulemiset" }
   - { It: "See more", In: fi, Is: "Katso lisää" }
@@ -134,3 +165,42 @@ Translations:
   - { It: "Yes, I would like to be involved", In: fi, Is: "Kyllä, haluan olla mukana" }
   - { It: "No, but I would like to recieve updates", In: fi, Is: "En halua olla mukana, mutta haluan että tiedotatte minulle tuloksista" }
   - { It: "No, I would not like to be involved or recieve updates", In: fi, Is: "En halua olla mukana, enkä halua, että tiedotatte minulle tuloksista" }
+  # Swedish:
+  - { It: "Loading...", In: sv, Is: "lastning..." }
+  - { It: "Open consultations", In: sv, Is: "öppna samråd" }
+  - { It: "See more", In: sv, Is: "Se mer." }
+  - { It: "Start now", In: sv, Is: "Börja nu" }
+  - { It: "The consultation is not configured correctly. Please contact the administrator.", In: sv, Is: "Konsultationen är inte korrekt konfigurerad. Kontakta administratören." }
+  - { It: "Who is consulting?", In: sv, Is: "Vem konsulterar?" }
+  - { It: "How long will it take?", In: sv, Is: "Hur lång tid tar det?" }
+  - { It: "Where can I find more information?", In: sv, Is: "Var kan jag hitta mer information?" }
+  - { It: "More information is available here.", In: sv, Is: "Mer information finns här." }
+  - { It: "Next", In: sv, Is: "Seuraava" }
+  - { It: "There was a problem: this section doesn't exist.", In: sv, Is: "Det fanns ett problem: den här delen existerar inte." }
+  - { It: "Please confirm below to send your responses to us and complete the consultation.", In: sv, Is: "Bekräfta nedan för att skicka ditt svar till oss och slutföra konsultationen." }
+  - { It: "Finish", In: sv, Is: "avsluta" }
+  - { It: "About You", In: sv, Is: "Om dig" }
+  - { It: "Thank you for your responses.", In: sv, Is: "Tack för era svar." }
+  - { It: "There are %i sections.", In: sv, Is: "Det finns %i sektioner." }
+  - { It: "It should take about %i minutes.", In: sv, Is: "Det tar cirka %i minuter." }
+  - { It: "Please answer the required questions above before continuing (marked by a red asterisk). There are %i remaining.", In: sv, Is: "Svara på de frågor som krävs ovan innan du fortsätter (markerad med en röd asterisk). Det finns %i kvar." }
+  - { It: "Section %i of %i", In: sv, Is: "Osa %i /%i" }
+  - { It: "First Name", In: sv, Is: "Förnamn" }
+  - { It: "Last Name", In: sv, Is: "Efternamn" }
+  - { It: "Are you representing an organisation?", In: sv, Is: "Representerar du en organisation?" }
+  - { It: "Yes", In: sv, Is: "Ja" }
+  - { It: "No", In: sv, Is: "Nej" }
+  - { It: "Organisation Name", In: sv, Is: "Organisationens namn" }
+  - { It: "Responses from all respondants will be collated and analysed together. As part of this work, we may publish a summary of the responses. We will only publish your responses if you give consent.", In: sv, Is: "Svar från alla svarande kommer att sammanställas och analyseras tillsammans. Som en del av detta arbete kan vi publicera en sammanfattning av svaren. Vi publicerar bara dina svar om du ger ditt samtycke." }
+  - { It: "Do not publish my responses", In: sv, Is: "Publicera inte mina svar" }
+  - { It: "Publish anonymised response in full", In: sv, Is: "Publicera anonymiserat svar i sin helhet" }
+  - { It: "Publish response in full with name (and organisation if applicable)", In: sv, Is: "Publicera svaret fullständigt med namn (och organisation om tillämpligt)" }
+  - { It: "If we would like to follow-up your answers, what is the best method of contact?", In: sv, Is: "Om vi vill följa upp dina svar, vad är det bästa sättet att kontakta?" }
+  - { It: "Telephone", In: sv, Is: "Telefon" }
+  - { It: "Email", In: sv, Is: "E-post" }
+  - { It: "I don't want to be contacted", In: sv, Is: "Jag vill inte bli kontaktad" }
+  - { It: "Your telephone number or email", In: sv, Is: "Ditt telefonnummer eller e-post" }
+  - { It: "As part of this project, we would like to involve the community so that our findings are most relevant and well-suited to all that may value them. Can we keep in contact with you for this purpose?", In: sv, Is: "Som en del av detta projekt vill vi involvera samhället så att våra resultat är mest relevanta och passar alla som kan värdesätta dem. Kan vi hålla kontakt med dig för detta ändamål?" }
+  - { It: "Yes, I would like to be involved", In: sv, Is: "Ja, jag skulle vilja vara med" }
+  - { It: "No, but I would like to recieve updates", In: sv, Is: "Nej, men jag vill få uppdateringar" }
+  - { It: "No, I would not like to be involved or recieve updates", In: sv, Is: "Nej, jag skulle inte vilja vara med eller få uppdateringar" }
