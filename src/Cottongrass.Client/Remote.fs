@@ -6,14 +6,14 @@ open Form
 
 // TODO Need to turn Map of DQA DU type into key value dictionary.
 let flattenValues (con:Map<int * int,DynamicQuestionAnswer>) =
-    con|> Seq.map(fun pair ->
+    con |> Seq.map(fun pair ->
         let key = sprintf "section%i-question%i" (fst pair.Key) (snd pair.Key)
         let value =
             match pair.Value with
             | Text s -> s
             | BinaryChoice c -> c.ToString()
-            | Choice c -> c
-        key, value )
+            | Choice (i,c) -> sprintf "[Option %i] %s" i c
+        key, value ) |> Map.ofSeq |> Map.add "_redirect" "false"
 
 let trySend endpoint answers =
     async {

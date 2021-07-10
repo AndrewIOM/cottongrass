@@ -229,7 +229,7 @@ Questions:
         - Language: sv
           Translation: Vilken taxonomisk grupp, släkt eller art är mest intressant för dig?
         Type: short text
-        Visible: previous question is Other
+        Visible: previous question is choice 8
         Required: true
 
       # Scope: population
@@ -267,7 +267,7 @@ Questions:
         - Language: sv
           Translation: Hur ska vi bredda eller begränsa räckvidden för att passa dina intressen?
         Type: freetext
-        Visible: previous question is not fine
+        Visible: previous question is not choice 1
         Required: true
 
       # Definitions: context
@@ -320,7 +320,7 @@ Questions:
         - Language: sv
           Translation: Vilka är problemen med de föreslagna definitionerna för Arktis, och hur skulle du försöka ta itu med dem?
         Type: freetext
-        Visible: previous question is Something else
+        Visible: previous question is choice 5
         Required: true
 
       - Question:
@@ -716,6 +716,7 @@ Questions:
             Concepts - Are there specific concepts for the Arctic that you think we are missing?
         - Language: fi
           Translation: Käsitteet – Puuttuuko jokin mielestäsi olennainen arktiseen alueeseen liittyvä käsite?
+        Type: freetext
         Visible: always
         Required: false
       - Question:

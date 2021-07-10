@@ -172,7 +172,16 @@ let update (js: IJSRuntime) message model =
                 else
                     let currentSection = c.Config.Questions |> Seq.tryItem (section - 2)
                     Form.Parser.requiredQuestions section c.Answers (currentSection.Value.Questions |> Seq.toList) |> Seq.toList
-            { model with SelectedConsultation = Some { c with Answers = c.Answers |> Map.add (section,question) answer; RequiredQuestions = required } }, Cmd.none
+            let newAnswers =
+                match answer with
+                | Form.DynamicQuestionAnswer.Text t ->
+                    if System.String.IsNullOrEmpty t then c.Answers |> Map.remove (section,question)
+                    else c.Answers |> Map.add (section,question) answer
+                | Form.DynamicQuestionAnswer.Choice (i,a) -> 
+                    if System.String.IsNullOrEmpty a then c.Answers |> Map.remove (section,question)
+                    else c.Answers |> Map.add (section,question) answer
+                | _ -> c.Answers |> Map.add (section,question) answer
+            { model with SelectedConsultation = Some { c with Answers = newAnswers; RequiredQuestions = required } }, Cmd.none
     | SendCompletedAnswers -> 
         match model.SelectedConsultation with
         | None -> model, Cmd.none
@@ -425,7 +434,18 @@ let answerFormView shortcode section (model:Model) dispatch =
         ]
 
 let thankYouView model dispatch =
-    p [] [ translate "Thank you for your responses." model.SiteConfig model.CultureCode ]
+
+    div [ attr.``class`` "section" ] [
+        div [ attr.``class`` "container" ] [
+            div [ attr.``class`` "columns" ] [
+                div [ attr.``class`` "column is-6 is-offset-3 has-text-centered" ] [
+                    p [] [ translate "Thank you for your responses." model.SiteConfig model.CultureCode ]
+                    p [] [ translate "We look forward to reading them. If you asked for us to keep in touch, you will hear from us soon." model.SiteConfig model.CultureCode ]
+                    a [ attr.``class`` "button"; on.click (fun _ -> Home |> SetPage |> dispatch ) ] [ text "Home Page" ]
+                ]
+            ]
+        ]
+    ]
 
 let view model dispatch =
     concat [
