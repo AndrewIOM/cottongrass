@@ -175,12 +175,12 @@ Translations:
   - { It: "How long will it take?", In: sv, Is: "Hur lång tid tar det?" }
   - { It: "Where can I find more information?", In: sv, Is: "Var kan jag hitta mer information?" }
   - { It: "More information is available here.", In: sv, Is: "Mer information finns här." }
-  - { It: "Next", In: sv, Is: "Seuraava" }
+  - { It: "Next", In: sv, Is: "Nästa" }
   - { It: "There was a problem: this section doesn't exist.", In: sv, Is: "Det fanns ett problem: den här delen existerar inte." }
-  - { It: "Please confirm below to send your responses to us and complete the consultation.", In: sv, Is: "Bekräfta nedan för att skicka ditt svar till oss och slutföra konsultationen." }
+  - { It: "Please confirm below to send your responses to us and complete the consultation.", In: sv, Is: "Bekräfta nedan för att skicka dina svar till oss och slutföra konsultationen." }
   - { It: "Finish", In: sv, Is: "avsluta" }
   - { It: "About You", In: sv, Is: "Om dig" }
-  - { It: "Thank you for your responses.", In: sv, Is: "Tack för era svar." }
+  - { It: "Thank you for your responses.", In: sv, Is: "Tack för dina svar." }
   - { It: "There are %i sections.", In: sv, Is: "Det finns %i sektioner." }
   - { It: "It should take about %i minutes.", In: sv, Is: "Det tar cirka %i minuter." }
   - { It: "Please answer the required questions above before continuing (marked by a red asterisk). There are %i remaining.", In: sv, Is: "Svara på de frågor som krävs ovan innan du fortsätter (markerad med en röd asterisk). Det finns %i kvar." }
