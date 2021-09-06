@@ -123,7 +123,52 @@ Site:
 
       Granskningsteamet (som söker efter och sammanställer bevisen) är en internationell grupp av akademiska forskare från Finland, Ryssland, Sverige, Storbritannien, Island och Danmark. Forskningen finansieras av Europeiska kommissionen genom ett Horizon 2020-samarbete. Samarbetet heter CHARTER - "Förändringar i den arktiska terrestriska biologiska mångfalden". Du hittar mer information på [CHARTER-webbplatsen](https://charter-arctic.org).
 
-Languages: [ "en-GB", "fi-FI", "sv-SE" ]
+  - Language: ru
+    ShortTitle: Карта биоразнообразия Арктики
+    LongTitle: Долгосрочные изменения биоразнообразия Арктики - систематическая карта
+    Subtitle: Помогите сформировать наши исследования
+    IntroText: >
+      ## В чем состоит исследование?
+
+      Изменение климата приводит к быстрому потеплению в арктическом регионе, что оказывает воздействие на арктические растения, животные и другие виды. Чтобы лучше понять, как жизнь в Арктике может реагировать на эти изменения - и что можно сделать, чтобы защитить ее - мы можем заглянуть в прошлое. 
+
+      Темпы изменения разнообразия и распределение *биоразнообразия* за последние десять тысяч лет могут быть использованы для информирования наших текущих моделей и прогнозов того, как это повлияет на биоразнообразие в 21-м веке.
+
+      Чтобы понять прошлые изменения в биоразнообразии Арктики, мы составляем *систематическую карту* текущих доказательств. Систематическая карта обеспечивает полный и непредвзятый синтез состояния знания по определенной теме. Этот процесс включает в себя просмотр библиотечных коллекций, поиск неопубликованных исследований и технических отчетов для того, чтобы найти все соответствующие научные работы.
+
+
+      ![Арктические млекопитающие](images/banner1.jpg)
+
+      ## Как исследователи понимают прошлые изменения в биоразнообразии Арктики за тысячи лет?
+
+      Растения, животные, грибы и так далее, могут оставлять после себя следы того, что они существовали в окружающей среде.
+      
+      
+      Примеры включают в себя кости, крошечные микроскопические окаменелости (такие, как пыльца растений), сосновые шишки, листья
+      и семена и бивни мамонта. Они часто остаются в таких «экологических архивах»,
+      как озерные отложения, торф и мерзлый грунт.
+      Останки могут быть датированы с использованием радиоуглерода и других методов датирования, что дает нам представление о том, какие виды существовали, когда и какова была их численность.
+
+
+      ## Совместная работа над общей целью - мы нуждаемся в Вашей помощи
+
+      Этот проект представляет собой широкое сотрудничество на разных языках и со всеми теми, кто интересуется биоразнообразием Арктики.
+      Существует много путей для привнесения Вашего важного вклада : от определения границ (например, включая таксономические группы, место и время) и помощи в оформлении дизайна исследования, до выявления возможных источников новой информации.
+
+
+
+      Нам особенно интересно работать с теми, кто называет Арктику своим домом, с академическими исследователями, Правительственными организациями, арктическими землеустроителями, музеями и центрами по интерпретации данных, неправительственными организациями (НПО), которые проявляют интерес к арктической окружающей среде.
+      Приглашаем всех к работе с нами.
+
+      ## Кто является обзорной группой и как она финансируется?
+
+      Обзорная группа, (которая ищет и компилирует доказательства), является международной группой.
+      академических исследователей из Финляндии, России, Швеции, Великобритании, Исландии и Дании.
+
+      
+      Сотрудничество называется CHARTER - «Изменения в биоразнообразии арктической суши». Вы можете найти  более подробную информацию на [веб-странице CHARTER](https://charter-arctic.org).
+
+Languages: [ "ru-RU", "en-GB", "fi-FI", "sv-SE" ]
 
 Translations:
   # Finnish:
@@ -204,3 +249,42 @@ Translations:
   - { It: "Yes, I would like to be involved", In: sv, Is: "Ja, jag skulle vilja vara med" }
   - { It: "No, but I would like to recieve updates", In: sv, Is: "Nej, men jag vill få uppdateringar" }
   - { It: "No, I would not like to be involved or recieve updates", In: sv, Is: "Nej, jag skulle inte vilja vara med eller få uppdateringar" }
+  # Russian:
+  - { It: "Loading...", In: ru, Is: "Загрузка..." }
+  - { It: "Open consultations", In: ru, Is: "Открытые консультации" }
+  - { It: "See more", In: ru, Is: "Смотреть дополнительно" }
+  - { It: "Start now", In: ru, Is: "Начать сейчас" }
+  - { It: "The consultation is not configured correctly. Please contact the administrator.", In: ru, Is: "Консультация настроена неправильно. Пожалуйста, свяжитесь с администратором." }
+  - { It: "Who is consulting?", In: ru, Is: "Кто консультирует?" }
+  - { It: "How long will it take?", In: ru, Is: "Сколько времени это займет?" }
+  - { It: "Where can I find more information?", In: ru, Is: "Где я могу найти дополнительную информацию?" }
+  - { It: "More information is available here.", In: ru, Is: "Более подробная информация доступна здесь." }
+  - { It: "Next", In: ru, Is: "Затем" }
+  - { It: "There was a problem: this section doesn't exist.", In: ru, Is: "Возникла проблема: этого раздела не существует." }
+  - { It: "Please confirm below to send your responses to us and complete the consultation.", In: ru, Is: "Пожалуйста, подтвердите ниже, чтобы отправить нам свои ответы и завершить консультацию." }
+  - { It: "Finish", In: ru, Is: "Завершить" }
+  - { It: "About You", In: ru, Is: "О Вас" }
+  - { It: "Thank you for your responses.", In: ru, Is: "Спасибо за Ваши ответы." }
+  - { It: "There are %i sections.", In: ru, Is: "Имеется %i разделов." }
+  - { It: "It should take about %i minutes.", In: ru, Is: "Это должно занять около %i минут." }
+  - { It: "Please answer the required questions above before continuing (marked by a red asterisk). There are %i remaining.", In: ru, Is: "Пожалуйста, ответьте на необходимые вопросы выше, прежде чем продолжить (они отмечены красной звездочкой). Осталось %i." }
+  - { It: "Section %i of %i", In: ru, Is: "Раздел %i из %i" }
+  - { It: "First Name", In: ru, Is: "Имя" }
+  - { It: "Last Name", In: ru, Is: "Фамилия" }
+  - { It: "Are you representing an organisation?", In: ru, Is: "Вы представляете организацию?" }
+  - { It: "Yes", In: ru, Is: "Да" }
+  - { It: "No", In: ru, Is: "Нет" }
+  - { It: "Organisation Name", In: ru, Is: "Название организации" }
+  - { It: "Responses from all respondants will be collated and analysed together. As part of this work, we may publish a summary of the responses. We will only publish your responses if you give consent.", In: ru, Is: "Ответы всех респондентов будут сведены воедино и проанализированы. В рамках этой работы мы можем опубликовать резюме ответов. Мы опубликуем Ваши ответы только в том случае, если Вы дадите нам на это свое согласие." }
+  - { It: "Do not publish my responses", In: ru, Is: "Не публиковать мои ответы" }
+  - { It: "Publish anonymised response in full", In: ru, Is: "Опубликовать анонимный ответ в полном объеме" }
+  - { It: "Publish response in full with name (and organisation if applicable)", In: ru, Is: "Опубликовать ответ полностью с именем и фамилией (и организацией, если таковая имеется)" }
+  - { It: "If we would like to follow-up your answers, what is the best method of contact?", In: ru, Is: "Если мы захотим проследить за Вашими ответами, как с Вами лучше связаться?" }
+  - { It: "Telephone", In: ru, Is: "По телефону" }
+  - { It: "Email", In: ru, Is: "По электронной почте" }
+  - { It: "I don't want to be contacted", In: ru, Is: "Я не хочу, чтобы со мной вступали в контакт" }
+  - { It: "Your telephone number or email", In: ru, Is: "Ваш номер телефона и адрес электронной почты" }
+  - { It: "As part of this project, we would like to involve the community so that our findings are most relevant and well-suited to all that may value them. Can we keep in contact with you for this purpose?", In: ru, Is: "В рамках этого проекта мы хотели бы вовлечь сообщество, с тем, чтобы наши результаты стали наиболее актуальными и хорошо подходящими для всех, кто сможет их оценить. Можем ли мы с этой целью поддерживать с Вами связь?" }
+  - { It: "Yes, I would like to be involved", In: ru, Is: "Да, я хотел(а) бы принять в  этом  участие" }
+  - { It: "No, but I would like to recieve updates", In: ru, Is: "Нет, но я хотел(а) бы получать обновления" }
+  - { It: "No, I would not like to be involved or recieve updates", In: ru, Is: "Нет, я не хочу ни участвовать, ни получать обновления" }

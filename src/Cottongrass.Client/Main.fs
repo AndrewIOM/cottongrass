@@ -421,7 +421,7 @@ let answerFormView shortcode section (model:Model) dispatch =
                         ul [ attr.``class`` "bar" ] [
                             concat [
                                 if section = 1 then li [] [ translate "About You" model.SiteConfig model.CultureCode ]
-                                else li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ translate "About you" model.SiteConfig model.CultureCode ]]
+                                else li [] [ a [ on.click (fun _ -> AnswerForm(shortcode,1) |> SetPage |> dispatch ) ] [ translate "About You" model.SiteConfig model.CultureCode ]]
                                 forEach [1 .. con.Config.Questions.Count] (fun i -> 
                                     if (i+1) = section then li [] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ]
                                     else if (i+1) >= section then li [] [ text (con.Config.Questions.[i-1].Name |> Seq.find(fun d -> d.Language = currentLanguage model.CultureCode)).Translation ]

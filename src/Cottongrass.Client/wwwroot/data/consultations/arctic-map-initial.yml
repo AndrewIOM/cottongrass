@@ -85,6 +85,43 @@ Information:
     WhoIsConsulting: >
       Vi är 'CHARTER-konsortiet', ett internationellt samarbete mellan forskare som finansieras av Europeiska kommissionen. Den ledande granskaren för detta projekt är Dr Andrew Martin, University of Oxford.
     WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
+  - Language: ru
+    Title: Первичная консультация
+    Description: >
+      ## По чему мы консультируемся?
+
+      Чтобы понять прошлые изменения в биоразнообразии Арктики, мы составляем *систематическую карту*
+      текущих доказательств. Систематическая карта обеспечивает полный и непредвзятый синтез состояния знаний по определенной теме. Процесс включает в себя просмотр библиотечных коллекций, поиск неопубликованных исследований и технических отчетов, с целью обнаружения всех соответствующих научных работ.
+
+
+      Это исследование является крупным мероприятием, и мы хотим убедиться, что оно имеет наибольшую актуальность для большинства людей, групп и организаций.
+
+
+      Существует много путей для привнесения Вашего важного вклада : от определения границ (например, включая таксономические группы, место и время) и помощи в оформлении дизайна исследования, до выявления возможных источников новой информации.
+
+      ### Основные принципы систематического картографирования
+      
+      Систематическое картирование является объективным методом характеристики доказательной базы по широкой теме и выявлению пробелов в фактических данных, уменьшающим при этом любые потенциальные предубеждения. Процесс сориентирован на
+      картографировании литературы, а резолютивная карта не обязательно является географической картой.
+
+      Извлекаются метаданные об источниках, а используемые методы часто оцениваются на аккуратность.
+
+      Смежным подходом является систематический обзор, который обычно фокусируется на менее широком ключевом вопросе, но включает в себя компиляцию и анализ базовых данных для рассмотрения вопросов исследования в синтезе данных. Систематическое картирование порождает гипотетический
+      подход, который может быть учтен в последующих систематических обзорах (где рассматриваются данные гипотезы);
+
+      поэтому после создания карты для этого появляется возможность. 
+
+      Ключевым соображением является развитие и публикация протокола систематического картирования, который является отдельной рецензируемой
+      публикацией, завершающейся до начала работы по поиску и извлечению данных
+      (для второй рецензируемой публикации окончательной карты).
+
+
+      Для получения дополнительной информации о методах, используемых в систематическом картировании, Нил Хэддауэй из Стокгольмского института Окружающей Среды подготовил хорошие вводные ресурсы для доказательств методов синтеза; смотрите эту информацию по адресу:
+      [https://systematicmappingmethods.github.io/intro.html] (https://systematicmappingmethods.github.io/intro.html).
+
+    WhoIsConsulting: >
+      Мы являемся «консорциумом CHARTER», международным сотрудничеством ученых, которое финансируется Европейской комиссией. «Ведущим рецензентом» этого проекта является доктор Эндрю Мартин, Оксфордский университет.
+    WhoIsConsultingUrl: http://www.polar.ox.ac.uk/person/andrew-martin/
 
 TimeEstimateToCompleteInMinutes: 25
 MoreInformationUrl: http://charter-arctic.org
@@ -102,6 +139,8 @@ Questions:
       Translation: Ensisijainen tutkimuskysymys - sen laajuus ja määritelmät
     - Language: sv
       Translation: Vår primära forskningsfråga - omfattning och definitioner
+    - Language: ru
+      Translation: Наш основной исследовательский вопрос – объем и определения
     Description:
     - Language: en
       Translation: > 
@@ -165,6 +204,37 @@ Questions:
         
         För varje termin måste vi bestämma de gränser inom vilka den systematiska kartan är mest användbar för den bredaste publiken, men också praktisk att slutföra.
 
+    - Language: ru
+      Translation: > 
+        С этого момента Вы можете пропустить любые вопросы, на которые 
+        Вы не хотите отвечать. 
+        
+        
+        В этом разделе мы хотели бы узнать, соответствует 
+        ли текущий **объем** исследований Вашим интересам в области 
+        биоразнообразия Арктики. **область** определяет, какие исследуемые области будут включены или 
+        исключены из нашей систематической карты. 
+
+        
+        Мы определили 
+        **первичный исследовательский вопрос**, в котором излагается научная 
+        проблема, которую будет решать наша карта. 
+        
+        
+        В рамках исследовательского вопроса некоторые ключевые термины 
+        требуют определения и «определения сферы охвата»:
+        
+        
+          * Арктический регион (где установить географические границы?)
+          * Голоцен *или* долгосрочный период (каковы даты начала и окончания?)
+          * Арктическая биота (какие группы и виды включать?)
+          * Меры биоразнообразия (какие меры существуют?)
+        
+        
+        Для каждого периода нужно определиться с рамками, в которых 
+        систематическая карта будет наиболее полезна для самой широкой 
+        аудитории, а также будет практична для заполнения.
+
     Questions:
 
       # Research questions
@@ -181,6 +251,13 @@ Questions:
         - Language: sv
           Translation:
             Vår huvudsakliga forskningsfråga är 'vilka bevis finns för tidsmässig variation i måtten på den arktiska terrestriska och akvatiska biologiska mångfalden i hela Holocen?'. Fångar den här frågan i stort sett dina intressen för långsiktiga förändringar av den arktiska biologiska mångfalden?
+        - Language: ru
+          Translation:
+            Наш главный исследовательский вопрос заключается в том, «какие существуют 
+            доказательства временной изменчивости в показателях арктического наземного и 
+            водного биоразнообразия на протяжении всего голоцена?». 
+            Отражает ли этот вопрос Ваши интересы в долгосрочных изменениях 
+            биоразнообразия Арктики?
         Type: binary choice
         Choices:
         - Language: en
@@ -189,6 +266,8 @@ Questions:
           Translation: [ "Kyllä", "Ei" ]
         - Language: sv
           Translation: [ "Ja", "Nej" ]
+        - Language: ru
+          Translation: [ "Да", "Нет" ]
         Visible: always
         Required: false
       - Question:
@@ -198,6 +277,8 @@ Questions:
           Translation: "Kerro kuinka voisimme muotoilla tutkimuskysymystä niin, että se liittyisi olennaisesti työhösi tai kiinnostuksen kohteeseesi."
         - Language: sv
           Translation: Berätta hur vi kan göra vår fråga mer relevant för ditt arbete eller intressen.
+        - Language: ru
+          Translation: Пожалуйста, расскажите нам, как мы могли бы изменить наш вопрос, чтобы сделать его более актуальным для Вашей работы или для Ваших интересов.
         Type: freetext
         Visible: previous question is false
         Required: true
@@ -211,6 +292,8 @@ Questions:
           Translation: Mihin arktiseen lajiryhmään liittyvä tieto olisi oman työsi kannalta kaikkein merkityksellisintä?
         - Language: sv
           Translation: För vilken arktisk taxonomisk grupp skulle den syntetiserade informationen vara mest intressant för dig för arbete eller på annat sätt?
+        - Language: ru
+          Translation: Для какой арктической таксономической группы обобщенная информация будет наиболее интересной для Вас в работе или в другой деятельности?
         Type: choice
         Visible: always
         Required: false
@@ -221,6 +304,8 @@ Questions:
           Translation: ["Ei mikään tietty ryhmä", "Vesikasvit", "Vesieläimet", "Sienet", "Nisäkkäät (kaikki)", "Kasvit", "Poro", "Muut" ]
         - Language: sv
           Translation: ["Ingen specifik grupp", "Vattenväxter", "Vattenlevande djur", "Svampar", "Däggdjur (alla)", "Växter", "Ren", "Övrig" ]
+        - Language: ru
+          Translation: ["Конкретной группы нет", "Водные растения", "Водные животные", "Грибы", "Млекопитающие (все)", "Растения", "Северный олень", "Остальное" ]
       - Question:
         - Language: en
           Translation: Which taxonomic group, genus, or species is of most interest to you?
@@ -228,6 +313,8 @@ Questions:
           Translation: Mikä taksonominen ryhmä, suku tai laji on itsesi kannalta kiinnostavin?
         - Language: sv
           Translation: Vilken taxonomisk grupp, släkt eller art är mest intressant för dig?
+        - Language: ru
+          Translation: Какая таксономическая группа, род или вид представляет для Вас наибольший интерес?
         Type: short text
         Visible: previous question is choice 8
         Required: true
@@ -249,6 +336,12 @@ Questions:
             Vi kommer endast att inkludera information för följande taxonomiska 
             grupper: växter, däggdjur, fåglar, reptiler, amfibier, svampar, 
             alger, akvatiska leddjur, fjädermyggor och lavar. Tror du att omfattningen är:
+        - Language: ru
+          Translation: >
+            Мы будем включать информацию только для следующих таксономических групп: 
+            растения, млекопитающие, птицы, рептилии, амфибии, грибы, водоросли, водные 
+            членистоногие, хирономиды и лишайники. 
+            Как Вы можете определить их область применения :
         Type: choice
         Choices:
         - Language: en
@@ -257,6 +350,8 @@ Questions:
           Translation: [ "hyvä", "liian tiukka", "liian laaja" ]
         - Language: sv
           Translation: [ "bra", "för smal", "för bred" ]
+        - Language: ru
+          Translation: [ "В самый раз", "Слишком узкая", "Слишком широкая" ]
         Visible: always
         Required: false
       - Question:
@@ -266,6 +361,8 @@ Questions:
           Translation: Kuinka meidän tulisi laajentaa tai rajata tarkastelua, jotta se olisi mielestäsi tarkoituksenmukainen?
         - Language: sv
           Translation: Hur ska vi bredda eller begränsa räckvidden för att passa dina intressen?
+        - Language: ru
+          Translation: Как мы должны расширить или сузить наши рамки в соответствии с Вашими интересами?
         Type: freetext
         Visible: previous question is not choice 1
         Required: true
@@ -281,6 +378,11 @@ Questions:
           Translation: Meidän on määriteltävä arktisen alueen rajat selkeästi. Tälle on olemassa useita eri vaihtoehtoja. Mikä seuraavista määritelmistä on paras tarkasteltaessa biodiversiteetin muutoksia viimeisten kymmenen tuhannen vuoden aikana? 
         - Language: sv
           Translation: Vi måste tydligt definiera gränserna för den arktiska regionen. Det finns många möjliga sätt att göra detta. Vilket av följande skulle bäst definiera Arktis när man tittar på förändringar i biologisk mångfald under de senaste tio tusen åren?
+        - Language: ru
+          Translation:
+            Нам нужно четко определить границы Арктического региона. 
+            Есть много возможных способов сделать это. 
+            Что из следующего лучше всего определит Арктику при рассмотрении изменений в биоразнообразии за последние десять тысяч лет?
         Type: choice
         Choices:
         - Language: en
@@ -310,6 +412,14 @@ Questions:
             norra breddgrader - norr om den 58 e parallellen (detta skulle inkludera Isle of Lewis i Skottland och hela Norge och Finland),
             Något annat
           ]
+        - Language: ru
+          Translation: [
+            Северный полярный круг - определяется количеством светового дня во время летнего и зимнего солнцестояния,
+            высоко - широтная тундра - к северу от таежного леса (в наши дни),
+            холодные северные районы - где средние летние температуры (в наши дни) составляют менее 1 градуса по Цельсию,
+            северные широты - к северу от 58-й параллели (сюда входят остров Льюис в Шотландии и вся Норвегия, и Финляндия),
+            Что-то еще
+          ]
         Visible: always
         Required: false
       - Question:
@@ -319,6 +429,8 @@ Questions:
           Translation: Mitä ongelmia edellä ehdotettuihin arktisen alueen määritelmiin liittyy, ja miten niitä tulisi muuttaa?
         - Language: sv
           Translation: Vilka är problemen med de föreslagna definitionerna för Arktis, och hur skulle du försöka ta itu med dem?
+        - Language: ru
+          Translation: Какие у нас возникли проблемы с предлагаемыми определениями для Арктики и как бы Вы хотели их разрешить?
         Type: freetext
         Visible: previous question is choice 5
         Required: true
@@ -336,6 +448,11 @@ Questions:
             Jos pitäisi, miten nämä alueet tulisi rajata maantieteellisesti?
         - Language: sv
           Translation: Ska vi inkludera ekosystem i utkanten av den arktiska tundran, såsom övergångsområdet mellan boreal skog och tundra? Om så är fallet, vilka geografiska gränser kan vi använda för att ange dessa områden?
+        - Language: ru
+          Translation: 
+            Должны ли мы включать экосистемы на окраинах арктической тундры, такие, как переходная зона между бореальными лесами и тундрой? 
+            Если да, то какие географические границы мы могли бы использовать для обозначения
+            этих районов?
         Type: freetext
         Visible: always
         Required: false
@@ -353,6 +470,13 @@ Questions:
           Translation: Tutkimuksemme keskittyy "Holoseeniin", joka on viimeisin ilmastollisesti vakaa aikakausi ja alkoi viimeisen jääkauden jälkeen jatkuen aina nykypäivään asti. Vaikka jäätiköt vetäytyivät arktisella alueella eri paikoissa eri aikaan, pidämme kaikkialla noin 11 500 vuotta sitten alkanutta lämmintä ilmastovaihetta Holoseenin alkuna. Oletko yhtä mieltä tämän määritelmän kanssa?
         - Language: sv
           Translation: Vår studie fokuserar på 'Holocen' - den senaste perioden av klimatstabilitet som har inträffat sedan den senaste istiden till idag. Även om glaciärer drog sig tillbaka vid olika tidpunkter runt polcirkeln, anser vi att det sedan 11 500 år före idag är att de varmare förhållandena inträffade i de flesta regioner som markerade början på Holocen. Håller du med den här definitionen?
+        - Language: ru
+          Translation: 
+            Наше исследование сосредоточено на «голоцене» - недавнем периоде климатической стабильности, который происходил со времен последнего ледникового периода и до наших дней. 
+            Хотя ледники отступали в разное время вокруг Полярного круга, мы считаем, что 
+            именно за последние 11,5 лет до наших дней в большинстве регионов наблюдались 
+            более теплые условия, знаменуя начало голоцена. 
+            Согласны ли Вы с таким определением?
         Type: binary choice
         Choices:
         - Language: en
@@ -361,6 +485,8 @@ Questions:
           Translation: [ "Kyllä", "Ei" ]
         - Language: sv
           Translation: [ "Ja", "Nej" ]
+        - Language: ru
+          Translation: [ "Да", "Нет" ]
         Visible: always
         Required: false
       - Question:
@@ -370,6 +496,10 @@ Questions:
           Translation: Miten meidän tulisi määritellä Holoseeni, jotta se vastaisi paremmin mielikuvaasi arktisen biodiversiteetin pitkän ajan muutoksista?
         - Language: sv
           Translation: Hur skulle vi kunna definiera holocen för att bättre passa era intressen i långsiktiga förändringar av den arktiska biologiska mångfalden?
+        - Language: ru
+          Translation: 
+            Как мы могли бы определить голоцен, чтобы лучше соответствовать Вашим интересам
+            в долгосрочных изменениях биоразнообразия Арктики?
         Type: freetext
         Visible: previous question is false
         Required: false
@@ -388,6 +518,14 @@ Questions:
             Onko tämä määritelmä sopiva tutkittaessa vuosisataisia muutoksia arktisessa biodiversiteetissä?
         - Language: sv
           Translation: Vi har definierat 'biologisk mångfald' som levnadsorganismernas variationer och de ekologiska komplexiteten i deras interaktioner. Organismer skiljer sig åt efter art (taxonomisk), genetik, morfologi och hur livsmiljöerna är strukturerade. Är denna definition lämplig för att förstå förändringar i den arktiska biologiska mångfalden i hundra år?
+        - Language: ru
+          Translation:
+            Мы определили «биоразнообразие» как изменчивость живых организмов и 
+            экологические сложности их взаимодействий. 
+            Организмы различаются по видам (таксономическим признакам), генетике, 
+            морфологии и способам структуры среды их обитания. 
+            Подходит ли это определение для понимания изменений в биоразнообразии Арктики
+            в масштабе столетий?
         Type: binary choice
         Choices:
         - Language: en
@@ -396,6 +534,8 @@ Questions:
           Translation: [ "Sopiva", "Sopimaton" ]
         - Language: sv
           Translation: [ "lämplig", "inte lämplig" ]
+        - Language: ru
+          Translation: [ "Подходит", "Не подходит" ]
         Visible: always
         Required: false
       - Question:
@@ -405,6 +545,10 @@ Questions:
           Translation: Kuinka meidän tulisi muuttaa 'biodiversiteetin' määritelmää, jotta se vastaisi paremmin käsitystäsi?
         - Language: sv
           Translation: Hur kunde vi ändra definitionen av 'biologisk mångfald' så att den passar ditt arbete eller intressen bättre?
+        - Language: ru
+          Translation: 
+            Как бы мы могли изменить определение «биоразнообразия», чтобы лучше 
+            соответствовать Вашей работе или Вашим интересам?
         Type: freetext
         Visible: previous question is false
         Required: false
@@ -419,6 +563,8 @@ Questions:
       Translation: Hakustrategia
     - Language: sv
       Translation: Sökstrategi
+    - Language: ru
+      Translation: Стратегия поиска
     Description:
     - Language: en
       Translation: >
@@ -498,6 +644,47 @@ Questions:
         
         Att titta in i det förflutna är inte enkelt, eftersom vi aldrig observerar förändringar när de händer. Snarare ser vi spår av djur, växter och annan biota (eller "proxies"). Exempel på ombud inkluderar: pollen eller sporer; forntida DNA-fragment; fossila insekter eller växtdelar; eller ben och betar.
 
+    - Language: ru
+      Translation: > 
+        «Стратегия поиска» — это формальный метод, с помощью которого мы 
+        определяем все соответствующие источники информации, касающиеся 
+        прошлых изменений в биоразнообразии Арктики. 
+        Важными соображениями являются:
+
+
+          1. Определение основных **концепций поиска**, которые могут указывать на документ или источник, содержащий информацию, относящуюся к нам.
+
+          2. Выбор баз данных и архивов для поиска внутри них.
+          
+          3. Выяснение того, кто имеет доступ к неопубликованным работам, которые могут быть актуальными, и могут ли они быть переданы нам. Мы называем это «серой литературой».
+
+
+        Чтобы наилучшим образом определить и структурировать наши 
+        концепции поиска, мы взяли исследовательский вопрос и искали связи 
+        между его частями. 
+        Распространенным методом, используемым в систематических картах, 
+        является идентификация **Популяции** (того,что изучается?), 
+        **Воздействие** (чему оно подвержено?),
+        **Компаратора** (каковы различные уровни воздействия?)
+        и **Результат** (каковы ответы?). 
+        Затем мы можем определить исследования, в которых присутствуют все эти компоненты. 
+        Пожалуйста, взгляните на диаграмму ниже, следуя стрелкам из верхнего левого угла:
+
+
+        ![Теория изменений, использованная в данном исследовании](images/peco-simple.png)
+
+
+        Здесь наша **популяция** (арктическая биота) 
+        **подвержена** движению во
+        времени, что приводит к изменениям в **результатах** 
+        (показателях биоразнообразия, таких, как разнообразие и распределение 
+        видов).
+
+        
+        Заглянуть в прошлое непросто, так как мы никогда не наблюдаем изменения по мере их возникновения. 
+        Скорее, мы видим следы животных, растений, и другой биоты (или «прокси»). 
+        Примеры прокси включают в себя: пыльцу или споры; древние фрагменты ДНК; ископаемых насекомых или частей растений; или же кости и бивни.
+
     Questions:
       - Question:
         - Language: en
@@ -509,6 +696,11 @@ Questions:
           Translation: Onko sinulla kommentoitavaa siihen, miten olemme käsitelleet populaatiota (Population), altistusta (Exposure) ja lopputulosta (Outcome) yllä olevassa kaaviossa? Kirjoita kommenttisi tähän. 
         - Language: sv
           Translation: Har du några kommentarer till hur vi har förstått population, exponeringen och resultatet, som visas i diagrammet ovan? Snälla berätta för oss här.
+        - Language: ru
+          Translation:
+            Есть ли у Вас какие-либо комментарии по поводу того, как мы понимаем Популяцию, 
+            Воздействие и Результат, как показано на диаграмме выше? 
+            Пожалуйста, расскажите нам об этом здесь.
         Type: freetext
         Visible: always
         Required: false
@@ -521,6 +713,8 @@ Questions:
       Translation: Hakukonseptit – Populaatio (arktinen eliöstö)
     - Language: sv
       Translation: Sökbegrepp - Population (Arktisk Biota)
+    - Language: ru
+      Translation: Концепции поиска - Популяция (Арктическая биота)
     Description:
     - Language: en
       Translation: >
@@ -637,6 +831,46 @@ Questions:
             | Invertebrates - general concepts                | ("insect") OR                                                                                                                                                                                                                                                                                                                                                                                                |
             | Vertebrates - general concepts                  | ("animal" OR "fauna" OR "faunal" OR "megafauna" OR "megaherbivore" OR "vertebrata" OR "vertebrate") OR                                                                                                                                                                                                                                                                                                       |
             | Fungi                                           | ("lichen?")                                                                                                                                                                                                                                                                                                                                                                                                  |
+    
+    - Language: ru
+      Translation: >
+          Наиболее важной частью **стратегии поиска** является «строка поиска». 
+          Строка состоит из понятий - и терминов / синонимов, которые относятся к ним – чтобы указать, что источник имеет отношение к нашей исследовательской проблеме.
+          Концепции должны идентифицировать как можно больше релевантного материала, избегая при этом поиска источников, которые, на самом деле, не актуальны (ложные срабатывания). 
+          Мы определили список понятий и терминов с помощью тезауруса и тестового списка известных соответствующих источников. 
+
+          
+          Строка поиска:
+
+          * требует, чтобы присутствовала **Попауляция** (арктическая биота), **Воздействие** (движение времени от десятилетий к векам) и Все **Результаты** (показатели биоразнообразия) присутствуют
+
+          * определяется на многих языках
+
+          * адаптирован к каждому конкретному источнику базы данных.
+
+          * включает в себя подстановочные знаки для обнаружения необязательных букв (?) и слов с несколькими окончаниями (*).
+
+
+          Мы хотели бы спросить Вас, считаете ли Вы, что мы включили все концепции, которые важны для каждой из Популяций, для Воздействия и Результатов, в следующих разделах. 
+
+
+          Во-первых, мы хотели бы спросить Вас об **арктической биоте**, нашей Популяции. 
+          Мы включили следующие понятия и связанные с ними термины:
+
+            | Concept                                         | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                         |
+            | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+            | Plants (general)                                | ("plant?" OR "flora" OR "vegetation" OR "Plantae" OR "vegetational" OR "pal?eovegetation" OR "floristic") OR                                                                                                                                                                                                                                                                                                 |
+            | Non-vascular plants                             | ("bryophyte" OR "Bryophyta" OR "liverwort?" OR "moss" OR "mosses") OR                                                                                                                                                                                                                                                                                                                                        |
+            | Herbacous plants                                | ("forb?") OR                                                                                                                                                                                                                                                                                                                                                                                                 |
+            | Vascular plants                                 | ("shrub?" OR "woody plant" OR "vascular plant" OR "fern?" OR "pteridophyt?" OR "spermatopht?" OR "xerophyte" OR "tree species" OR "coniferous" OR "conifer" OR "deciduous" OR "herb") OR                                                                                                                                                                                                                     |
+            | Boreal forest / treeline species, shrub species | ("forest species" OR "treeline species" OR "tree-line species" OR "larch" OR "Larix" OR "spruce" OR "picea" OR "western hemlock" OR "Tsuga" OR "Sitka" OR "alnus" OR "cottonwood" OR "Populus" OR "Pinus" OR "birch" OR "alder" OR "pine" OR "Betula" OR "willow") OR                                                                                                                                        |
+            | Amphibians and aquatic groups                   | ("amphibian" OR "Amphibia" OR "aquatic animal" OR "algae" OR "algal") OR                                                                                                                                                                                                                                                                                                                                     |
+            | Reptiles                                        | ("reptile") OR                                                                                                                                                                                                                                                                                                                                                                                               |
+            | Birds                                           | ("bird?" OR "Aves") OR                                                                                                                                                                                                                                                                                                                                                                                       |
+            | Mammals                                         | ("mammal" OR "mammalian" OR "mammoth" OR "reindeer" OR "caribou" OR "polar bear" OR "Mammuthus primigenius" OR "steppe bison" OR "Bison priscus" OR "muskox" OR "Ovibos moschatus" OR "moose" OR "Alcos alces" OR "reindeer" OR "Rangifer tarandus" OR "horse" OR "Equus caballus" OR "wolf" OR "wolves" OR "Canis lupus" OR "dog" OR "squirrel" OR "arctic fox" OR "vulpes lagopus" OR "alopex lagopus") OR |
+            | Invertebrates - general concepts                | ("insect") OR                                                                                                                                                                                                                                                                                                                                                                                                |
+            | Vertebrates - general concepts                  | ("animal" OR "fauna" OR "faunal" OR "megafauna" OR "megaherbivore" OR "vertebrata" OR "vertebrate") OR                                                                                                                                                                                                                                                                                                       |
+            | Fungi                                           | ("lichen?")                                                                                                                                                                                                                                                                                                                                                                                                  |
 
     Questions:
       - Question:
@@ -647,6 +881,8 @@ Questions:
           Translation: Käsitteet – Puuttuuko mielestäsi jokin 'arktiseen eliöstöön' liittyvä käsite?
         - Language: sv
           Translation: Begrepp - Finns det specifika begrepp för 'Arctic biota' som du tror att vi saknar?
+        - Language: ru
+          Translation: Понятия - Есть ли конкретные понятия для «арктической биоты», которые, по Вашему мнению, мы упустили?
         Type: freetext
         Visible: always
         Required: false
@@ -658,6 +894,8 @@ Questions:
           Translation: Termit – Onko lueteltujen termien lisäksi olemassa joitakin muita termejä, jotka olisivat parempia olennaisen tiedon löytämiseksi?
         - Language: sv
           Translation: Termer - Finns det ytterligare termer för de begrepp som anges, som du tror bättre skulle fånga relevant information?
+        - Language: ru
+          Translation: Термины - Для перечисленных понятий, существуют ли дополнительные термины, которые, по Вашему мнению, лучше будут отражать соответствующую информацию?
         Type: freetext
         Visible: always
         Required: false
@@ -671,6 +909,8 @@ Questions:
       Translation: Hakukäsitteet – Populaation Sijainti (Arktis)
     - Language: sv
       Translation: Sökbegrepp - Populationskontext (Arktis)
+    - Language: ru
+      Translation: Концепции поиска - Контекст Популяции (Арктика)
     Description:
     - Language: en
       Translation: >
@@ -727,6 +967,26 @@ Questions:
           | Beringia                           | ("beringia" OR "beringian") OR                                                                                                                                                                                                                                                                                                                                                                                                                                     |
           | Global datasets                    | ("global data\*")                                                                                                                                                                                                                                                                                                                                                                                                                                                  |    
         
+    - Language: ru
+      Translation: >
+        Чтобы гарантировать, что мы включаем только информацию, относящуюся к 
+        арктической биоте, мы решили ограничить исследования теми, которые содержат 
+        концепцию, специфичную для Арктики. 
+        
+        
+        В настоящее время мы включили следующие концепции:
+
+          | Concept                            | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+          | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+          | Labels for the Arctic              | ("arctic" OR "high-latitude" OR "oro-arctic" OR "North Polar region" OR "subarctic" OR "northern environ\*") OR                                                                                                                                                                                                                                                                                                                                                    |
+          | Arctic countries                   | ("Canada" OR "Russia" OR "Russian Federation" OR "USSR" OR "RSFSR" OR "Russian Federation" OR "Norway" OR "Finland" OR "Sweden") OR                                                                                                                                                                                                                                                                                                                                |
+          | Arctic biomes                      | ("tundra" OR "permafrost" OR "mammoth steppe") OR                                                                                                                                                                                                                                                                                                                                                                                                                  |
+          | Canada / USA                       | ("Yukon Territory" OR "Northwest Territories" OR "Nunavut" OR "Baffin Island" OR "Belcher Islands" OR "Ellesmere Island" OR "Southampton Island" OR "Mackenzie River" OR "Great Slave Lake" OR "Great Bear Lake" OR "Yukon River" OR "Alaska" OR "Teshekpuk Lake" OR "Queen Elizabeth Islands" OR "Victoria Island" OR "Banks Island" OR "Wrangel Island" OR "Seward peninsula" OR "Hudson Bay") OR                                                                |
+          | Russia                             | ("Siberia" OR "Lake Baikal" OR "Lena River" OR "New Siberian Islands" OR "Severnaya Zemlya" OR "Franz Josef Land" OR "Novaya Zemlya" OR "Chukotka Autonomous Okrug" OR "Kamchatka Krai" OR "Magadan Oblast" OR "Murmansk Oblast" OR "Sakha" OR "Arkhangelsk Oblast" OR "Irkutsk Oblast" OR "Khabarovsk Krai" OR "Komi Republic" OR "Krasnoyarsk Krai" OR "Republic of Karelia" OR "Sakhalin Oblast" OR "Tuva" OR "Tyumen Oblast" OR "Polar Urals" OR "Yamalia") OR |
+          | Europe (Finland / Sweden / Norway) | ("Svalbard" OR "Spitsbergen" OR "Bjørnøya" OR "Jan Mayen" OR "Finnmark" OR "Troms" OR "Lapland" or "Lappi" OR "Grímsey" OR "Lappland" OR "Norrbotten" OR "North West Europe" OR "Northwest Europe" OR "north\* Europe" OR "Scandes" OR "Kola Peninsula") OR                                                                                                                                                                                                        |
+          | Beringia                           | ("beringia" OR "beringian") OR                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+          | Global datasets                    | ("global data\*")                                                                                                                                                                                                                                                                                                                                                                                                                                                  |    
+        
     Questions:
       - Question:
         - Language: en
@@ -736,6 +996,8 @@ Questions:
           Translation: Käsitteet – Puuttuuko jokin mielestäsi olennainen arktiseen alueeseen liittyvä käsite?
         - Language: sv
           Translation: Begrepp - Finns det specifika koncept för Arktis som du tror att vi saknar?
+        - Language: ru
+          Translation: Понятия - Есть ли конкретные понятия для Арктики, которых, по Вашему мнению, нам не хватает?
         Type: freetext
         Visible: always
         Required: false
@@ -749,6 +1011,10 @@ Questions:
         - Language: sv
           Translation: 
             Termer - För de begrepp som anges finns det ytterligare termer som du tror skulle bättre fånga relevant information?
+        - Language: ru
+          Translation: 
+            Термины - Для перечисленных понятий, существуют ли дополнительные термины, 
+            которые, по Вашему мнению, лучше будут отражать соответствующую информацию?
         Type: freetext
         Visible: always
         Required: false
@@ -761,6 +1027,8 @@ Questions:
       Translation: Hakukäsitteet – Altistus (Aika)
     - Language: sv
       Translation: Sökbegrepp - Exponering (tid)
+    - Language: ru
+      Translation: Концепции поиска - Экспозиция (время)
     Description:
     - Language: en
       Translation: >
@@ -866,6 +1134,42 @@ Questions:
           | Research Fields              | ("long-term ecology" OR "long-term record") OR                                                                                                                                                                                                                                                                                                                                                                                   |
           | Chronosequences and surveys  | ("chronosequence" OR "resurveyed" OR "one century")                                                                                                                                                                                                                                                                                                                                                                              |
 
+    - Language: ru
+      Translation: >
+        Далее мы хотели бы спросить Вас о том, как мы определяем «движение времени», нашу Экспозицию. 
+
+
+        Нас интересует только долгосрочная динамика (столько-то или столько-то лет). 
+        Таким образом, концепции здесь отражают такие данные, которые указывают на то, что исследование включает в себя долгосрочную динамику. 
+        Например, приведенные ниже концепции включают в себя методы (например, методы датирования) и области исследования (например, палеоэкология), которые указывают на анализ чего-то из прошлого. 
+
+
+        Мы включили следующие понятия:
+
+          | Concept                      | Terms within concept                                                                                                                                                                                                                                                                                                                                                                                                             |
+          | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+          | Reconstructions              | ("reconstruct") OR                                                                                                                                                                                                                                                                                                                                                                                                               |
+          | Palaeoecology etc.           | ("pal?eo\*" OR "micropal?entol\*") OR                                                                                                                                                                                                                                                                                                                                                                                            |
+          | Archeology                   | ("arch?eolog\*" OR "artefact") OR                                                                                                                                                                                                                                                                                                                                                                                                |
+          | Historical                   | ("history" OR "historic site" OR "historical record") OR                                                                                                                                                                                                                                                                                                                                                                         |
+          | Wood ring dating             | ("dendrochron\*" OR "dendroclim\*" OR "dendroeco\*" OR "growth ring" OR "tree ring") OR                                                                                                                                                                                                                                                                                                                                          |
+          | Radiocarbon dating           | ("radiocarbon" OR "radio-carbon" OR "AMS" OR "accelerator mass spectrometry") OR                                                                                                                                                                                                                                                                                                                                                 |
+          | Age determination            | ("age determination" OR "years before present" OR "yr BP" OR "calibration of age" OR "age model" OR "age-depth model") OR                                                                                                                                                                                                                                                                                                        |
+          | Old dates                    | ("1?,??? 14C yr B?P" OR "1? ??? 14C Yr B?P" OR "1?,??? yr B?P" OR "1? ??? yr B?P" OR "1?,??? cal yr B?P" OR "1? ??? cal yr B?P" OR "?,??? 14C yr B?P" OR "? ??? 14C Yr B?P" OR "?,??? yr B?P" OR "? ??? yr B?P" OR "?,??? cal yr B?P" OR "? ??? cal yr B?P" OR "pre-1???" OR "pre-20th century" OR "1?th century" OR "last ?,??? years" OR "last 1?,??? years" OR "14C dates" OR "\*th century" OR "? Cal Ka" OR "1? Cal Ka") OR |
+          | Fossils                      | ("fossil" OR "sub-fossil" OR "macrofossil" OR "megafossil" OR "microfossil" OR "subfossil") OR                                                                                                                                                                                                                                                                                                                                   |
+          | Palynology                   | ("palynolog\*") OR                                                                                                                                                                                                                                                                                                                                                                                                               |
+          | Archeology time periods      | ("prehistoric" OR "prehistory" OR "Iron Age" OR "BC") OR                                                                                                                                                                                                                                                                                                                                                                         |
+          | Time periods (Holocene etc.) | ("Holocene" OR "MidHolocene" OR "Mid-Holocene" OR "late Pleistocene" OR "end of the Pleistocene" OR "Late Quaternary" OR "Little Ice Age" OR "Medieval Climate Anomoly" OR "Younger Dryas" OR "MIS 1" OR "marine isotope stage 1") OR                                                                                                                                                                                            |
+          | Temporal variability         | ("centennial" OR "centuries" OR "millenial" OR "millenia" OR "submillenial" OR "chronolog\*" OR "temporal trend") OR                                                                                                                                                                                                                                                                                                             |
+          | Time periods: chronozones    | ("preboreal chronozone" OR "boreal chronozone" OR "atlantic chronozone" OR "subboreal chronozone") OR                                                                                                                                                                                                                                                                                                                            |
+          | Sediment cores               | ("sediment core" OR "sedimentary sequence" OR "lake sediment" OR "multiproxy sediment\* analysis" OR "transfer function") OR                                                                                                                                                                                                                                                                                                     |
+          | aDNA                         | ("ancient DNA" OR "aDNA" OR "sedDNA" OR "sedimentary DNA") OR                                                                                                                                                                                                                                                                                                                                                                    |
+          | Glaciers                     | ("postglacial" OR "post-glacial" OR "deglaciation" OR "deglacial") OR                                                                                                                                                                                                                                                                                                                                                            |
+          | Persistence                  | ("last appearance date" OR "refugia") OR                                                                                                                                                                                                                                                                                                                                                                                         |
+          | Proxies                      | ("multiproxy" OR "proxy record" OR "proxy archive" OR "proxy" OR "proxy study" OR "proxy studies") OR                                                                                                                                                                                                                                                                                                                            |
+          | Research Fields              | ("long-term ecology" OR "long-term record") OR                                                                                                                                                                                                                                                                                                                                                                                   |
+          | Chronosequences and surveys  | ("chronosequence" OR "resurveyed" OR "one century")                                                                                                                                                                                                                                                                                                                                                                              |
+    
     Questions:
       - Question:
         - Language: en
@@ -879,6 +1183,12 @@ Questions:
         - Language: sv
           Translation:
             Många ämnesområden har särskilda villkor för märkning av tidsperioder. Etiketterna varierar ofta beroende på region i världen och forskningens sammanhang. Finns det några uppsättningar av dessa etiketter som du kan se att vi saknar? I så fall berätta för oss nedan.
+        - Language: ru
+          Translation:
+            Многие предметные области имеют специальные условия для маркировки периодов времени. 
+            Эти маркировки часто варьируются, в зависимости от региона земного шара и контекста исследования. 
+            Есть ли какие-либо наборы таких маркировок, которые, как Вы видите, мы упустиили? 
+            Если да, пожалуйста, сообщите нам об этом ниже.
         Type: freetext
         Visible: always
         Required: false
@@ -892,6 +1202,10 @@ Questions:
         - Language: sv
           Translation:
             Begrepp - Finns det andra specifika begrepp för 'tidens rörelse' / 'långsiktig dynamik' som du tror att vi saknar?
+        - Language: ru
+          Translation:
+            Понятия – Существуют ли другие специфические понятия для «движения времени» 
+            / «долгосрочной динамики», которых, по Вашему мнению, нам не хватает?
         Type: freetext
         Visible: always
         Required: false
@@ -905,6 +1219,9 @@ Questions:
         - Language: sv
           Translation:
             Termer - För de begrepp som anges finns det ytterligare termer som du tror skulle bättre fånga relevant information?
+        - Language: ru
+          Translation:
+            Термины - Для перечисленных понятий, существуют ли дополнительные термины, которые, по Вашему мнению, лучше будут отражать соответствующую информацию?
         Type: freetext
         Visible: always
         Required: false
@@ -917,6 +1234,8 @@ Questions:
       Translation: Hakukäsitteet – Lopputulokset (biodiversiteetin mitattavissa olevat ominaisuudet)
     - Language: sv
       Translation: Sökbegrepp - resultat (mått på biologisk mångfald)
+    - Language: ru
+      Translation: Концепции поиска - Результаты (Измерение биоразнообразия)
     Description:
     - Language: en
       Translation: >
@@ -999,6 +1318,34 @@ Questions:
           | Habitat Diversity                    | "habitat diversity" OR                                                                                   |
           | Ecotone / Zonation / Treeline        | ("northern limit" OR "northern treeline" OR "ecotone")                                                   |    
       
+    - Language: ru
+      Translation: >
+        Затем мы хотели бы спросить Вас о том, как мы определяем, что исследование включает в себя «меры биоразнообразия», наш Результат. 
+        
+
+        Под «мерами биоразнообразия» мы подразумеваем меры, измерения и статистику, которые количественно оценивают, как биоразнообразие может меняться с течением времени. 
+        Примеры включают в себя присутствие - отсутствие, изобилие и разнообразие. 
+        Некоторые термины, такие как «палео-общины», специфичны для изучения прошлого.
+
+        
+        Мы включили следующие понятия:
+
+          | Concept                              | Terms within concept                                                                                     |
+          | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+          | Biodiversity                         | ("biodiversity") OR                                                                                      |
+          | Diversity                            | ("diversity") OR                                                                                         |
+          | Richness                             | ("richness" OR "number of species") OR                                                                   |
+          | Composition                          | ("composition" OR "assemblage" OR "pal?eocommunit\*" OR "compositional shift" OR "species dominance") OR |
+          | Presence/Absence                     | ("presence" OR "present" OR "absence" OR "absent" OR "occurrence" OR "occurred") OR                      |
+          | Persistence                          | ("stability" OR "persistence" OR "persisted" OR "disappeared" OR "extinction") OR                        |
+          | Abundance                            | ("abundance") OR                                                                                         |
+          | Succession                           | ("succession" OR "vegetation development" OR "plant cover" OR "zonation pattern") OR                     |
+          | Distribution                         | ("distribution" OR "distributed") OR                                                                     |
+          | Colonisation                         | ("coloni?ed" OR "coloni?ation" OR "established" OR "spread to") OR                                       |
+          | Establishment / Establishment limits | ("established") OR                                                                                       |
+          | Habitat Diversity                    | "habitat diversity" OR                                                                                   |
+          | Ecotone / Zonation / Treeline        | ("northern limit" OR "northern treeline" OR "ecotone")                                                   |    
+      
     Questions:
       - Question:
         - Language: en
@@ -1008,6 +1355,8 @@ Questions:
           Translation: Käsitteet – Puuttuuko listauksesta mielestäsi jokin 'biodiversiteetin mitattaviin ominaisuuksiin' liittyvä käsite?
         - Language: sv
           Translation: Begrepp - Finns det specifika begrepp för "mått på biologisk mångfald" som du tror att vi saknar?
+        - Language: ru
+          Translation: Понятия - Существуют ли конкретные понятия для «мер биоразнообразия», которых, по Вашему мнению, нам не хватает?
         Type: freetext
         Visible: always
         Required: false
@@ -1019,6 +1368,8 @@ Questions:
           Translation: Termit – Onko olemassa muita listattuihin käsitteisiin liittyviä termejä, jotka ilmaisisivat paremmin aiheeseen liittyvää tietoa?
         - Language: sv
           Translation: Termer - För de begrepp som anges finns det ytterligare termer som du tror skulle bättre fånga relevant information?
+        - Language: ru
+          Translation: Термины - Для перечисленных понятий, существуют ли дополнительные термины, которые, по Вашему мнению, лучше будут отражать соответствующую информацию?
         Type: freetext
         Visible: always
         Required: false
@@ -1032,6 +1383,8 @@ Questions:
       Translation: Hakukäsitteet – Elolliset proksit, joita käytetään ympäristön ennallistamiseen
     - Language: sv
       Translation: Sökbegrepp - Biotiska proxyer som används för återuppbyggnad av miljön
+    - Language: ru
+      Translation: Концепции поиска - Биотические прокси, используемые для реконструкции окружающей среды
     Description:
     - Language: en
       Translation: >        
@@ -1147,6 +1500,52 @@ Questions:
           | Sea ice extent                             | ("sea ice extent" OR "relative sea level" OR "sea level rise") OR                                                            |
           | Human interactions with animals and plants | ("hunting" OR "husbandry" OR "domestication" OR "construction activity" OR "settlement history")                             |
 
+    - Language: ru
+      Translation: >        
+        Заглянуть в прошлое непросто, так как мы никогда не наблюдаем изменения по мере их возникновения. 
+        Скорее, мы видим следы животных, растений и другой биоты (или **биотических прокси**). 
+        Примеры вышеупомянутого включают: пыльцу или споры; древние фрагменты ДНК; ископаемых насекомых или частей растений; или же кости и бивни. 
+        Эти прокси порождают две дополнительные проблемы, которые нам нужно рассмотреть по раздельности; ниже приведено их описание.
+
+        ### Проблема 1. Связи между окаменелостями и биотой. 
+
+        Научные статьи иногда обсуждают изменения в **биотических прокси** с течением времени, но не связывают их с конкретными растениями, животными или другими видами. 
+        Поскольку эти источники могут быть важными источниками дополнительной информации, мы включили дополнительные понятия в «Популяцию», чтобы идентифицировать их.
+
+
+          | Concept                   | Terms within concept                                                                                                                                                                                    |
+          | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+          | Palynology etc.           | ("pollen" OR "palynology" OR "macrofossil" OR "pal?eobotanical" OR "leaf wax" OR "palynomorph") OR                                                                                                      |
+          | Individual biotic proxies | ("diatom" OR "chironomid" OR "insect" OR "ostracod" OR "ostracode" OR "macroinvertebrate" OR "macro-invertebrate" OR "testate amoeba" OR "organic biomarker" OR "sporormiella" OR "dung fungal pore") OR |
+          | Dendro proxies            | ("ring width" OR "wood ring" OR "tree ring" OR "stem sample" OR "driftwood") OR                                                                                                                         |
+          | General terms             | ("terrestrial proxies" OR "terrestrial proxy")                                                                                                                                                          |    
+
+        ### Проблема 2. Другие реконструкции
+
+        Иногда научные работы содержат актуальную информацию о долгосрочной временной
+        динамике арктического биоразнообразия, но их исследовательские вопросы не 
+        касаются изменений в биоразнообразии. 
+        В таких случаях они могут использовать данные для реконструкции изменений 
+        окружающей среды с течением времени, такие, как летние температуры воздуха или 
+        зимние осадки. 
+        Мы хотим использовать эти документы в качестве важных источников дополнительной 
+        информации, поэтому мы включили дополнительные понятия, относящиеся к этим 
+        реконструкциям, в наши Результаты:
+
+        
+          | Concept                                    | Terms within concept                                                                                                         |
+          | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+          | Temperature                                | ("warming" OR "cooling" OR "temperature" OR "temperatures" OR "warm period" OR "cold period" OR "summer warmth") OR          |
+          | Precipitation and Hydrology                | ("hydroclimate" OR "precipitation") OR                                                                                       |
+          | Past climates                              | ("pal?eoclimat\*" OR "past climate" OR "climate of the past") OR                                                             |
+          | Lake levels                                | ("lake level") OR                                                                                                            |
+          | Vegetation productivity                    | ("vegetation productivity" OR "plant productivity" OR "radial growth" OR "annual growth" OR "growth rate" OR "fuel load") OR |
+          | Climate (general)                          | ("climate variable" OR "climate interpretation" OR "proxy climate record") OR                                                |
+          | Snow patterns                              | ("snow cover" OR "snow extent") OR                                                                                           |
+          | Carbon storage                             | ("organic carbon release" OR "permafrost carbon" OR "soil carbon release") OR                                                |
+          | Sea ice extent                             | ("sea ice extent" OR "relative sea level" OR "sea level rise") OR                                                            |
+          | Human interactions with animals and plants | ("hunting" OR "husbandry" OR "domestication" OR "construction activity" OR "settlement history")                             |
+
     Questions:
       - Question:
         - Language: en
@@ -1157,6 +1556,11 @@ Questions:
           Translation: Populaatio. Onko olemassa vielä joitain muita 'elollisia prokseja', jotka voivat osoittaa biodiversiteetissä tapahtuneita muutoksia ja jotka meidän tulisi sisällyttää hakuihimme?
         - Language: sv
           Translation: Population. Finns det andra 'biotiska ombud' som kan indikera förändringar i biologisk mångfald som vi bör inkludera i våra sökkoncept?
+        - Language: ru
+          Translation: 
+            Популяция. Существуют ли другие «биотические прокси», которые могут указывать на
+            изменения в биоразнообразии, которые мы должны включить в наши поисковые 
+            понятия?
         Type: freetext
         Visible: always
         Required: false
@@ -1171,6 +1575,11 @@ Questions:
         - Language: sv
           Translation:
             Resultat. Finns det andra miljöfaktorer som kan rekonstrueras från 'biotiska ombud' som vi saknar och du tror kan vara viktigt?
+        - Language: ru
+          Translation:
+            Результаты. Существуют ли другие факторы окружающей среды, которые могут быть 
+            реконструированы из «биотических прокси», которых нам не хватает, и которые, как 
+            Вы считаете, могут оказаться важными?
         Type: freetext
         Visible: always
         Required: false
@@ -1183,6 +1592,8 @@ Questions:
       Translation: Harmaan kirjallisuuden lähteet
     - Language: sv
       Translation: Grå litteraturkällor
+    - Language: ru
+      Translation: Серые литературные источники
     Description:
     - Language: en
       Translation: >
@@ -1206,7 +1617,17 @@ Questions:
         
         Vi publicerar inga opublicerade data utan uttryckligt skriftligt tillstånd. Syftet med detta projekt är att identifiera existensen av data för att förstå de geografiska och metodologiska behoven för vidare forskning.
     - Language: ru
-      Translation: Объем исследования определяет границы, в которых будет собираться информация.
+      Translation: >
+        Ключевой частью процесса систематического картирования является выявление всех 
+        потенциальных источников информации, будь то опубликованные источники 
+        (например, в рецензируемых научных журналах, правительственных или отраслевых 
+        докладах) или неопубликованные. 
+        
+        Мы не будем публиковать неопубликованные наборы данных без конкретного 
+        письменного разрешения. 
+
+        Целью этого проекта является выявление наличия данных для понимания 
+        географических и методологических потребностей в дальнейших исследованиях.
     Questions:
       - Question:
         - Language: en
@@ -1219,6 +1640,10 @@ Questions:
         - Language: sv
           Translation:
             Känner du till specifika källor till PUBLICERAD information som kan vara relevant för oss? Detta kan omfatta bibliotek, organisationswebbplatser eller andra databaser.
+        - Language: ru
+          Translation:
+            Знаете ли вы о конкретных источниках ОПУБЛИКОВАННОЙ информации, которые могут быть актуальны для нас? 
+            Это может включать в себя библиотеки, веб-страницы организаций или другие базы данных.
         Type: freetext
         Visible: always
         Required: false
@@ -1234,6 +1659,13 @@ Questions:
         - Language: sv
           Translation: 
             Har du personligen innehav eller har du tillgång till OPUBLICERADE data (som relaterar till tidigare arktisk biologisk mångfald)? Dessa kan till exempel inkludera platser där fossil hittades, arkeologiska platser, pollendata från kärnor av sjö- eller torvsediment eller andra proxyregister.
+        - Language: ru
+          Translation: 
+            Вы лично располагаете НЕОПУБЛИКОВАННЫМИ базами данных (которые относятся к прошлому 
+            биоразнообразию Арктики) или имеете к ним доступ? 
+            Они могут, например, включать в себя места, где были найдены окаменелости, 
+            археологические памятники, количество пыльцы из кернов озерных или торфяных 
+            отложений или другие косвенные записи.
         Type: binary choice
         Choices:
         - Language: en
@@ -1242,6 +1674,8 @@ Questions:
           Translation: [ "Kyllä", "Ei" ]
         - Language: sv
           Translation: [ "Ja", "Nej" ]
+        - Language: ru
+          Translation: [ "Да", "Нет" ]
         Visible: always
         Required: false
       - Question:
@@ -1251,6 +1685,8 @@ Questions:
           Translation: Voitko lyhyesti kuvailla millaisesta ja kuinka laajasta aineistosta on kyse?
         - Language: sv
           Translation: Kan du kort beskriva arten och antalet av dessa datamängder?
+        - Language: ru
+          Translation: Не могли бы вы кратко описать характеристики и количество этих наборов данных?
         Type: freetext
         Visible: previous question is true
         Required: true
@@ -1261,6 +1697,8 @@ Questions:
           Translation: Tiedätkö joidenkin muiden julkaisemattomien aineistojen olemassaolosta, mutta sinulla itselläsi ei ole pääsyä kyseisiin aineistoihin?
         - Language: sv
           Translation: Är du medveten om att det finns andra opublicerade data (som du inte har personlig tillgång till)?
+        - Language: ru
+          Translation: Знаете ли Вы о существовании других неопубликованных наборов данных (к которым у Вас нет личного доступа)?
         Type: binary choice
         Choices:
         - Language: en
@@ -1269,6 +1707,8 @@ Questions:
           Translation: [ "Kyllä", "Ei" ]
         - Language: sv
           Translation: [ "Ja", "Nej" ]
+        - Language: ru
+          Translation: [ "Да", "Нет" ]
         Visible: always
         Required: false
       - Question:
@@ -1278,6 +1718,8 @@ Questions:
           Translation: Voitko lyhyesti kuvailla millaisesta ja kuinka suuresta aineistosta on kyse?
         - Language: sv
           Translation: Kan du kort beskriva arten och antalet av dessa datamängder?
+        - Language: ru
+          Translation: Не могли бы вы кратко описать характеристики и количество этих наборов данных?
         Type: freetext
         Visible: previous question is true
         Required: true
@@ -1290,6 +1732,8 @@ Questions:
       Translation: Haluatko vielä lisätä jotain?
     - Language: sv
       Translation: Något annat?
+    - Language: ru
+      Translation: Что-нибудь еще?
     Description:
     - Language: en
       Translation:
@@ -1298,6 +1742,8 @@ Questions:
       Translation: Onko jotain mitä emme ole huomanneet?
     - Language: sv
       Translation: Är det något som vi har missat?
+    - Language: ru
+      Translation: Есть ли что-то еще, что мы упустили?
     Questions:
       - Question:
         - Language: en
@@ -1309,6 +1755,11 @@ Questions:
           Translation: Oletko koskaan käyttänyt työssäsi menneisyyteen viittaavia aineistoja (esim. fossiiliaineistot)? Jos olet, oliko sinulla vaikeuksia aineiston löytämisessä, käyttämisessä tai tulkinnassa?
         - Language: sv
           Translation: Har du någonsin använt data från det förflutna (t.ex. från fossilrekordet) i ditt arbete? Om du, och enligt din erfarenhet, mötte du utmaningar att hitta, använda eller tolka data?
+        - Language: ru
+          Translation:
+            Вы когда-нибудь использовали данные из прошлого (например, из летописи окаменелостей) в своей работе? 
+            Если да, по Вашему опыту работы, сталкивались ли Вы когда-нибудь с проблемами 
+            поиска, использования или интерпретации данных?
         Type: freetext
         Visible: always
         Required: false
@@ -1321,6 +1772,11 @@ Questions:
           Translation: Mikäli mielessäsi on kommentteja, jotka auttaisivat parantamaan tätä projektia, voit kirjoittaa ne alla olevaan tekstikenttään. 
         - Language: sv
           Translation: Berätta för oss nedan om det är något annat du vill kommentera för att förbättra detta forskningsprojekt?
+        - Language: ru
+          Translation: 
+            Пожалуйста, расскажите нам ниже, есть ли что-либо еще, по поводу чего Вы хотели бы 
+            дать комментарий, чтобы помочь нам усовершенствовать этот исследовательский 
+            проект?
         Type: freetext
         Visible: always
         Required: false
