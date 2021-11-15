@@ -1,0 +1,240 @@
+/**
+ * ==============================================
+ * Cottongrass - base styles
+ * ==============================================
+ */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#main {
+  flex: 1;
+}
+
+#main > .columns {
+  min-height: 100%;
+}
+
+.sidebar {
+  width: 250px;
+  background: whitesmoke;
+  min-height: 100%;
+}
+
+#counter {
+  width: 80px;
+}
+
+#notification-area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#notification-area > div {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+.hero {
+  margin-bottom: 2em;
+}
+
+.home-hero {
+  background-image: url('../images/home-banner.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.home-hero .hero-body {
+  max-width: 60%;
+}
+
+.box.question-box::before {
+  position: absolute;
+  right: 100%;
+  margin-right: 5px;
+  content: 'Q.';
+  font-size: 1.4em;
+  color: darkred;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.radio {
+  margin: 0.5rem;
+  display: block;
+}
+.radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+}
+.radio input[type="radio"] + .radio-label:before {
+  content: '';
+  background: #f4f4f4;
+  border-radius: 100%;
+  border: 1px solid #b4b4b4;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  position: relative;
+  top: -0.2em;
+  margin-right: 1em;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  transition: all 250ms ease;
+}
+.radio input[type="radio"]:checked + .radio-label:before {
+  background-color: #3197EE;
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+}
+.radio input[type="radio"]:focus + .radio-label:before {
+  outline: none;
+  border-color: #3197EE;
+}
+.radio input[type="radio"]:disabled + .radio-label:before {
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+  border-color: #b4b4b4;
+  background: #b4b4b4;
+}
+.radio input[type="radio"] + .radio-label:empty:before {
+  margin-right: 0;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.bar {
+  list-style: none;
+}
+.bar >li {
+  position: relative;
+  padding-left: 2em;
+  text-indent: -2em;
+  font-size: 0.75em;
+}
+.bar>li:before {
+  content: '\25CF';
+  margin-right: 10px;
+  font-size: 20px;
+  color: #00d1b2;
+}
+.bar>li:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  border-left: 2px solid #00d1b2;
+  margin-left: 8px;
+  height: 100%;
+}
+.bar >li:first-of-type:after {
+  top: 50%;
+}
+.bar >li:last-of-type:after {
+  top: -50%;
+}
+
+.with-left-line {
+  padding-left: 2em;
+  border-left: 0.75px solid lightgray;
+}
+
+.label.required::after {
+  content: '*';
+  color: red;
+  margin-left: 2.5px;
+}
+
+.loading-background {
+  background-color: #3197EE1F;
+  height: 100%;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 3rem 0;
+  margin: 0 -5%;
+  overflow: hidden;
+}
+
+/**
+ * ==============================================
+ * Dot Revolution - from three-dots - v0.2.1 (Copyright (c) 2018 nzbin - MIT license)
+ * ==============================================
+ */
+ .dot-revolution {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3197EE;
+  color: #3197EE;
+}
+
+.dot-revolution::before, .dot-revolution::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+}
+
+.dot-revolution::before {
+  left: 0;
+  top: -15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3197EE;
+  color: #3197EE;
+  transform-origin: 5px 20px;
+  -webkit-animation: dot-revolution 1.4s linear infinite;
+  animation: dot-revolution 1.4s linear infinite;
+}
+
+.dot-revolution::after {
+  left: 0;
+  top: -30px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3197EE;
+  color: #3197EE;
+  transform-origin: 5px 35px;
+  -webkit-animation: dot-revolution 1s linear infinite;
+  animation: dot-revolution 1s linear infinite;
+}
+
+@-webkit-keyframes dot-revolution {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes dot-revolution {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0, 0, 0);
+  }
+}
